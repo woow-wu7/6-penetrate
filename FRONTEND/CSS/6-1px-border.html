@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        height: 300px;
+        background: yellow;
+        position: relative;
+      }
+      .container::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: red;
+      }
+
+      @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        .container::after {
+          transform: scaleY(0.5);
+        }
+      }
+
+      @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        .container::after {
+          transform: scaleY(0.33);
+        }
+      }
+
+      /* content用于对比 */
+      .contrast {
+        height: 100px;
+        background: yellow;
+        position: relative;
+        margin-top: 20px;
+      }
+      .contrast::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <div class="contrast">下面的div用于对比</div>
+  </body>
+  <script>
+    console.log("window.devicePixelRatio :>> ", window.devicePixelRatio);
+
+    const Contrast = document.getElementsByClassName("contrast")[0];
+    const div = document.createElement("div");
+    div.innerHTML = `当前的屏幕像素比是: ${window.devicePixelRatio}`;
+    Contrast.appendChild(div);
+  </script>
+</html>
