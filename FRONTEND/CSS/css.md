@@ -1,5 +1,12 @@
 # CSS
 
+## 一些单词
+
+```
+ellipsis 省略号
+orient 朝向 向东
+```
+
 ## (1) position
 
 - static 默认值
@@ -183,3 +190,128 @@ border-bottom: 100px solid red;
 ### (9.1) css 选择器的权重
 
 - !important > 内联(行内)样式 > id > ( class 类, 伪类, 属性选择器 ) > ( 标签元素选择器，伪元素选择器 ) > ( 通配符选择器，关系型选择器 )
+
+## (10) @import 和 link 的区别？
+
+- 类型
+  - html：link 是 html 标签，除了加载 css，link 标签上还具有其他属性 rel 属性
+  - css：@import 是 css 语法，只有导入样式的作用
+- DOM 可操作性
+  - js 可以操作 DOM，而 link 标签属于 DOM;
+  - js 不能操作 @import
+- 权重
+  - link 标签引入的样式 权重 > @import 引入的样式
+- 加载顺序
+  - link：加载 css 和页面一起加载
+  - @import：页面加载完成后，再加载 css
+- 兼容性
+  - link 是 html 标签
+  - @import 是 css2 的语法，ie5 以上才兼容，兼容性比较差
+- 总
+  - 总体上 link 比 @import 好
+
+## (11) HTML5 的一些新特性
+
+- 新的语义化标签
+  - section
+  - header
+  - footer
+  - aside
+  - main
+  - nav
+- 新的媒体标签
+  - video
+  - audio
+- 新的绘画标签
+  - canvas
+  - svg
+- 拖放
+  - drag
+  - drop
+- 本地存储
+  - localStorage
+  - sessionStorage
+- 地理位置
+  - GeoLocation
+- web worker
+- webSocket
+- 新的表单控件
+  - date
+  - time
+  - email
+  - url
+  - search。
+
+## (12) pointer-events 用 css 方式设置 ( 事件穿透 )
+
+- 作用：可以设置 ( 事件穿透 )
+- 具体：指定在什么特定的情况下，target 可以设置为 ( 鼠标事件 ) 的 ( target )
+- 详细
+  - pointer-events: none; ------- 表示 ( 该 css 选择器对应的 target 永远不会成为鼠标事件的 target )，即不会对 ( 鼠标事件进行响应 )
+  - pointer-events: auto -------- 默认值，对鼠标事件进行响应
+  - pointer 是 指针 的意思
+
+## (13) 如何修改 transform 变换时的原点？
+
+- 原点
+  - 默认原点: transform 变换时，默认的原点是 ( 中心点 )
+  - 修改原点: transform-origin 属性可以 ( 修改原点 )
+- transform-origin
+  - transform-origin: x-axis y-axis z-axis;
+  - 单位：可以是 百分数，px，top 等等
+
+## (14) css 设置小于 12px 的字体
+
+```
+1. 前置知识
+- 浏览器上能设置的最小字体是 12px，当小于12px的字体会当作12px来处理
+
+2. 解决方案
+- zoom
+- transform: scale() + transform-origin: left;
+
+
+zoom
+- zoom表示变焦，可以改变页面上元素的尺寸
+- zoom:50% 和 zoom:0.5 都表示缩小到原来的一半
+
+
+transform
+- transform: scale(0.5)
+- transform-origin: left;
+- 注意：
+  - 出现问题：transform: scale(0.5) 进行字体缩放后，字体虽然变小了，但是位置缺变化了
+  - 分析原因：因为transform的操作，默认的 ( 原点 ) 是 ( 正中心位置 )
+  - 如何解决：transform-origin: left;
+  - 扩展: 结合13中 ( transform-origin ) 改变原点来学习
+- 额外知识
+  - 描述：transform 是 ( 不会 ) 引起 ( reflow回流 ) 的，只会 ( repaint重绘 )
+  - 原因：
+    - 浏览器渲染会经过 parseHTML -> parseStylesheet -> evaluateScript -> layout -> paint -> composite
+    - 分层
+      - transform ------------ 是在 composite合成层
+      - width，left，margin --- 是在 layout 层，不在同一层
+      - 分层的目的: 是为了减少重绘制的时间
+    - GPU加速: transform还能开启 GPU 加速
+```
+
+## (15) 单行省略号 和 多行省略号
+
+```
+单行省略号
+---
+overflow: hidden;
+text-overflow: ellipsis; // 文本溢出显示省略号，ellipsis是省略号的意思
+white-space: nowrap;
+```
+
+```
+多行省略号
+---
+overflow: hidden;
+text-overflow: ellipsis; // 前面两个属性和单行省略号相同
+
+display: -webkit-box;
+-webkit-box-orient: vertical; // 指定朝向是垂直方向上
+-webkit-line-clamp: 2; // 指定多少行后显示省略号
+```

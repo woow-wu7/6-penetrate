@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .button {
+        /* 对鼠标事件不响应 */
+        pointer-events: none;
+
+        /* 对鼠标事件响应 */
+        /* pointer-events: auto; */
+      }
+    </style>
+  </head>
+  <body>
+    <button class="button">按钮</button>
+    <script>
+      // pointer 指针的意思
+      const button = document.getElementsByClassName("button")[0];
+      button.addEventListener("click", () => console.log(1), {
+        capture: false,
+      });
+    </script>
+  </body>
+</html>
