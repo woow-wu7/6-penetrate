@@ -5,6 +5,7 @@
 ```
 ellipsis 省略号
 orient 朝向 向东
+unordered 无需的 adj
 ```
 
 ## (1) position
@@ -315,3 +316,14 @@ display: -webkit-box;
 -webkit-box-orient: vertical; // 指定朝向是垂直方向上
 -webkit-line-clamp: 2; // 指定多少行后显示省略号
 ```
+
+## (16) ul 和 ol 的区别？
+
+- 区别
+  - ul 无序列表 -------- unordered list 无序列表
+  - ol 有序列表 -------- ordered list 有序列别
+- 记忆
+  - u 是 unordered 的缩写
+  - o 是 ordered 的缩写
+- 去除 ul 和 ol 的 ( 默认样式 )
+  - list-style: none;
