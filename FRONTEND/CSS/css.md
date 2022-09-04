@@ -118,8 +118,8 @@ border-bottom: 100px solid red;
   - 两者都是 ( 相对单位 )
 - 不同点
   - **em**
-    - em 作为 font-size 属性的单位时 -----> 1em 表示的是 ( 父元素 ) 的 font-size 大小
-    - em 作为其他属性的单位时 -------------> 1em 表示的是 ( 自身 ) font-size 的大小
+    - em 作为 font-size 属性的单位时 ---> 1em 表示的是 ( 父元素 ) 的 font-size 大小
+    - em 作为其他属性的单位时 -----------> 1em 表示的是 ( 自身 ) font-size 的大小
   - **rem**
     - 特点
       - rem 是根据 html 元素的 font-size 作为基准
@@ -129,5 +129,57 @@ border-bottom: 100px solid red;
       - **deviceWidth/ui 设计稿的总宽度 = 某元素的实际宽度/该元素 ui 宽度**
     - 实现原理
       - 动态计算 html 元素的 font-size
-        - 1. 通过 js 方式 -------> document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 + 'px'
-        - 2. 通过 css 方式 ------> html{ font-size: 100vw /750 }
+        - 1. 通过 js 方式 --> document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 + 'px'
+        - 2. 通过 css 方式 -> html{ font-size: 100vw /750 }
+
+## (8) block inline inline-block 三者的区别 ?
+
+- 常见的 block 元素 --------- 设置 width 和 height 有效
+  - form
+  - table
+  - p
+  - div
+  - h1-h6
+  - ul li
+- 常见的 inline 元素 -------- 设置 width 和 height 无效
+  - span
+  - a
+- **常见的 inline-block ----- 设置 width 和 height 有效**
+  - input
+  - textarea
+  - select
+  - img
+
+## (9) css 选择器
+
+- **元素型选择器**
+  - Element 元素选择器
+  - 通配符选择器
+  - #id 选择器
+  - .类选择器
+- **关系型选择器**
+  - E > F 子选择器
+  - E F 后代选择器
+  - E+F 相邻选择器，选择符合条件的 ( 相邻的兄弟元素 )，( E 元素后相邻的兄弟元素 F )
+  - E~F 兄弟选择器，选择符合条件的 ( 所有兄弟元素 )，不强调相邻 ( E 元素后面的所有兄弟元素 )
+- **属性选择器**
+  - E[att]
+  - E[att="val"] att 属性值是 val 的元素
+  - E[att~="val"] 选择具有 att 属性且属性值其中一个等于 val 的 E 元素（包含只有一个值且该值等于 val 的情况）
+  - E[att^="val"] 开头：选择 att 属性以 val 开头的元素
+  - E[att$="val"] 结尾
+  - E[att*="val"] 包含
+- **伪类伪元素选择器**
+  - 伪类选择器
+    - E:hover
+    - E:focus
+    - E:link
+    - E:active
+    - E:visited
+  - 伪元素选择器
+    - E::before
+    - E::after
+
+### (9.1) css 选择器的权重
+
+- !important > 内联(行内)样式 > id > ( class 类, 伪类, 属性选择器 ) > ( 标签元素选择器，伪元素选择器 ) > ( 通配符选择器，关系型选择器 )
