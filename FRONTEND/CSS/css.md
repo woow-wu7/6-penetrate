@@ -6,6 +6,7 @@
 ellipsis 省略号
 orient 朝向 向东
 unordered 无需的 adj
+parallelogram 平行四边形
 ```
 
 ## (1) position
@@ -325,5 +326,18 @@ display: -webkit-box;
 - 记忆
   - u 是 unordered 的缩写
   - o 是 ordered 的缩写
-- 去除 ul 和 ol 的 ( 默认样式 )
-  - list-style: none;
+- 问题
+  - 问题: 去除 ul 和 ol 的 ( 默认样式 )
+  - 回答: `list-style: none;`
+
+## (17) css 实现向右的箭头
+
+- border-top + border-right
+- transform: rotate(45deg)
+
+## (18) css 实现平行四边形
+
+- transform: skew(x-angle,y-angle)
+  - x-angle 水平倾斜的角度
+  - y-angle 垂直倾斜的角度
+- 详细：https://juejin.cn/post/7029703494877577246
