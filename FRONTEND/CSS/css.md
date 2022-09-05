@@ -405,3 +405,56 @@ section{main footer}
 section 和其上的所有父元素都要设置 height: 100%;
 main ------> min-height: calc(100% - footer 的高度) // 这里一定要注意是 min-height，不能是height，不然main的内容会溢出
 ```
+
+## (21) 水平垂直居中布局
+
+- 绝对定位
+  - 知道盒子的大小: margin: -高度的一半 -宽度的一半;
+  - 不知道盒子的大小: transform: translate(-50%, -50%);
+- flex
+  - 父 display: flex;
+  - 父 justify-content: center;
+  - 父 align-items: center;
+- table-cell 布局
+  - 父 display: table-cell;
+  - 父 text-align: center;
+  - 父 vertical-align: middle;
+  - 子 display: inline-block;
+- grid 布局
+  - 父 display: grid;
+  - 子 justify-self: center; align-self: center;
+
+## (22) 双栏布局
+
+- 绝对定位
+- flex 布局
+- float
+  - container{left, right} 容器及以上的元素高度都设置为 100%;
+  - left ---> float: left; height: 100%;
+  - right --> margin-left: left 的宽度；其实可以不设置
+  - 记得要清楚浮动带来的影响
+
+## (23) 三栏布局(圣杯布局) - 中间自适应，两边固宽
+
+- float
+  - container{left, right} 容器及以上的元素高度都设置为 100%;
+  - left ----> float: left;width=200px;
+  - right ---> float: right;width=200px;
+  - center --> margin-left: 200px; margin-right: 200px; 其实可以不设置
+- 注意点
+  - 标签的书写顺序是 left right center，将 center 放在最后面
+  - ( center ) 的设置 ( margin-left+marin-right ) 可以使用 ( overflow: hidden ) 来代替
+
+## (24) BFC 块级格式化上下文
+
+- BFC 是 block formatting context 块级格式化上下文的缩写
+- 具有 BFC 特性的元素，可以看作是隔离了的 ( 独立元素 )，容器中的元素不会在 布局上 影响其他元素
+- **如何触发 BFC？** 共 5 种方法
+  - 根元素
+  - 浮动
+  - 绝对定位
+  - overflow 除了 visible 以外的值，比如 hidden，scroll，auto
+  - display: flex table-cell inline-block
+- BFC 的应用
+  - 去除 margin 重叠 - 使相互影响的 ( 两个标签位于两个 BFC 中 )
+  - 清除浮动 - 解决 ( 浮动元素的父元素高度塌陷 ) 的问题
