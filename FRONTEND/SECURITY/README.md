@@ -22,7 +22,7 @@
   - 显示伪造的 文章 和 图片
 - **如何预防 XSS 攻击？**
 
-  - 1. 设置 httpOnly
+  - 1. **设置 httpOnly**
     - cookie 是在服务端生成的，通过在响应头上的 set-cookie 字段来体现，除了设置 cookie 的值，还可设置 cookie 的属性，比如 Expires Max-Age Domain Path Secure HttpOnly
     - `Set-Cookie: key1=value1; domain=example.com; path=/blog; HttpOnly;Secure;`
       - Expires Max-Age
@@ -31,7 +31,7 @@
       - **HttpOnly** 表示 cookie 无法通过脚本获取
         - js --------------> document.cookie 读写 cookie
         - XMLHttpRequest --> xhr.getResponseHeader('Set-Cookie') 获取 cookie
-  - 2. 过滤检查
+  - 2. **过滤检查**
 
     - 对 input, textArea, form 表单做特殊符号的过滤检查
     - HtmlEncode：对 html 标签进行转换
@@ -52,7 +52,7 @@
         "  --------------------- \\"
       ```
 
-  - 3. 事件对象上的 e.origin
+  - 3. **当跨标签通信时也会发生 XSS 攻击，所以通过事件对象上的 e.origin 来判断可信源**
 
     - 比如通过 postMessage 进行多标签通信时，在接受消息的标签页上通过 `window.onmessage = (e) => {}` 获取 e.origin 进行判断
 
