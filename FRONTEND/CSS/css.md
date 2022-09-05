@@ -458,3 +458,13 @@ main ------> min-height: calc(100% - footer 的高度) // 这里一定要注意�
 - BFC 的应用
   - 去除 margin 重叠 - 使相互影响的 ( 两个标签位于两个 BFC 中 )
   - 清除浮动 - 解决 ( 浮动元素的父元素高度塌陷 ) 的问题
+
+## (25) title 和 alt 的区别？
+
+- title
+  - title 可以作为标签，也可以作为标签的属性
+  - 标签: title 作为标签，用在 head 标签中，表示 ( 网页的标题 )
+  - 属性: title 作为属性，在 `<a title="">` 标签中表示 ( hover 时的文字说明 )
+- alt
+  - alt 只能作为标签属性
+  - 用于 ( img input textarea )，表示 ( 标签加载失败后的 文字说明 )
