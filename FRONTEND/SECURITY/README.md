@@ -53,13 +53,39 @@
       ```
 
   - 3. 事件对象上的 e.origin
-    - 比如通过 postMessage 进行多标签通信时
+
+    - 比如通过 postMessage 进行多标签通信时，在接受消息的标签页上通过 `window.onmessage = (e) => {}` 获取 e.origin 进行判断
+
+      ```
+      发消息
+      ---
+      const targetWindow = window.open(
+        "http://127.0.0.1:5500/FRONTEND/JS/1-cross-domain/%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1-%E6%94%B6%E6%B6%88%E6%81%AF.html",
+        "新标签页"
+      );
+      button.addEventListener(
+        "click",
+        () =>
+          targetWindow.postMessage("这是通过 window.open() 发送的消息", "*"),
+        false
+      );
+      ```
+
+      ```
+      收消息
+      ---
+      window.onmessage = (e) => {
+        console.log("e.origin :>> ", e.origin); // 通过 e.origin 查看发送消息的源信息是否是可信的网页
+        console.log("这是通过 window.open() 接收到的消息", e.data);
+      };
+      ```
 
 ## (2) csrf 跨站请求伪造攻击
 
 - 概念
   - csrf 是 ( cross site request forgery 跨站请求伪造 ) 的缩写
   - CSRF 是一种劫持受信任用户向服务器发送非预期请求的攻击方式
+  - forgery 是伪造的意思
 - 原理
   - 主要是通过获取用户在目标网站的 cookie，骗取目标网站的服务器的信任，在用户已经登录目标站的前提下，访问到了攻击者的钓鱼网站，攻击者直接通过 url 调用目标站的接口，伪造用户的行为进行攻击，通常这个行为用户是不知情的。
   - 即获取了 cookie，就可以做很多事情：比如以你的名义发送邮件、发信息、盗取账号、购买商品、虚拟货币转账等等
@@ -75,3 +101,23 @@
         - 链接: https://www.ruanyifeng.com/blog/2019/06/http-referer.html
   - **token**
     - CSRF 主要就是获取 cookie，所以要防御的话，就需要在请求中加入攻击者不能伪造的信息，并且该信息不能保存在 cookie 中
+- 案例
+
+```
+案例：
+
+CSRF攻击的思想：（核心2和3）
+1、用户浏览并登录信任网站（如：淘宝）
+2、登录成功后在浏览器产生信息存储（如：cookie）
+3、用户在没有登出淘宝的情况下，访问危险网站
+  // 注意：如果该cookie在没有设置过期时间或者为null，默认是会话时间session-cookie，关闭浏览器后cookie会被清除
+  // Expires，Max-Age可以设置cookie的过期时间
+  // 所以这里强调了是没有登出的情况，就有cookie被获取的风险
+  // 如果cookie设置了具体的过期时间，有效期内都可能被获取
+4、危险网站中存在恶意代码，代码为发送一个恶意请求（如：购买商品/余额转账）
+  // 该请求，携带刚刚在浏览器产生的信息(cookie)，进行恶意请求
+5、淘宝验证请求为合法请求（区分不出是否是该用户发送）
+  // 用HTTP中的header头中的 Refer 来预防
+  // refer 可以检查请求源，只有合法的请求来源服务器才予以响应
+6、达到了恶意目标
+```
