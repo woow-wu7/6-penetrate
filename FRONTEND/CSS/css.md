@@ -7,6 +7,7 @@ ellipsis 省略号
 orient 朝向 向东
 unordered 无需的 adj
 parallelogram 平行四边形
+paint 油漆 绘制 // repaint重绘 reflow重排
 ```
 
 ## (1) position
@@ -235,7 +236,7 @@ border-bottom: 100px solid red;
   - sessionStorage
 - 地理位置
   - GeoLocation
-- web worker
+- webWorker
 - webSocket
 - 新的表单控件
   - date
@@ -341,3 +342,66 @@ display: -webkit-box;
   - x-angle 水平倾斜的角度
   - y-angle 垂直倾斜的角度
 - 详细：https://juejin.cn/post/7029703494877577246
+
+## (19) repaint 重绘 和 reflow 重排(回流)
+
+- repaint 重绘
+  - 对 DOM 的修改只导致了 ( 样式 ) 的变化，并没有改变 ( 几何属性 )，浏览器不需要从新计算几何样式，而是从新绘制新的样式，这个过程叫做重绘 repaint
+- reflow 重排
+  - 对 DOM 的修改引发了 DOM 几何尺寸的变化(宽高，隐藏等)，浏览器需要 ( 重新计算 ) 元素的几何属性
+  - 同时 ( 其他元素的集合属性 和 位置也将受到影响 )，浏览器需要重新将计算结果绘制出来，这个过程叫做回流 reflow
+- 特点
+  - reflow 一定会 repaint
+  - repaint 不会定会 reflow
+- 常见的会引起 ( 重排-回流 ) 的操作有哪些？
+  - 页面首次渲染
+  - 浏览器窗口大小变化
+  - 元素尺寸和位置变化 width height position
+  - fontSize
+  - 显示/隐藏元素
+  - 添加/删除元素
+  - 激活 css 伪类
+  - offsetWidth, width, clientWidth, scrollTop/scrollHeight 的计算， 会使浏览器将渐进回流队列 Flush，立即执行回流
+
+## (20) sticky-footer 效果
+
+- 效果定义
+  - 当内容不足一屏时，保持在屏幕最底部
+  - 当内容超过一屏时，在内容的最底部，随着内容滚动
+- 实现方式
+  - padding-bottom + margin-top
+  - flex 布局
+  - calc 动态计算
+- 详见 `14-sticky-footer-**.html`
+
+```padding-bottom + margin-top
+padding-bottom + margin-top
+- 特点: 适合 ( footer高度固定 ) 的情况，兼容性好
+---
+
+section{main footer}
+section 和 其上的所有父元素都要设置 height: 100%;
+main 的 box-sizing: border-box; 因为默认是标准盒子
+main ------> min-height: 100%; padding-bottom: 200px; box-sizing: border-box;
+footer ----> margin-top: -200px;
+```
+
+```flex布局
+flex布局
+- 特点: 适合 ( footer高度不确定 ) 的情况
+---
+
+section{main footer}
+section ---> display: flex; flex-direction: column; min-height: 100%; 同时 section 以上的父元素都要设置 height: 100%才可以
+main ------> flex: 1;
+```
+
+```calc
+calc
+- 特点: 也只是适合于 ( footer 高度固定 ) 的情况
+---
+
+section{main footer}
+section 和其上的所有父元素都要设置 height: 100%;
+main ------> min-height: calc(100% - footer 的高度) // 这里一定要注意是 min-height，不能是height，不然main的内容会溢出
+```
