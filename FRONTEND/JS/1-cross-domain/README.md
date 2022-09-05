@@ -6,6 +6,7 @@
 
 ### (1) BroadcastChannel
 
+- 联系: 注意跨标签通信时，会出现 XSS 攻击，通过接收消息时的 e.origin 可以得知发送消息的页面，可做白名单验证防止 XSS
 - broadcast: 是广播的意思
 - channel: 是频道，通道的意思
 
@@ -46,6 +47,8 @@ window.addEventListener(
 
 ### (3) window.open
 
+- 联系: 注意跨标签通信时，会出现 XSS 攻击，通过接收消息时的 e.origin 可以得知发送消息的页面，可做白名单验证防止 XSS
+
 ```
 发消息
 const targetWindow = window.open(
@@ -62,7 +65,7 @@ button.addEventListener(
 
 收消息
 window.onmessage = (e) => {
-  console.log("e :>> ", e);
+  console.log("e.origin :>> ", e.origin);
   console.log("这是通过 window.open() 接收到的消息", e.data);
 };
 ```

@@ -28,6 +28,7 @@
       // 1
       const broadcast = new BroadcastChannel("one"); // 注意：这里的 one 要和发送消息页面中的new BroadcastChannel("id") 中的参数相同
       broadcast.onmessage = (e) => {
+        console.log("e :>>BroadcastChannel接收到的消息内容： ", e);
         console.log("BroadcastChannel接收到的消息内容：", e.data);
       };
 
@@ -35,6 +36,7 @@
       window.addEventListener(
         "storage",
         function (e) {
+          console.log("e通过storage事件监听变化获取数据", e);
           console.log("通过storage事件监听变化获取数据", e.newValue);
         },
         false

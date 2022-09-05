@@ -54,7 +54,8 @@
 
   - 3. **当跨标签通信时也会发生 XSS 攻击，所以通过事件对象上的 e.origin 来判断可信源**
 
-    - 比如通过 postMessage 进行多标签通信时，在接受消息的标签页上通过 `window.onmessage = (e) => {}` 获取 e.origin 进行判断
+    - 比如通过 window.open().postMessage 进行多标签通信时，在接受消息的标签页上通过 `window.onmessage = (e) => {}` 获取 e.origin 进行判断
+    - BroadcastChannel 和 window.open() 一样，都可以通过 e.origin 来获取到发送消息的页面地址，详见 `FRONTEND/JS/1-cross-domain/README.md`
 
       ```
       发消息
