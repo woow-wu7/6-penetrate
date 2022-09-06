@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="button">发送请求</button>
+    <script>
+      const button = document.getElementById("button");
+
+      const request = () => {
+        const xhr = new XMLHttpRequest();
+
+        // xhr.open(method, url, async)
+        // get请求： 参数可以写在 open() 方法中
+        // post请求：参数卸载 send() 方法中
+        xhr.open(
+          "GET",
+          "https://api.66mz8.com/api/translation.php?info=I come from China TestGetStaticProps",
+          true
+        );
+
+        // xhr.setRequestHeader
+        // - 指定一个HTTP请求的头部（请求头），只有在 readyState 为 1 时才能调用
+        // - 必须在 open 之后 send 之前
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.responseType = "json"; // 支持 json text 等
+        xhr.timeout = 5000;
+
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("xhr.response() :>> ", xhr.response);
+            // xhr.response -------> 对应 xhr.responseType = "json";
+            // xhr.responseText ---> 对应 xhr.responseType = "text";
+          }
+        };
+
+        // xhr.onload
+        // - xhr.onload() 请求成功时触发，此时 readyState = 4
+        // 除了在a pi.onreadystatechange 指定的会调中判断 readyState===4，也可以直接在 onload 中触发
+        // 两种方法都可以
+        // 只判断200状态码不完善，应该判断 2xx 或者 304 则请求成功
+        xhr.onload = () => {
+          if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+            console.log(xhr.response, "onload在请求成功时触发");
+          }
+        };
+
+        // 发送
+        xhr.send();
+      };
+
+      button.addEventListener("click", request, { capture: false });
+    </script>
+  </body>
+</html>
