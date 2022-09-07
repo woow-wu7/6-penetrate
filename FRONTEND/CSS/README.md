@@ -532,6 +532,7 @@ aspect-ration: 4/3;
 - 详见: `FRONTEND/CSS/21-nth-of-type.html`
 
 ## (30) :not() 伪类
+
 ```
 :not(.child1) {
   /* 选中除了 .child1 的元素 */
@@ -540,6 +541,7 @@ aspect-ration: 4/3;
 ```
 
 ## (31) word-wrap 和 word-break
+
 ```
 word-wrap: break-word; 整个单词一起换行
 word-break: break-all; 单词内换行
