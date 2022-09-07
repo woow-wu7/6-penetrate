@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      div {
+        color: blue;
+      }
+      :not(.child1) {
+        /* 选中除了 .child1 的元素 */
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <div class="child1">child1</div>
+      <div class="child2">child2</div>
+      <div class="child3">child3</div>
+      <!-- child2 和 child3 将是红色的 -->
+    </div>
+  </body>
+  <script>
+    // :not()
+    // - 语法：( :not(css选择器) )
+    // - 作用：( 伪类 :not() ) 用来匹配不符合选择器的元素
+  </script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        background: #0b3060;
+      }
+      .brightness {
+        color: rgb(75, 0, 0);
+        animation: change-brightness 1s ease-in-out 0s infinite alternate
+          forwards;
+      }
+
+      @keyframes change-brightness {
+        0% {
+          filter: brightness(100%);
+        }
+        50% {
+          filter: brightness(300%);
+        }
+        100% {
+          filter: brightness(100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // filter: brightness(amount)
+
+      // 1
+      // 前置知识：
+      // animation: name duration time-function delay iteration-count direction fill-mode
+      //  - iteration-count: 0-infinite；表示动画执行的次数 0-infinite 之间
+      //  - direction：normal|alternate；表示是否轮流反向播放
+      //  - fill-mode:none|forwards|backwards;表示动画不播放时的样式
+
+      // 2
+      // filer: brightness(amount)
+      // - 作用：表示让图表更亮或者更暗
+      // - 英语：amount 是数量的意思
+    </script>
+    <div class="brightness">测试 filter: brightness 的使用</div>
+  </body>
+</html>

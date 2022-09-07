@@ -468,3 +468,79 @@ main ------> min-height: calc(100% - footer 的高度) // 这里一定要注意�
 - alt
   - alt 只能作为标签属性
   - 用于 ( img input textarea )，表示 ( 标签加载失败后的 文字说明 )
+
+## (26) filter: drop-shadow()
+
+- 具有 alpha 通道的阴影
+- 语法
+  - `filter: drop-shadow(offset-x offset-y blur-radius spread-radius注意阴影大小这个参数大多数浏览器不支持 color)`
+- 注意 drop-shadow() 和 box-shadow 的区别
+  - box-shadow 属性在元素的整个框后面创建一个矩形阴影
+  - drop-shadow() 过滤器则是创建一个符合图像本身形状 (alpha 通道) 的阴影
+
+```
+drop-shadow
+---
+
+box-shadow: h-shadow v-shadow blur spread color inset;
+
+drop-shadow(offset-x offset-y blur-radius spread-radius color)
+- 属性基本和box-shadow一样
+- 注意
+  - drop-shadow 是一个函数
+  - 第四个设置项 spread-radius 阴影大小，大多数浏览器不支持
+- 案例
+  - FRONTEND/CSS/19-drop-shadow.html
+```
+
+## (27) filter: brightness()
+
+- 表示让图表更亮或者更暗
+- filter: brightness(amount)
+  - 参数 amount 是数量的意思，是一个数值
+
+## (28) 图片等比例放大缩小
+
+- 详见 `FRONTEND/CSS/20-image-equal-ratio.html`
+
+```
+图片等比例放大缩小 - 三种方法
+---
+
+1
+width: 100%;
+height: auto;
+
+2
+width: 100%;
+height: 0;
+padding-bottom: 75%; // 宽高比4:3
+
+3
+width: 100%;
+aspect-ration: 4/3;
+// 宽高比4:3
+// aspect-ratio: <width-ratio>/<height-ratio>
+```
+
+## (29) :nth-of-type 伪类
+
+- p:nth-of-type(2)
+  - p:nth-of-type(2) 命中的是父元素的子元素中的 - p 标签中的第二个 p 标签
+- p:nth-child(2)
+  - p:nth-child(2) 命中的是父元素的第二个子元素，注意 ( 父元素的第二个子元素类型 ) 必须和 ( 伪类调用者的类型 ) 一致才会命中
+- 详见: `FRONTEND/CSS/21-nth-of-type.html`
+
+## (30) :not() 伪类
+```
+:not(.child1) {
+  /* 选中除了 .child1 的元素 */
+  color: red;
+}
+```
+
+## (31) word-wrap 和 word-break
+```
+word-wrap: break-word; 整个单词一起换行
+word-break: break-all; 单词内换行
+```

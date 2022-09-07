@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Object.create 模拟实现
+        - 作用:
+          - 以参数对象为原型，新建实例对象
+          - 即可以让一个对象继承另一个对象，实例对象完全继承参数对象的属性和方法
+        - 实现原理
+          - 利用 ( 中间函数 - 中间函数没有任何属性和方法 ) 式 ( 原型链继承 )
+      */
+
+      const obj = { name: "woow_wu7" };
+
+      const _create = (prototypeObj) => {
+        function Parasitic() {} // 因为中间函数内没有任何代码，所以不存在 ( 构造函数式继承，即生成的实例本身没有任何属性和方法 )
+        Parasitic.prototype = prototypeObj; // 将 中间函数的 prototype 属性指向 参数对象，这样中间函数的实例就能继承参数对象的属性和方法
+
+        return new Parasitic(); // 其实就是实现一个 ( 原型链继承 )
+      };
+
+      const instance = _create(obj);
+      console.log("instance :>> ", instance);
+    </script>
+  </body>
+</html>
