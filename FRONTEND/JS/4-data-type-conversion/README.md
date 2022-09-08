@@ -134,7 +134,18 @@ undefined + 1 // NaN ------------------- NaN + 1
 -false // 0
 ```
 
-## (三) 综合案例
+# 运算符
+
+# (一) 相等运算符
+
+- `相等运算符`，用来比较`相同类型`的数据时，与 `严格相等运算符` 等价 ( 类型相同 == 和 === 等价 )
+- 相同类型的数据：== 和 === 等价
+- **不同类型的数据**：== 会先进行类型转化，再使用 === 比较
+  - **原始类型的数据**：**转成数值，再比较**
+  - **对象类型的数据**：**先将对象转成原始类型的值，再比较** ( 也就是说先将对象转成原始类型，再都转成数值 )
+  - **null 和 undefined**：**相互比较 true，和任意其他类型比较 false**
+
+## 综合案例
 
 ```
 案例 1
@@ -181,4 +192,49 @@ undefined + 1 // NaN ------------------- NaN + 1
 
 
 对比: '1' + {} // '1[object Object]'
+```
+
+```
+案例4
+---
+
+
+false == 'false'
+// false
+// 相等运算符，两边是原始类型的值，都转成数值在比较
+// Number(false) == Number('false') => 0 === NaN => false
+
+
+'true' == true
+// false
+// 都转换成数值
+// 等同于 Number('true') === Number(true)
+// 等同于 NaN === 1
+
+
+[1] == true
+// true
+// 相等运算符，如果有引用类型的值，现将引用类型的值转成原始类型的值，然后都转成数值在比较
+// 等同于 Number([1]) == Number(true)
+// '1' == 1
+// 1 == 1
+// 1 === 1
+
+```
+
+```
+案例5 - 非常容易错
+---
+
+false == null
+false == undefined
+// 相等运算符，如果是 null 或者 undefined，相互比较是true，和其他任意类型比较是false
+// false
+// 注意: undefined 和 null 与其他任意类型比较时都是 false
+
+null == undefined // true
+undefined == null // true
+// 相等运算符，如果是 null 或者 undefined，相互比较是true，和其他任意类型比较是false
+
+null === undefined // false， 注意三等是false，因为类型都不一样，直接false
 ```
