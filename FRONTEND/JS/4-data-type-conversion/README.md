@@ -1,0 +1,182 @@
+# 数据类型转换
+
+### (一) 强制转换
+
+- Number()
+- String()
+- Boolean()
+
+### (1.1) Number()
+
+- 作用: 将 任意类型的数据 转换成 数值
+- 特点:
+  - 返回值要么是 ( 数值 ) 要么是 ( NaN )
+  - 如果是字符串，则会自动过滤 ( 前面和后面的空白字符 )
+- **对象**
+  - valueOf: 返回对象本身
+  - toString: 返回类型字符串 '[object, XXXX]'
+- **数组**
+  - valueOf: 返回数组本身
+  - toString: 返回数组的字符串形式
+
+```
+1
+原始类型的值
+Number(undefined) ---------- NaN
+Number(null) --------------- 0
+Number(true) --------------- 1
+Number(false) -------------- 0
+Number('') ----------------- 0
+Number('324abc') ----------- NaN
+Number(' 12  ') ------------ 12，会自动过滤字符串前面和后面的空白字符
+
+
+2
+对象
+转换规则: Number() -> valueOf() -> toString() -> Number()
+案例:
+Number([]) -> valueOf()/[] -> toString/'' -> Number('') -> 0
+Number({}) -> valueOf()/{} -> toString/'[object, Object]' -> Number('[object, Object]') -> NaN
+```
+
+### (1.2) String()
+
+- 作用: 将 任意类型的数据 转换成 字符串
+- **对象**
+  - valueOf: 返回对象本身
+  - toString: 返回类型字符串 '[object, XXXX]'
+- **数组**
+  - valueOf: 返回数组本身
+  - toString: 返回数组的字符串形式
+
+```
+1
+原始类型的值
+String(123) // "123"
+String('abc') // "abc"
+String(true) // "true"
+String(undefined) // "undefined"
+String(null) // "null"
+
+2
+对象
+参数是对象，返回类型字符串
+参数是数组，返回数组的字符串形式
+转换规则:
+  - String() -> toString() -> valueOf() -> String()
+  - 先调用 toString() -> 对象 -> valueOf() -> 对象 -> 报错
+案例:
+String({name: 'woow_wu7'}) // 参数是对象，返回类型字符串  ==> '[object Object]'
+String([1,2]) // 参数是数组，返回数组的字符串形式，==> '1，2'
+```
+
+### (1.3) Boolean()
+
+- 作用: 将任意类型的值转成布尔值
+
+```
+Boolean类型转换
+
+除了以下6个值是false，其他都为true
+Boolean(+0) // false
+Boolean(-0) // false
+Boolean('') // false
+Boolean(null) // false
+Boolean(undefined) // false
+Boolean(NaN) // false
+```
+
+## (二) 自动转换
+
+- 自动转换发生的时机
+  - 不同类型的数据相互运算
+  - 对非布尔类型的数据求布尔值 (!'1')
+  - 对非数值类型的值使用一元运算符 (+'1')
+- 自动转换的规则
+  - 预期什么类型的值，就调用该类型的转换函数
+
+### (2.1)`自动转化为字符串`
+
+```
+'5' + 1 // '51'
+'5' + true // "5true"
+'5' + false // "5false"
+'5' + {} // "5[object Object]" ======> 先将对象转成原始值 ======> {} => toString => 返回类型字符串 '[object Object]'
+'5' + [] // "5" =====================> 先将数组转成原始值 ======> [] => toString => 返回数组的字符串形式 '' => '5' + ''
+'5' + function (){} // "5function (){}"
+'5' + undefined // "5undefined"
+'5' + null // "5null"
+```
+
+### (2.2) 自动转化为数值
+
+- 除了 + 有可能将运算子转换成字符串，其他运算符都会把运算子转换成数值
+- 一元运算符也会把运算子转成数值
+
+```
+'5' - '2' // 3
+'5' * '2' // 10
+true - 1  // 0
+false - 1 // -1
+'1' - 1   // 0
+'5' * []    // 0 ----------------------- 5 * 0
+false / '5' // 0 ----------------------- 0 / 5
+'abc' - 1   // NaN --------------------- NaN - 1
+null + 1 // 1 -------------------------- 0 + 1
+undefined + 1 // NaN ------------------- NaN + 1
+
+
+
+一元运算符也会把运算子转成数值
++'abc' // NaN
+-'abc' // NaN
++true // 1
+-false // 0
+```
+
+## (三) 综合案例
+
+```
+案例 1
+---
+
+[] == ![]
+
+答案: true
+解析：
+1. 优先级： ! > == 所以先算 ![] => false // 除了'',+-0,null,undefined,NaN是ture以外,其他都是false
+2. [] == false
+3. == 相等运算符的运算子有对象时，先将[]转换成原始类型的值，再比较
+4. Number([]) == false => valueOf => [] => toString => '' => Number('') => 0 == false
+5. 0 == false
+6. 0 == Number(false) => 0 == 0 类型相同 == 等于 ===   => 0 === 0 => true
+7. true
+```
+
+```
+案列2
+---
+
+[] + []
+
+答案: ''
+解析：
+1. + 的运算子是对象，先转化成原始类型的值，然后再相加
+2. Number([]) => valueOf([]) => [] => toString([]) => ''
+3. '' + ''
+4. 字符串相加，+存在重载 ( 相加 或者 向连 )；这里是字符串相加，则表示连接
+5. ''
+```
+
+```
+案例3
+---
+
+{} + '1'
+
+答案: 1
+解析:
+1. 因为表达式以 {} 开头，{} 不会被当作对象，而是被当作 ( 代码块 )
+2. +'1' 会被转成 ( number ) 类型
+3. +'1' -> 1
+```
