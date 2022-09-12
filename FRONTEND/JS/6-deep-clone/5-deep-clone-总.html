@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 深拷贝 - 总
+      const obj = {
+        num: 1,
+        str: "string",
+        boo: true,
+        nul: null,
+        undefined: undefined,
+        sym: Symbol("symbol"), // symbol key
+        arr: [1, 2, 3],
+        obj: {
+          name: "woow_wu7",
+          obj2: { age: 10 },
+        },
+        date: new Date(), // 特殊对象，结构化克隆
+        regexp: new RegExp(),
+      };
+      obj.circle = obj; // 循环引用
+
+      const deepClone = (obj, map = new Map()) => {
+        if (
+          (typeof obj !== "object" && typeof obj !== "function") ||
+          obj === null
+        ) {
+          return obj; // 如果不是对象，数组，function => 则是原始类型，直接返回；
+        }
+
+        let res = Array.isArray(obj) ? [] : {};
+
+        if (map.has(obj)) {
+          return map.get(obj);
+        }
+        map.set(obj, res);
+        console.log("obj :>> ", obj);
+        switch (obj.constructor) {
+          case Date:
+          case RegExp: {
+            res = new obj.constructor(obj);
+          }
+          default: {
+            Reflect.ownKeys(obj).forEach((item) => {
+              if (typeof obj[item] === "object") {
+                res[item] = deepClone(obj[item], map);
+              } else {
+                res[item] = obj[item];
+              }
+            });
+          }
+        }
+
+        return res;
+      };
+
+      const result = deepClone(obj);
+      console.log("result", result);
+    </script>
+  </body>
+</html>
