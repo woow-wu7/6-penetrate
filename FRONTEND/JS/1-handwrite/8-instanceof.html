@@ -39,5 +39,29 @@
       ); // true
       console.log("arr instanceof Array", arr instanceof Array); // true
     </script>
+
+    <!-- 下面的写法也可以的 -->
+    <script>
+      const _instanceof2 = (obj, constructor) => {
+        const rightPrototype = constructor.prototype;
+        let leftPrototype = Object.getPrototypeOf(obj);
+
+        while (true) {
+          if (leftPrototype === null) return false;
+
+          if (leftPrototype !== rightPrototype) {
+            leftPrototype = Object.getPrototypeOf(leftPrototype);
+          } else {
+            return true;
+          }
+        }
+
+        return false;
+      };
+
+      const arr2 = [1];
+      const res2 = _instanceof(arr, Array);
+      console.log("res2", res2);
+    </script>
   </body>
 </html>
