@@ -8,6 +8,7 @@ orient 朝向 向东
 unordered 无序的 adj // ordered有序的
 parallelogram 平行四边形
 paint 油漆 绘制 // repaint重绘 reflow重排
+aspect 外观
 ```
 
 ## (1) position
@@ -18,7 +19,7 @@ paint 油漆 绘制 // repaint重绘 reflow重排
 - absolute 绝对定位，相对于 - 距离最近的具有定位属性的父元素
   - 问题: 什么是具有 定位属性 的父元素？
   - 回答: 就是除了 position: static 以外的定位属性都可以
-- **fixed** 基于窗口定位 - `注意transform的影响`
+- **fixed** 基于窗口定位 - `注意transform的影响，如果祖先元素设置了transform属性，则fixed定位基于该祖先元素，而不是视口即整个窗口定位`
 - **sticky** 粘性定位
 
 ### (1.1) position: sticky 粘性定位
@@ -93,7 +94,7 @@ border-bottom: 100px solid red;
 - 实现
   - 1. 给 div 盒子设置 ( 伪元素 - 相当于当前元素的第一个子元素，不在 DOM 中 )，( 高度 1px，绝对定位在盒子底部 )
   - 2. 通过 @media screen and (-webkit-min-device-pixel-ratio: 2) 命中几倍屏
-  - 3. 然后通过 transform: scaleY(0.5) 缩放 伪元素
+  - 3. 然后通过 transform: scaleY(0.5) 缩放 伪元素 ( 2 倍屏缩小 0.5，3 倍屏缩小 0.333 )
 
 ```
 .container {
@@ -521,6 +522,7 @@ width: 100%;
 aspect-ration: 4/3;
 // 宽高比4:3
 // aspect-ratio: <width-ratio>/<height-ratio>
+// aspect 是外观的意思
 ```
 
 ## (29) :nth-of-type 伪类

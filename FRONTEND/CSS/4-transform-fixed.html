@@ -11,6 +11,7 @@
         border: 1px solid red;
         height: 400px;
         transform: scale(1);
+        /* 这里 super1 设置了 transform 属性并且非null，则 position: fixed; 就基于了 super1 来定位，而不是视口 */
       }
       .super2 {
         padding: 10px;
