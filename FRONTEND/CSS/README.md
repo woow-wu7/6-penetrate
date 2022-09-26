@@ -344,17 +344,20 @@ display: -webkit-box;
   - y-angle 垂直倾斜的角度
 - 详细：https://juejin.cn/post/7029703494877577246
 
-## (19) repaint 重绘 和 reflow 重排(回流)
+## (19) repaint 重绘 和 reflow 重排(回流) 和 合成
 
 - repaint 重绘
   - 对 DOM 的修改只导致了 ( 样式 ) 的变化，并没有改变 ( 几何属性 )，浏览器不需要从新计算几何样式，而是从新绘制新的样式，这个过程叫做重绘 repaint
+  - 跳过了 ( 布局树 ) 和 ( 建图层树 )
 - reflow 重排
   - 对 DOM 的修改引发了 DOM 几何尺寸的变化(宽高，隐藏等)，浏览器需要 ( 重新计算 ) 元素的几何属性
   - 同时 ( 其他元素的集合属性 和 位置也将受到影响 )，浏览器需要重新将计算结果绘制出来，这个过程叫做回流 reflow
+- composite 合成
+  - 就是更改了一个既不要 ( 布局 layout ) 也不要 ( 绘制 paint ) 的属性，那么渲染引擎会跳过布局和绘制，直接执行后续的 ( 合成 composite ) 操作，这个过程就叫合成
 - 特点
   - reflow 一定会 repaint
   - repaint 不会定会 reflow
-- 常见的会引起 ( 重排-回流 ) 的操作有哪些？
+- **常见的会引起 ( 重排-回流 ) 的操作有哪些？**
   - 页面首次渲染
   - 浏览器窗口大小变化
   - 元素尺寸和位置变化 width height position
@@ -363,6 +366,11 @@ display: -webkit-box;
   - 添加/删除元素
   - 激活 css 伪类
   - offsetWidth, width, clientWidth, scrollTop/scrollHeight 的计算， 会使浏览器将渐进回流队列 Flush，立即执行回流
+- **只会 composite 合成的属性，不会重绘重排回流**
+  - transform
+  - opacity
+  - filter
+  - 所以动画最好使用 transform opacity 等属性来实现，结合 32 一起看
 
 ## (20) sticky-footer 效果
 
@@ -548,3 +556,17 @@ aspect-ration: 4/3;
 word-wrap: break-word; 整个单词一起换行
 word-break: break-all; 单词内换行
 ```
+
+## (32) transform 为什么不会引起 回流(重排) ？
+
+- 原因
+  - 因为 GPU 进程会为其开启一个新的复合图层(也叫 GPU 硬件加速)，不会影响默认复合图层（就是普通文档流），即脱离了文档流，所以并不会影响周边的 DOM 结构，而属性的改变也会交给 GPU 处理，不会进行重排
+  - 使 GPU 进程开启一个新的复合图层的方式还有 3D 动画，过渡动画，以及 opacity 属性，还有一些标签，这些都可以创建新的复合图层。这些方式叫做硬件加速方式
+- 对比
+  - ( 绝对定位 ) 虽然可以脱离文档流，但是没有新建图层，所以会 reflow
+  - 结合 19 一起看
+- 扩展
+  - 还有哪些属性不会引起 reflow 和 repaint
+    - transform
+    - opacity
+    - filter
