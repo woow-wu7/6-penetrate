@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // LeetCode
+      // 21. Merge Two Sorted Lists
+
+      // 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+      // 输入：l1 = [1,2,4], l2 = [1,3,4]
+      // 输出：[1,1,2,3,4,4]
+      // ---
+      // 输入：l1 = [], l2 = []
+      // 输出：[]
+      // ---
+      // 输入：l1 = [], l2 = [0]
+      // 输出：[0]
+
+      /**
+       * Definition for singly-linked list.
+       * function ListNode(val, next) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.next = (next===undefined ? null : next)
+       * }
+       */
+      /**
+       * @param {ListNode} list1
+       * @param {ListNode} list2
+       * @return {ListNode}
+       */
+      var mergeTwoLists = function (list1, list2) {
+        // 如果其中一个为空，就直接返回另一个链表
+        if (list1 === null) return list2;
+        if (list2 === null) return list1;
+
+        let list3 = new ListNode(null); // 先生成一个空节点(链表)，val=null next=null
+        let cacheList3Head = list3;
+        // 这里缓存一下list3的头节点，该头节点是我们自己定义的头节点，和我们最终返回的头节点不一样
+        // 问题：为什么要缓存头节点呢？
+        // 回答：因为list3我们在不断的重新赋值next来指向尾节点继续拼接，那么执行后指针不是在头节点了，而是尾节点；而题目说的是要返回头节点，所以需要缓存
+
+        // while
+        // 遍历两个链表，直到其中一个为空
+        while (list1 && list2) {
+          if (list1.val < list2.val) {
+            // 比较两个链表中的最前面的节点，取小的添加给list3链表，然后移动list3的next指针到尾节点，同时移动小的链表的指针next，继续比较list1.next.val 和 list2.val
+            // 问题：为什么要移动 list3
+            // 回答：因为list3中还要添加新的节点进来，必须在尾节点上的 next 指向新的节点
+            list3.next = list1;
+            list1 = list1.next; // 移动指针，较小的链表的下一个节点
+            list3 = list3.next; // 同理
+          } else {
+            list3.next = list2;
+            list2 = list2.next;
+            list3 = list3.next;
+          }
+        }
+
+        // 当上面的整个while循环结束，表示其中一个链表已经遍历完了，继续遍历有剩余节点的链表，添加给list3
+        // while (list1) {
+        //   list3.next = list1;
+        //   list3 = list3.next;
+        //   list1 = list1.next;
+        // }
+
+        // while (list2) {
+        //   list3.next = list2;
+        //   list3 = list3.next;
+        //   list2 = list2.next;
+        // }
+
+        // 优化上面的两个while
+        if (list1) {
+          list3.next = list1;
+        }
+        if (list2) {
+          list3.next = list2;
+        }
+
+        return cacheList3Head.next;
+        // 最后返回新节点的头节点，不然我们初始化list3的时的头节点并不是答案中的头节点，把我们自己的头节点的next才是真正的返回的合并后的头节点
+        // 注意：头节点上 cacheList3Head.next，而不是 cacheList3Head
+      };
+    </script>
+  </body>
+</html>
