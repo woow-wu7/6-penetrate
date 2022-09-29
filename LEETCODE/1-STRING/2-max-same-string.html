@@ -10,6 +10,10 @@
     <script>
       // 两个字符串的 - 最大相同子串
 
+      // - 思路
+      // - 1. 原理: 找到 ( 所有的 ) 相同子串，然后取 ( 最大长度的子串 )
+      // - 2. 基准串: 需要指定一个基准串，比如比较的str1和str2，指定str1是基准串，截取操作都通过str1来做
+
       const str1 = "abcdefg";
       const str2 = "xxabcdefxxe";
 
@@ -21,7 +25,6 @@
         // j 遍历 str2
         for (let i = 0; i < str1.length; i++) {
           for (let j = 0; j < str2.length; j++) {
-
             let temp = 0; // 统计从 i 和 j 开始时的两个字符串的相同子串的 长度
             for (
               let k = 0;

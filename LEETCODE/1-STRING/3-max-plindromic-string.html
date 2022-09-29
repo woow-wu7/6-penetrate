@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 最长回文字串
+
+      // 暴力算法 - 三层循环
+      // - 外面两层循环：找到所有子串
+      // - 第三层循环：判断子串是否是回文 ( 或者使用反转字符串判断是否相等，这样少一层循环 )
+      // - 时间复杂读：( O(n^2) ) 或者 ( O(n^3)如果是三层循环的话 )
+
+      // 思路
+      //  - 1. 找出所有子串，然后判断哪些子串是回文子串
+      //  - 2. 用一个 max 变量标记最长的回文子串，如果每次得到的回文串比上一次长，则更新为较长的回文子串
+
+      const str = "abcdeffed";
+
+      const maxPalindromeStr = (str) => {
+        let max = "";
+
+        // 两层循环，可以找出所有子串
+        for (let i = 0; i < str.length; i++) {
+          for (let j = i + 1; j <= str.length; j++) {
+            const _str = str.slice(i, j);
+            const _reverseStr = _str.split("").reverse().join("");
+
+            // 是回文串，并且更新较大的回文串
+            if (_str === _reverseStr && _str.length > max.length) {
+              max = _str;
+            }
+          }
+        }
+
+        return max;
+      };
+
+      const res = maxPalindromeStr(str);
+      console.log("res: ", res);
+    </script>
+  </body>
+</html>
