@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log(1);
+          resolve(2);
+        });
+      }).then((value) => console.log(value));
+      console.log(3);
+
+      // 3
+      // 宏任务队列：setTimeout(1 promise2)
+      // 微任务队列：[]
+
+      // 1
+      // 宏任务队列：[]
+      // 微任务队列：[2]
+
+      // 2
+
+      // 总 3 1 2
+
+      // 其他面试题连接：1-INTERVIEW/中移.html
+      // 其他面试题连接：1-INTERVIEW/中移.html
+      // 其他面试题连接：1-INTERVIEW/中移.html
+      // 其他面试题连接：1-INTERVIEW/中移.html
+      // 其他面试题连接：1-INTERVIEW/中移.html
+      // 其他面试题连接：1-INTERVIEW/中移.html
+    </script>
+  </body>
+</html>
