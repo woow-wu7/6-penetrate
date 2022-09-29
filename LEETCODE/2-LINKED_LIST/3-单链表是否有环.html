@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 问题: 如何判断一个链表是 - 环形链表？
+      // 方法: 快慢指针
+      // 原理:
+      //  - 设置两个指针，从链表起始开始走，快指针一次走两步，慢指针一次走一步
+      //  - 如果有一个指针走到null，则链表没环
+      //  - 如果有环，则快慢指针一定会在环中相遇
+
+      // 原理解析：
+      // 1. 如果单链表没有环，快慢指针是永远不会相遇的
+      // 2. 如若单链表中有环，快指针先进入环，慢指针后进入环，即是快指针在追慢指针
+      //    - 问题：那有没有可能，快慢指针在环中永远不会相遇呢？
+      //    - 回答：不可能，因为快2步，慢1步，相对速度就是以  ( 1步 ) 的速度在追慢指针，所以一定会相遇
+      //    - 扩展：如果 快3慢1，相对数组就是2步，则就有可能不会相遇
+
+      // 资料
+      //  - https://www.bilibili.com/video/BV1if4y1d7ob/?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
+      //  - https://juejin.cn/post/6885621824067993613
+      //  - https://www.bilibili.com/video/BV1kf4y1u7oA/?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
+
+      const hasCircle = (head) => {
+        if (!head || !head.next) return false; // 如果传入的链表是空，或者只有一个节点，则不是环
+
+        let fast = head.next.next; // 快指针，2步
+        let slow = head; // 慢指针，1步
+
+        while (fast !== slow) {
+          // 1
+          // - 快指针不存在，或者快指针下一个节点不存在，可定是没有环的单链
+          // - 这里为什么使用快指针来判断？因为快，遍历次数少；用慢指针来判断也是可以的，
+          if (!fast || !fast.next) return false;
+
+          fast = fast.next.next; // 移动指针
+          slow = slow.next; // 移动指针
+        }
+
+        return true;
+      };
+    </script>
+  </body>
+</html>
