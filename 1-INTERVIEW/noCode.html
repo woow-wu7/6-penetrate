@@ -97,15 +97,24 @@
         let start = 0; // 连续开始位置的值
         let res = [];
         arr.forEach((item, index) => {
+          // 1
           // 连续开始位置，比如 68910 中 8
+          // 初始位置 ( 2 === 2 && 0 !== undefined ) 满足条件，所以 start = 1
+          // 开始 - 后等前不等
           if (item + 1 === arr[index + 1] && item - 1 !== arr[index - 1]) {
             start = item;
           }
+
+          // 2
           // 连续结束为止，比如 3468 中的 4
+          // 结束 - 前等后不等
           else if (item - 1 === arr[index - 1] && item + 1 != arr[index + 1]) {
             res.push(`${start}-${item}`);
           }
+
+          // 3
           // 不相连的元素，即数组该元素前后的值，和 +1 -1 不相等
+          // 不相连 - 前后都不等
           else if (item - 1 !== arr[index - 1] && item + 1 != arr[index + 1]) {
             res.push(item);
           }
