@@ -8,24 +8,26 @@
   </head>
   <body>
     <script>
-      // 两个字符串的 - 最大相同子串
+      // 题目
+      // - 题目: 两个字符串的 - 最大相同子串
+      // - 对比: 数组最长公共前缀
 
       // - 思路
-      // - 1. 原理: 找到 ( 所有的 ) 相同子串，然后取 ( 最大长度的子串 )
-      // - 2. 基准串: 需要指定一个基准串，比如比较的str1和str2，指定str1是基准串，截取操作都通过str1来做
+      // - 1. 原理: 找到两个字符串 ( 所有的 ) 相同子串，然后取 ( 最大长度的子串 )
+      // - 2. 基准串: 需要指定一个基准串，比如比较的str1和str2，指定 str1 是基准串，截取操作都基于 str1 来做
 
       const str1 = "abcdefg";
       const str2 = "xxabcdefxxe";
 
       function getMaxSameStr(str1, str2) {
-        let start = 0; // 基准串，相同字符的 - 启始位置
+        let start = 0; // 基准串，相同字符的 - 起始始位置
         let maxSameLength = 0; // 相同字符串的 - 最大长度
 
         // i 遍历 str1
         // j 遍历 str2
         for (let i = 0; i < str1.length; i++) {
           for (let j = 0; j < str2.length; j++) {
-            let temp = 0; // 统计从 i 和 j 开始时的两个字符串的相同子串的 长度
+            let temp = 0; // 统计从 i 和 j 开始时的两个字符串的相同子串的 长度；然后和 ( 最终的长度maxSameLength做动态更新 )
             for (
               let k = 0;
               k < Math.min(str1.length - i, str2.length - j); // 1串 和 2串 可以遍历的 长度，取最小值 - 则是公共可以遍历的长度
@@ -47,6 +49,7 @@
           }
         }
 
+        // 因为基准串是 str1，所以这里结果截取是基于 str1
         return str1.slice(start, start + maxSameLength);
       }
 
