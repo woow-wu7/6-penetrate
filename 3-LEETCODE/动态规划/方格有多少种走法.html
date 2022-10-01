@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 题目
+
+      // 62. Unique Paths
+      // 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。
+      // 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+      // 问总共有多少条不同的路径？
+
+      // 输入：m = 3, n = 7
+      // 输出：28
+
+      // 原理
+      // 1. 只有一种走法的网格: 在 ( 第一行的所有列 ) 和 ( 第一列的所有行 ) 都只有一种走法
+      // 2. 利用 ( 动态规划 ) 找到 ( 状态转移方程 )
+
+      // https://leetcode.cn/problems/unique-paths/
+
+      var uniquePaths = function (m, n) {
+        let dp = new Array(n); // n行
+
+        for (let i = 0; i < n; i++) {
+          dp[i] = new Array(m); // 每一行有 m列，即相当于一个二维数组，来表示网格的每个位置，然后在每个位置上标记该位置有多少种走法
+          dp[i][0] = 1; // 在每一行的第一个位置 ( 只有一种走法 )
+        }
+
+        for (let j = 0; j < m; j++) {
+          dp[0][j] = 1; // 第一行的所有列都 ( 只有一种走法 )
+        }
+
+        // 除了 ( 第一行所有列  ) 和  ( 第一列的所有行 ) 以外的其他情况 = 都用 ( 状态转移方程 ) 来实现
+        for (let i = 1; i < n; i++) {
+          for (let j = 1; j < m; j++) {
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1]; // 状态转移方程
+          }
+        }
+
+        return dp[n - 1][m - 1];
+      };
+    </script>
+  </body>
+</html>
