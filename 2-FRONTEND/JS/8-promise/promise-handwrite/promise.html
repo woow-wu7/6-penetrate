@@ -7,6 +7,17 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      console.log(1);
+      new Promise((resolve, reject) => {
+        console.log(2);
+        setTimeout(() => {
+          resolve(3);
+        });
+      }).then((res) => console.log(res));
+      console.log(4);
+
+      // 1243
+    </script>
   </body>
 </html>

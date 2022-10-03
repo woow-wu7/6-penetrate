@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class _Promise {
+        constructor(executor) {
+          executor(this.resolve, this.reject);
+        }
+
+        status = _Promise.PENDING; // 初始状态
+        value = null;
+        reason = null;
+
+        // resolve
+        // 有三个作用
+        // - 1. 改变状态 pending -> fulfilled
+        // - 2. 存储终值 value
+        resolve = (value) => {
+          this.value = value;
+          this.status = _Promise.FULFILLED;
+        };
+        reject = (reason) => {
+          this.reason = reason;
+          this.status = _Promise.REJECTED;
+        };
+
+        then = (onFulfilled, onRejected) => {
+          // 3
+          // then 具有穿透效果
+          if (typeof onFulfilled !== "function") {
+            onFulfilled = (value) => value;
+          }
+          if (typeof onRejected !== "function") {
+            onRejected = (reason) => {
+              throw new Error();
+            };
+          }
+
+          if (this.status === _Promise.FULFILLED) {
+            // 1
+            // onFulfilled(this.value); // ------------------- 1234
+            // 待解决问题：这里需要解决第一个问题：执行顺序1243，而不是1234
+            // 原因：因为 then 的执行是要在所有同步任务执行完后，才会执行
+            // 如何解决：使用 setTimeout 模拟异步来解决
+
+            setTimeout(() => onFulfilled(this.value)); // ---- 1243
+          }
+
+          if (this.status === _Promise.REJECTED) {
+            // onRejected(this.reason);
+            setTimeout(() => onRejected(this.reason));
+          }
+
+          // 2
+          // 待解决问题：当 executor 中有异步任务时，then成功的回调没有执行
+          // 原因：因为 then 执行是在 ( 状态改变后 )，即 ( resolve 或 reject 执行后 ) 改变了状态后，才会执行 then，而当executor有异步时，resolve就会延时执行，then先于resolve执行，所以两个回调并没有执行
+          // 如何解决：在 then 函数内部，当状态没改变时即还是pending时，将参数回调放入队列onFulfilledCallback，在resolve改变状态后取出来执行
+
+          if (this.status === _Promise.PENDING) {
+            // 这里不用再判断 onFulfilled 和 onRejected 不存在的情况了，上面已经判断了，必须为函数，不是函数会被转成相关函数
+          }
+        };
+      }
+      // class 的静态属性，这里是为了避免魔法字符串的产生
+      _Promise.PENDING = "pending";
+      _Promise.FULFILLED = "fulfilled";
+      _Promise.REJECTED = "rejected";
+
+      console.log(1);
+      new _Promise((resolve, reject) => {
+        console.log(2);
+        setTimeout(() => {
+          resolve(3);
+        });
+      }).then((res) => console.log(res));
+      console.log(4);
+
+      // 1243
+    </script>
+  </body>
+</html>
