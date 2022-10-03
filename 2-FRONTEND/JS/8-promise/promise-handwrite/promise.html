@@ -11,10 +11,14 @@
       console.log(1);
       new Promise((resolve, reject) => {
         console.log(2);
-        setTimeout(() => {
-          resolve(3);
-        });
-      }).then((res) => console.log(res));
+        // setTimeout(() => {
+        //   resolve(3);
+        // });
+        throw new Error("出错了");
+      }).then(
+        (res) => console.log(res),
+        (reason) => console.log(reason)
+      );
       console.log(4);
 
       // 1243

@@ -10,24 +10,38 @@
     <script>
       class _Promise {
         constructor(executor) {
-          executor(this.resolve, this.reject);
+          // promise中的错误，需要被then的失败回调捕获
+          try {
+            executor(this.resolve, this.reject);
+          } catch (err) {
+            this.reject(err);
+          }
         }
 
         status = _Promise.PENDING; // 初始状态
         value = null;
         reason = null;
+        onFulfilledCallbacks = [];
+        onRejectedCallbacks = [];
 
         // resolve
         // 有三个作用
         // - 1. 改变状态 pending -> fulfilled
         // - 2. 存储终值 value
+        // - 3. flush调onFulfilledCallback中的函数，因为executor有异步时，then优先于resolve执行，而then的执行需要在状态改变后，所以then在pending时push，resolve执行时flush
         resolve = (value) => {
           this.value = value;
           this.status = _Promise.FULFILLED;
+          if (this.onFulfilledCallbacks.length) {
+            this.onFulfilledCallbacks.forEach((fn) => fn(this.value));
+          }
         };
         reject = (reason) => {
           this.reason = reason;
           this.status = _Promise.REJECTED;
+          if (this.onRejectedCallbacks.length) {
+            this.onRejectedCallbacks.forEach((fn) => fn(this.reason));
+          }
         };
 
         then = (onFulfilled, onRejected) => {
@@ -64,6 +78,13 @@
 
           if (this.status === _Promise.PENDING) {
             // 这里不用再判断 onFulfilled 和 onRejected 不存在的情况了，上面已经判断了，必须为函数，不是函数会被转成相关函数
+            this.onFulfilledCallbacks.push((value) => {
+              setTimeout(() => onFulfilled(value));
+            });
+
+            this.onRejectedCallbacks.push((value) => {
+              setTimeout(() => setTimeout((reason) => onRejected(this.reason)));
+            });
           }
         };
       }
@@ -78,7 +99,13 @@
         setTimeout(() => {
           resolve(3);
         });
-      }).then((res) => console.log(res));
+        // 4
+        // promise中如果有错，需要被then的失败回调捕获
+        // throw new Error("出错了");
+      }).then(
+        (res) => console.log(res),
+        (reason) => console.log(reason)
+      );
       console.log(4);
 
       // 1243
