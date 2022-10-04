@@ -570,3 +570,11 @@ word-break: break-all; 单词内换行
     - transform
     - opacity
     - filter
+
+## (33) Element.offsetHeight 和 Element.clientHeight
+
+- Element.clientHeight = ( 自身高度 ) + ( padding ) + ( 滚动条高度 )
+- Element.offsetHeight = ( 自身高度 ) + ( padding ) + ( 滚动条高度 ) + ( border 的高度 )
+- 总结
+  - offsetHeight 比 clientHeight 多了 border 的高度
+  - **注意: ( 上下都有 border，padding，所以是两倍 )**

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #root {
+        width: 400px;
+        height: 400px;
+        background-color: red;
+
+        border: 10px solid black;
+        padding: 20px;
+        margin: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // element.clientHeight 和 element.offsetHeight 的区别？
+
+      const root = document.getElementById("root");
+      console.log("height是400px");
+      console.log("border是10px");
+      console.log("padding是20px");
+
+      console.log(
+        "root.clientHeight = height + 2*padding + 如果有滚动条还需要加上滚动条的高度",
+        root.clientHeight
+      );
+
+      console.log(
+        "root.offsetHeight = height + 2*padding + 2*border + 如果有滚动条还需要加上滚动条的高度",
+        root.offsetHeight
+      );
+    </script>
+  </body>
+</html>
