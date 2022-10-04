@@ -8,6 +8,26 @@
   </head>
   <body>
     <script>
+      // 总
+
+      // (1)
+      // promise
+      // - 1. promise中错误的处理
+      // - 2. 执行顺序
+      //    - 1. then是异步任务
+      //    - 2. then 和 resolve 执行顺序的处理
+      // - 3. then 的穿透效果，两个回调参数的执行时机
+      // - 4. resolve 和 reject 的三个作用
+      // - 5. 魔法字符串的处理
+
+      // (2)
+      // Promise.all
+      // 特点：
+      //  1. 返回一个新的promise
+      //  2. 参数是promise实例的数组，成员不是promise对象会用Promise.resolve()转成promise对象
+      //  2. 所有fulfilled -> 整个fulfilled
+      //  3. 一个rejected --> 整个rejected
+
       class _Promise {
         constructor(executor) {
           // promise中的错误，需要被then的失败回调捕获
@@ -18,10 +38,10 @@
           }
         }
 
-        status = _Promise.PENDING; // 初始状态
+        status = _Promise.PENDING; // 初始状态 pending
         value = null;
         reason = null;
-        onFulfilledCallbacks = [];
+        onFulfilledCallbacks = []; // 收集 then 方法中的成功回调
         onRejectedCallbacks = [];
 
         // resolve
@@ -88,11 +108,13 @@
           }
         };
       }
+
       // class 的静态属性，这里是为了避免魔法字符串的产生
       _Promise.PENDING = "pending";
       _Promise.FULFILLED = "fulfilled";
       _Promise.REJECTED = "rejected";
 
+      // ------ promise 测试
       console.log(1);
       new _Promise((resolve, reject) => {
         console.log(2);
@@ -107,8 +129,60 @@
         (reason) => console.log(reason)
       );
       console.log(4);
-
       // 1243
+
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // Promise.all()
+      _Promise.all = (promises) => {
+        // Promise.all
+        // 1. 是静态方法
+        // 2. 返回一个新的 promise
+        return new Promise((resolve, reject) => {
+          // res
+          // - 存储终值，即所有都是fulfilled状态下的终值数组
+          const res = [];
+
+          // promiseArr
+          // - 把 promise 数组或类数组对象都转成数组，并把所有数组成员转成promise对象
+          const promiseArr = Array.from(promises).map((p) =>
+            Promise.resolve(p)
+          );
+
+          promiseArr.forEach((p) => {
+            // promise对象可以接着 .then()
+            p.then((value) => {
+              res.push(value); // 搜集终值
+              if (res.length === promiseArr.length) {
+                // 结束条件，终值收集满了，说明所有promise的状态都fulfilled了
+                resolve(res);
+              }
+            }, reject); // 一个 rejected，整个rejected
+          });
+        });
+      };
+
+      // ------ Promise.all 测试
+      const p1 = Promise.resolve(1);
+      const p2 = new Promise((resolve) => setTimeout(() => resolve(2), 2000));
+      const p3 = new Promise((resolve) => setTimeout(() => resolve(3), 3000));
+      _Promise
+        .all([p1, p2, p3])
+        .then((resArr) => console.log("_Promise.all()测试 :>> ", resArr));
+
+      Promise.all([p1, p2, p3]).then((resArr) =>
+        console.log("Promise.all()测试 :>> ", resArr)
+      );
     </script>
   </body>
 </html>
