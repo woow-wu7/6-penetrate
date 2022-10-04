@@ -77,6 +77,24 @@ border: 100px solid transparent;
 border-bottom: 100px solid red;
 ```
 
+### (4.1) css 画扇形
+
+```
+css实现扇形
+- css实现扇形的方式和实现三角形的方式差不多
+- css三角形的基础上 + border-radius: 100%;
+---
+
+#sector {
+  width: 0;
+  height: 0;
+  border: 100px solid transparent;
+  border-bottom: 100px solid red;
+
+  border-radius: 100%;
+}
+```
+
 ### (5) 盒模型
 
 - 标准盒模型
@@ -244,7 +262,7 @@ border-bottom: 100px solid red;
   - time
   - email
   - url
-  - search。
+  - search
 
 ## (12) pointer-events 用 css 方式设置 ( 事件穿透 )
 
@@ -473,7 +491,7 @@ main ------> min-height: calc(100% - footer 的高度) // 这里一定要注意�
 - title
   - title 可以作为标签，也可以作为标签的属性
   - 标签: title 作为标签，用在 head 标签中，表示 ( 网页的标题 )
-  - 属性: title 作为属性，在 `<a title="">` 标签中表示 ( hover 时的文字说明 )
+  - 属性: title 作为属性，在 `<a title="">` 标签中表示 ( hover 时的文字说明 )，注意是 a 标签
 - alt
   - alt 只能作为标签属性
   - 用于 ( img input textarea )，表示 ( 标签加载失败后的 文字说明 )
@@ -561,7 +579,7 @@ word-break: break-all; 单词内换行
 
 - 原因
   - 因为 GPU 进程会为其开启一个新的复合图层(也叫 GPU 硬件加速)，不会影响默认复合图层（就是普通文档流），即脱离了文档流，所以并不会影响周边的 DOM 结构，而属性的改变也会交给 GPU 处理，不会进行重排
-  - 使 GPU 进程开启一个新的复合图层的方式还有 3D 动画，过渡动画transform，以及 opacity 属性，还有一些标签，这些都可以创建新的复合图层。这些方式叫做硬件加速方式
+  - 使 GPU 进程开启一个新的复合图层的方式还有 3D 动画，过渡动画 transform，以及 opacity 属性，还有一些标签，这些都可以创建新的复合图层。这些方式叫做硬件加速方式
 - 对比
   - ( 绝对定位 ) 虽然可以脱离文档流，但是没有新建图层，所以会 reflow
   - 结合 19 一起看
@@ -578,3 +596,50 @@ word-break: break-all; 单词内换行
 - 总结
   - offsetHeight 比 clientHeight 多了 border 的高度
   - **注意: ( 上下都有 border，padding，所以是两倍 )**
+
+## (34) HTMLCollection 和 NodeList 的区别 ？
+
+```
+NodeList 和 HTMLCollection 的区别？
+---
+
+1. 动态集合 和 静态集合
+- HTMLCollection 是动态集合，DOM树 ( 新增 和 删除 ) 可以感知，但是能感知 ( 修改 )
+- NodeList ----- 是静态集合，DOM树 ( 新增 和 删除 ) 无法感知，但是能感知 ( 修改 )
+
+2. 子节点类型
+- HTMLCollection 只能包含元素节点
+- NodeList ----- 可以包含任意类型的节点
+
+3. 查询的方法
+- HTMLCollection -- document.getElementsByTagName()
+- NodeList -------- document.querySelectorAll()
+
+// (1)
+// 如何记忆：
+// - 多对多
+//    - getElementsByTagName 比  querySelectorAll 长
+//    - HTMLCollection 比 NodeList 长
+// - elements
+//    - HTMLCollection中只包含element元素节点，而 getElementsByTagName 名字中包含了 Elements
+
+// (2)
+// Node.childNodes 返回 NodeList
+// Element.children 返回 HTMLCollection
+
+4. 方法
+- HTMLCollection -- 没有 forEach，只能使用 for 循环遍历
+- NodeList -------- forEach
+```
+
+### (35) html 和 xml 的区别 ?
+
+```
+html和xml的区别 ?
+---
+
+1. html中不区分大小写，xml中严格区分大小写
+2. html中属性可以不带值，xml中属性必须有值
+3. html中的标签是预定义的固有标签，不可扩展，xml中的标签不是固定的，可以自定义，可以扩展
+4. html是用来显示数据的，xml是用来描述数据结构，存储数据的
+```

@@ -13,9 +13,13 @@ supplement 补充
 ```
 orient 朝向 向东
 unordered 无序的 adj // ordered 有序的
-parallelogram 平行四边形
 paint 油漆 绘制 // repaint重绘 reflow重排
 aspect 外观 外貌
+
+parallelogram 平行四边形
+triangle 三角形
+rectangle 长方形
+sector 扇形
 
 --
 animation: name duration time-function delay iteration-count direction fill-mode
