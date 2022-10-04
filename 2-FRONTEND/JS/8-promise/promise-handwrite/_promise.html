@@ -23,10 +23,20 @@
       // (2)
       // Promise.all
       // 特点：
-      //  1. 返回一个新的promise
+      //  1. 返回一个新的 promise 对象
       //  2. 参数是promise实例的数组，成员不是promise对象会用Promise.resolve()转成promise对象
-      //  2. 所有fulfilled -> 整个fulfilled
-      //  3. 一个rejected --> 整个rejected
+      //  3. 所有fulfilled -> 整个fulfilled
+      //  4. 一个rejected --> 整个rejected
+
+      // (3)
+      // Promise.race
+      // 特点：
+      //  1. 返回一个新的 promise 对象
+      //  2. 参数是promise实例的数组，成员不是promise对象会用Promise.resolve()转成promise对象
+      //  3. 谁先fulfilled -> 整个fulfilled
+      //  4. 谁先rejected --> 整个rejected
+      // 实现:
+      // - Promise.race 和 Promise.all 的实现类似
 
       class _Promise {
         constructor(executor) {
@@ -161,13 +171,21 @@
 
           promiseArr.forEach((p) => {
             // promise对象可以接着 .then()
-            p.then((value) => {
-              res.push(value); // 搜集终值
-              if (res.length === promiseArr.length) {
-                // 结束条件，终值收集满了，说明所有promise的状态都fulfilled了
-                resolve(res);
-              }
-            }, reject); // 一个 rejected，整个rejected
+            // 这里给每个promise都使用 then 方法来收集终值
+            p.then(
+              // 成功的回调
+              (value) => {
+                res.push(value); // 搜集终值
+                if (res.length === promiseArr.length) {
+                  // 结束条件，终值收集满了，说明所有promise的状态都fulfilled了
+                  resolve(res);
+                }
+              },
+              // 失败的回调
+              // - 一个 rejected，整个rejected
+              // - 这里是一个简写形式，相等于 reason => reject(reason)
+              reject
+            );
           });
         });
       };
@@ -182,6 +200,43 @@
 
       Promise.all([p1, p2, p3]).then((resArr) =>
         console.log("Promise.all()测试 :>> ", resArr)
+      );
+
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // Promise.race()
+      // - race 是竞赛的意思
+      _Promise.race = (promises) => {
+        return new Promise((resolve, reject) => {
+          const res = [];
+          const promiseArr = Array.from(promises).map((p) =>
+            Promise.resolve(p)
+          );
+
+          promiseArr.forEach((p) => {
+            p.then(
+              (value) => resolve(value),
+              (reason) => reject(reason)
+            );
+          });
+        });
+      };
+      _Promise
+        .race([p1, p2, p3])
+        .then((resArr) => console.log("_Promise.race()测试 :>> ", resArr));
+
+      Promise.race([p1, p2, p3]).then((resArr) =>
+        console.log("Promise.race()测试 :>> ", resArr)
       );
     </script>
   </body>
