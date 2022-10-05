@@ -543,6 +543,7 @@ drop-shadow(offset-x offset-y blur-radius spread-radius color)
 - 表示让图表更亮或者更暗
 - filter: brightness(amount)
   - 参数 amount 是数量的意思，是一个数值
+- 详见: 本项目/2-FRONTEND/CSS/19-filter:brightness().html
 
 ## (28) 图片等比例放大缩小
 
