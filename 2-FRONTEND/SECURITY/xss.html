@@ -28,11 +28,10 @@
     </script>
 
     <script>
-      class Node {
-        children: Nodes[] = [];
-        reference?: Node;
-      }
-
+      // class Node {
+      //   children: Nodes[] = [];
+      //   reference?: Node;
+      // }
       /**
        * deep clone对象及关系
        *
@@ -45,16 +44,14 @@
        * @param root 数据根
        * @return 返回一个复制后的节点
        */
-      function deepClone(root: Node, map = new Map()): Node {
-        Reflect.keys(root).forEach(item => {
-        })
-      }
-
-      const a = { children: [b, c], reference: null };
-      const b = { children: [], reference: c };
-      const c = { children: [], reference: a };
-
-      deepClone(a)
+      // function deepClone(root: Node, map = new Map()): Node {
+      //   Reflect.keys(root).forEach(item => {
+      //   })
+      // }
+      // const a = { children: [b, c], reference: null };
+      // const b = { children: [], reference: c };
+      // const c = { children: [], reference: a };
+      // deepClone(a)
     </script>
   </body>
 </html>
