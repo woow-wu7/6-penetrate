@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 二叉树 - 前序遍历
+      // - 前序遍历: 指的是 ( 根左右 ) 的遍历方式
+      // - traversal 是遍历的意思
+
+      // - preorder 前序 --------- 根左右
+      // - inorder 中序 ---------- 左根右
+      // - postorder 后序 -------- 左右根
+
+      // - 链接图解 https://blog.csdn.net/My_Jobs/article/details/43451187
+
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val, left, right) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.left = (left===undefined ? null : left)
+       *     this.right = (right===undefined ? null : right)
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @return {number[]}
+       */
+      var preorderTraversal = function (root) {
+        const result = [];
+
+        function preorderTraversal(root) {
+          // 递归结束的条件是，根节点存在
+          if (root) {
+            result.push(root.val);
+            preorderTraversal(root.left); // 遍历左子树，递归进行
+            preorderTraversal(root.right); // 遍历右子树
+          }
+        }
+
+        preorderTraversal(root);
+
+        return result;
+      };
+    </script>
+  </body>
+</html>
