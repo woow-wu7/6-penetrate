@@ -33,16 +33,16 @@
       var preorderTraversal = function (root) {
         const result = [];
 
-        function preorderTraversal(root) {
+        function preorderTraversalFn(root) {
           // 递归结束的条件是，根节点存在
           if (root) {
             result.push(root.val);
-            preorderTraversal(root.left); // 遍历左子树，递归进行
-            preorderTraversal(root.right); // 遍历右子树
+            preorderTraversalFn(root.left); // 遍历左子树，递归进行
+            preorderTraversalFn(root.right); // 遍历右子树
           }
         }
 
-        preorderTraversal(root);
+        preorderTraversalFn(root);
 
         return result;
       };
