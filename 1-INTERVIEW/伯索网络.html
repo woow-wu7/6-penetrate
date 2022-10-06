@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 问题：输入一个数字，通过交换其中的两位(最多交换一次，可以不交换)，输出可以得到对应的最大值。如输入1234，交换 1,4，得到4231; 请实现对应的change方法
+
+      // 思路: 找出所有交换位置的数，和上一次较大的值比较，动态更新为较大的值
+
+      const findMax = (num) => {
+        const arr = String(num).split("");
+
+        let max = num;
+
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 1; j < arr.length; j++) {
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+            const next = Number(arr.reduce((prev, next) => prev + next)); // 交换后的值
+            if (next > max) {
+              max = next;
+            }
+            [arr[i], arr[j]] = [arr[j], arr[i]]; // 交换后，再交换回来，则不影响下一次比较
+          }
+        }
+
+        return max;
+      };
+
+      const res = findMax(1234);
+      console.log("res: ", res);
+    </script>
+  </body>
+</html>
