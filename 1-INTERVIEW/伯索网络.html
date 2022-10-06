@@ -20,7 +20,7 @@
         for (let i = 0; i < arr.length; i++) {
           for (let j = 1; j < arr.length; j++) {
             [arr[i], arr[j]] = [arr[j], arr[i]];
-            const next = Number(arr.reduce((prev, next) => prev + next)); // 交换后的值
+            const next = Number(arr.reduce((prev, next) => prev + next)); // 交换后的值，因为+存在重载，当是字符串+时，是相连，所以不影响
             if (next > max) {
               max = next;
             }
