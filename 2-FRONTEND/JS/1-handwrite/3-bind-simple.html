@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      Function.prototype._call = function (obj, ...outParams) {
+        const context = obj ?? globalThis;
+        const that = this;
+
+        function callbackFn(...inParams) {
+          const totalParams = [...outParams, ...inParams];
+          return that.apply(this instanceof that ? this : context, totalParams);
+        }
+
+        callbackFn.prototype = that.prototype;
+
+        return callbackFn;
+      };
+
+      function fn(name, age) {
+        console.log("this :>> ", this);
+        this.name = name;
+      }
+      const obj = {
+        name: "woow_wu7",
+        age: 7,
+      };
+
+      const callbackFn = fn._call(obj, "woow_wu8");
+      const res = new callbackFn(8);
+      console.log("res: ", res);
+    </script>
+  </body>
+</html>

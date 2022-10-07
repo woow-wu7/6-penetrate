@@ -9,39 +9,84 @@
   <body>
     <script>
       // bind 的模拟实现
-      // 作用: 1. 绑定this指向 2.返回一个新的函数
-      // 参数: 1. 第一个参数是this需要绑定的对象 2. 后面的参数会作为返回函数的参数传入
+      // 作用:
+      //  - 1.绑定this指向
+      //  - 2.返回一个新的函数
+      // 参数:
+      //  - 1. 第一个参数是this需要绑定的对象，如果是空，null，undefined则相当于传入全局对象window|global
+      //  - 2. 后面的参数会作为返回函数的参数传入
       // 特点:
       //  - 1. 返回的函数，可以 ( 普通调用 )，也可以通过 ( new ) 的方式调用
       //      - bind时绑定的this失效，因为在构造函数中，this指向的是实例对象
       //      - 但是传入的参数有效
 
-      Array.prototype._bind = (obj, ...params) => {
+      Function.prototype._bind = function (obj, ...params) {
         const context = obj ? obj : globalThis;
 
-        const outParams = params;
+        // const context = obj ?? globalThis
+        // ?? 空值合并操作符，当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数
 
-        const self = this;
+        const outParams = params; // 其实这里不需要用变量缓存，这里只是为了更语义化
+
+        const self = this; // 调用bind函数时所在所在的对象，即fn
 
         // 兼容性 - bind必须通过函数调用
         if (typeof self !== "function") {
           throw new Error("bind must be invoked by a function");
         }
 
-        const callbackFn = (...params) => {
-          const totalParams = [...outParams, params];
+        // 注意：
+        // - callbackFn 不能是箭头函数，因为箭头函数没有自己的this，则不能作为构造函数，即不能通过new的方式调用
+        // - 箭头函数中的this: 是箭头函数定义时所在作用域的，上层作用域中的this，这里就是 _bind 函数中的this
+        // - 比如下面的写法
+        // const callbackFn = (...params) => {
+        //   const totalParams = [...outParams, params];
+        //   return this.apply(this instanceof self ? this : context, totalParams); // 返回的函数，可以通过new的方式去调用
+        // };
 
-          return this.apply(this instanceof self ? this : context, totalParams); // 返回的函数，可以通过new的方式去调用
-        };
+        function callbackFn(...params) {
+          const totalParams = [...outParams, ...params];
+          return self.apply(this instanceof self ? this : context, totalParams); // 返回的函数，可以通过new的方式去调用
+
+          // 返回的函数的调用方式
+          // 1. new: 如果通过new来调用callbackFn，this就是实例对象，this instanceof self就是true因为 callbackFn.prototype = self.prototype
+          // 2. 正常: 正常调用返回的函数callbackFn，则this绑定在context上
+
+          // 返回值
+          // 返回的函数执行可能有返回值，所以需要 return self.apply(......)
+        }
+
+        // callbackFn.prototype = self.prototype
+        // - 如果不考虑性能，可以直接写 callbackFn.prototype = self.prototype
+        // - 我们这里使用了 ( 寄生继承 )，来做优化，如下
 
         function Parasitic() {}
         Parasitic.prototype = self.prototype;
-        callbackFn.prototype = new Parasitic();
+        callbackFn.prototype = new Parasitic(); // new callbackFn() instanceof self 就是true，如果callbackFn通过new来调用的话
 
         return callbackFn;
       };
+
+      const obj = { age: 20 };
+      function fn(name) {
+        this.name = name;
+        console.log("this.age", this.age);
+        console.log("name :>> ", name);
+      }
+      const callbackFn = fn._bind(obj);
+      const resOrdinary = callbackFn("woow_wu7");
+      const resConstructor = new callbackFn("woow_wu7");
+      console.log("resOrdinary", resOrdinary);
+      console.log("resConstructor", resConstructor);
     </script>
 
+    <!-- ------------具体的过程------------ -->
+    <!-- ------------具体的过程------------ -->
+    <!-- ------------具体的过程------------ -->
+    <!-- ------------具体的过程------------ -->
+    <!-- ------------具体的过程------------ -->
+    <!-- ------------具体的过程------------ -->
+    <!-- ------------具体的过程------------ -->
     <script>
       // 过程
       // bind

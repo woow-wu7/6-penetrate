@@ -20,6 +20,7 @@
       const obj = { name: "woow_wu7" };
 
       const _create = (prototypeObj) => {
+        // parasitic 是寄生的意思
         function Parasitic() {} // 因为中间函数内没有任何代码，所以不存在 ( 构造函数式继承，即生成的实例本身没有任何属性和方法 )
         Parasitic.prototype = prototypeObj; // 将 中间函数的 prototype 属性指向 参数对象，这样中间函数的实例就能继承参数对象的属性和方法
 

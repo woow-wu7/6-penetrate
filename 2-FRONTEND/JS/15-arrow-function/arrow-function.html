@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 箭头函数
+      // 1
+      // this
+      // this => 箭头函数中的this指的是：箭头函数定义时所在作用域的，上层作用域中的this
+      // 作用域 => 全局作用域，函数作用域，块级作用域
+      // 作用域 和 执行上下文 的区别？
+
+      // 2
+      // 箭头函数 - 没有自己的this
+      // 箭头函数 - 因为没有this，所以不能作为构造函数，即不能通过new的方式调用
+      // 箭头函数 - 不能使用 arguments 对象，可以使用 rest 参数代替
+      // 箭头函数 - 不能使用 yield 命令，即不能作为 Generator 函数
+      // 箭头函数 - call，apply，bind 对箭头函数失效
+
+      // 3
+      // this 的使用场景
+      // - 构造函数中的 this -----------> 是指向实例对象
+      // - 函数和对象方法中的 this ------> 在函数调用时确定指向
+      // - 箭头函数中的 this -----------> 没有自己的this，指代的是 ( 箭头函数声明时所在所用域 ) 的 ( 上层作用域中的 this )
+
+      // 1
+      var a = 100;
+      const obj = {
+        a: 1,
+        b: function () {
+          console.log(this.a);
+        },
+        c: () => console.log(this.a),
+      };
+      obj.b(); // 1，普通函数中的this，在函数调用时确定指向，即this指代的是函数调用时所在的对象
+      obj.c();
+      // 100,
+      // 箭头函数中的this，是箭头函数定义时所在对象的上层作用域中的this
+      // ====> c箭头函数定义时所在的作用域是 ( 块级作用域 )，块级作用域的上层作用域是window，window.a=100，所以这里输出100
+
+      // --------------------------------------------------------------
+      // 2
+      window.name = "B";
+      var A = {
+        name: "A",
+        sayHello: function () {
+          var s = () => console.log(this.name);
+          return s;
+        },
+        sayHello2: function () {
+          function s() {
+            console.log(this.name);
+          }
+          return s;
+        },
+      };
+      var sayHello = A.sayHello(); // 不管外面如何调用，都不会影响箭头函数this的指向，和调用无关
+      sayHello(); // 输出 A
+      // 1. 箭头函数s定义时所在的作用域是：函数作用域 sayHello 函数
+      // 2. 上层作用域：是块级作用域A，this就指向A，A.name = 'A'
+      var sayHello2 = A.sayHello2();
+      sayHello2(); // 输出 B
+
+      // --------------------------------------------------------------
+      // 3
+      function aa() {
+        const bb = () => {
+          console.log(this);
+          console.log(this === window); // true
+        };
+        bb();
+      }
+      aa();
+
+      // --------------------------------------------------------------
+      // 4
+
+      // window.address = "address";
+      const objCC = {
+        address: "shanghai",
+      };
+      const cc = () => {
+        console.log(
+          "this.address -> 箭头函数对bind，call，apply将失效",
+          this.address
+        );
+      };
+      cc.call(objCC); // call,apply,bind并不能绑定箭头函数中的this，而是和原来的this一样，即 ( 箭头函数声明时所在所用域 ) 的 ( 上层作用域中的 this )
+    </script>
+  </body>
+</html>
