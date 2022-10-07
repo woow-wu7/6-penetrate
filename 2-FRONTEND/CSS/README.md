@@ -662,3 +662,36 @@ html和xml的区别 ?
 3. html中的标签是预定义的固有标签，不可扩展，xml中的标签不是固定的，可以自定义，可以扩展
 4. html是用来显示数据的，xml是用来描述数据结构，存储数据的
 ```
+
+### (36) 【HTML 的 img 标签的 srcset 属性】 和 【css 的 image-set()】
+
+- 链接 本项目/2-FRONTEND/CSS/26-img-srcset.html
+- [链接](https://juejin.cn/post/6844903702810066958)
+
+```
+1
+srcset
+---
+
+<img src="small.jpg " srcset="big.jpg 1440w, middle.jpg 800w, small.jpg 1x" />
+- srcset 属性的作用是
+  - 1. w: 根据屏幕宽度w，加载不同大小的图片
+  - 2. x: 根据屏幕的像素密度x，加载不同大小的图片
+- 上面的代码表示
+  - 浏览器宽度达到 800px 则加载 middle.jpg ，达到 1400px 则加载 big.jpg
+```
+
+```
+2
+background-image: image-set()
+---
+
+body {
+  background-image: -webkit-image-set( url(../images/pic-1.jpg) 1x, url(../images/pic-2.jpg) 2x, url(../images/pic-3.jpg) 600dpi);
+  background-image: image-set( url(../images/pic-1.jpg) 1x, url(../images/pic-2.jpg) 2x, url(../images/pic-3.jpg) 600dpi);
+}
+- 上面的代码表示
+  - 1倍屏: 上述代码将会为普通屏幕使用 pic-1.jpg
+  - 2倍屏: 为高分屏使用 pic-2.jpg
+  - 600dip: 如果更高的分辨率则使用 pic-3.jpg
+```

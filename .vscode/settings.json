@@ -1,4 +1,11 @@
 {
-  "cSpell.words": ["inorder", "OPEND", "preorder", "Referer", "Traversa"],
+  "cSpell.words": [
+    "inorder",
+    "OPEND",
+    "preorder",
+    "Referer",
+    "srcset",
+    "Traversa"
+  ],
   "liveServer.settings.port": 5501
 }
