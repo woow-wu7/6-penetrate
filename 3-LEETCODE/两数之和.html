@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 两数之和
+      // 1. Two Sum
+
+      // 方案
+      // - 1. 双层for循环 ----- 时间复杂度 O(n^2)
+      // - 2. map单层循环 ----- 时间复杂度 O(n)
+
+      // difference 有 ( 差 ) 的意思
+
+      /**
+       * @param {number[]} nums
+       * @param {number} target
+       * @return {number[]}
+       */
+
+      // for
+      var twoSum = function (nums, target) {
+        for (let i = 0; i < nums.length; i++) {
+          for (let j = i + 1; i < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+              return [i, j];
+            }
+          }
+        }
+      };
+
+      // map
+      // 原理: 求出差，不存在就把 ( 当前值和下标 ) 添加进map，存在直接返回下标
+      var twoSum = function (nums, target) {
+        const map = {};
+
+        for (let i = 0; i < nums.length; i++) {
+          const diff = target - nums[i]; // 求出差值
+
+          if (map[diff] === undefined) {
+            // 差在map中不存，就把 ( 当前值和下标 ) 添加进map
+            map[nums[i]] = i;
+          } else {
+            return [map[diff], i];
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

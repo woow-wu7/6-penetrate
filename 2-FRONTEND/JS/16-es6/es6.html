@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 数组
+      // 静态方法
+      // - Array.from
+      // - Array.of ------------------ 将 ( 一组值 ) 转成 ( 数组 )
+      // 实例方法
+      // - find findIndex
+      // - fill
+      // - keys values entries
+      // - include
+      // - flat flatMap
+      // - at ------------------------ 直接通过下标访问时，不能通过 - 负号表示结束位置
+      // - toReversed 对比 reverse --- 不改变原数组
+      // - toSorted 对比 sort -------- 不改变原数组
+      // - toSpliced 对比 splice ----- 不改变原数组
+      // - with(index, value) ------- 代替splice替换数组成员
+      // - group groupMap
+
+      const arr = [1, 2, 3, 4];
+      Array.of(1, 2, 3); // [1,2,3]
+      Array.of(undefined); // [undefined]
+      arr.at(-1); // 4
+      // arr.with(2, 33); // [1,2,33,4] 将下标为2的成员的值修改为33 with(index,value) chrome 还未支持
+    </script>
+  </body>
+</html>

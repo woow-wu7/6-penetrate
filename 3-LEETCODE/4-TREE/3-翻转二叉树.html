@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 翻转二叉树
+      // 226. Invert Binary Tree
+
+      // - 注意点:
+      //  - 是二叉树
+      //  - invert 反转的意思
+
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val, left, right) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.left = (left===undefined ? null : left)
+       *     this.right = (right===undefined ? null : right)
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @return {TreeNode}
+       */
+
+      var invertTree = function (root) {
+        function reverse(element) {
+          if (!element) return; // 递归结束条件
+
+          [element.left, element.right] = [element.right, element.left]; // 翻转
+          reverse(element.left); // 左递归
+          reverse(element.right);
+        }
+
+        reverse(root);
+
+        return root;
+      };
+    </script>
+  </body>
+</html>

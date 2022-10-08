@@ -8,6 +8,7 @@ regular 经常的 定期的 常客 规则的
 supplement 补充
 variable promotion 变量提升
 ordinary 普通的
+invert 反转 // invert tree 反转树
 ```
 
 ### CSS 相关
