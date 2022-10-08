@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 2351. 第一个出现两次的字母
+      //  First Letter to Appear Twice
+
+      /**
+       * @param {string} s
+       * @return {character}
+       */
+      var repeatedCharacter = function (s) {
+        const map = {};
+        for (let i = 0; i < s.length; i++) {
+          if (!map[s[i]]) {
+            map[s[i]] = s[i];
+          } else {
+            return map[s[i]];
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
