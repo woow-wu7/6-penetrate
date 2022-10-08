@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 数组乱序
+
+      // 思路：
+      // - 利用 Math.random() ------------------ 返回 [0, 1) 左闭右开的区间值
+      // - 利用 Array.prototype.sort() --------- 排序，改变原始值
+
+      // 1
+      // Math.random
+      // - 返回 [0, 1) 的随机数字
+      // - 0 可以取到
+      // - 1 取不到
+
+      // 2
+      // Array.prototype.sort()
+      // - 作用：对数组成员排序，默认按照 ( 字典顺序 ) 排序
+      // - 问题：什么叫字典顺序？
+      // - 回答：就是说先把数组成员转成字符串，再按照字典进行排序
+      // - 举例：[11, 101].sort()会从小到大排列 -> [101, 11]
+      // - 改变原数组
+      // - 原理：
+      //  - 1. sort的参数是一个 ( 函数 )，函数有两个参数
+      //  - 2. 函数的返回值 > 0，第一个成员排在第二个成员的 ( 后面 )
+      //  - 3. 函数的返回值 < 0，第一个成员排在第二个成员的 ( 前面 )
+
+      // 数组乱序
+      const raw = [1, 2, 3, 4, 5, 6, 7];
+      function shuffle(raw) {
+        return raw.sort(() => Math.random() - 0.5);
+      }
+      const shuffled = shuffle(raw);
+      console.log("shuffled: ", shuffled);
+
+      // 分割线 -------------------------
+      // 分割线 -------------------------
+      // 分割线 -------------------------
+      // 分割线 -------------------------
+      // 分割线 -------------------------
+      // 分割线 -------------------------
+      // 分割线 -------------------------
+      const arr = [1, 4, 3, 2];
+      const res = arr.sort((a, b) => a - b); // ----------------------- 升序
+      console.log("res", res);
+      console.log("arr", arr); // sort 改变原数组
+
+      const arr2 = [1, 4, 3, 2];
+      const res2 = arr2.sort((a, b) => b - a); // -------------------- 降序
+      console.log("res2", res2);
+      console.log("arr2", arr2); // sort 改变原数组
+
+      const arr3 = [11, 101];
+      const res3 = arr3.sort(); // ----------------------------------- 默认字典排序，虽然是升序，但是101排在了11前面
+      console.log("res3", res3);
+      console.log("arr3", arr3); // sort 改变原数组
+    </script>
+  </body>
+</html>
