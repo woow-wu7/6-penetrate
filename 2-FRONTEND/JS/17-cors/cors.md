@@ -12,7 +12,10 @@
 ### (1) 简单请求
 
 - 条件
-  - 1.请求的方法: 必须是 http1.0 的三种方法之一 GET POST HEAD
+  - 1.请求的方法: 必须是 http1.0 的三种方法之一
+    - GET
+    - POST
+    - HEAD
   - 2.HTTP 头信息不超出以下字段
     - Accept
     - Accept-Language
@@ -30,6 +33,10 @@
 - Access-Control-Allow-Origin 的值只有 ( 两种 ) 可能
   - `Origin 指定的值`
   - `*`
+- Access-Control-Allow-Credentials
+  - XMLHttpRequest ----> xml.withCredentials = true
+  - fetch -------------> credentials=include same-origin omit
+  - `Access-Control-Allow-Origin 不能是*`
 
 ### (2) 非简单请求
 
