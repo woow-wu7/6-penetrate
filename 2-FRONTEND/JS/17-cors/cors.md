@@ -61,4 +61,24 @@
 - JSONP
 - cors
 - nginx 反向代理
+  - **nginx.conf/http/server/location/proxy_pass**
 - 前端本地服务 proxy 设置
+
+```
+nginx反向代理
+通过设置 nginx.conf 文件中的 ( http -> server -> location -> proxy_pass ) 实现反向代理
+---
+
+http {
+  server {
+    listen 8080;
+    server_name  localhost;
+    location / {
+      #root  D:/nginx/nginx-1.14.2/static;
+      # proxy_pass 将http://localhost:8080反向代理到http://localhost:3000
+      proxy_pass  http://localhost:3000;
+      }
+    }
+  }
+}
+```
