@@ -695,3 +695,14 @@ body {
   - 2倍屏: 为高分屏使用 pic-2.jpg
   - 600dip: 如果更高的分辨率则使用 pic-3.jpg
 ```
+
+### (37) transitionend 事件 和 ( :hover ) ( :active ) 的应用
+
+- 触发: 在 css transition 完成过渡后出发点
+- 案列:
+  - 1. 在按钮 hover 1s 后触发一些事件，不到 1s 不触发
+  - 2. 在按钮 长按:active 1s 后触发一些事件，不到 1s 不触发
+  - 3. 轮播图的滚动和暂停
+  - 本项目/2-FRONTEND/CSS/27-transitionend.html
+- 资料: https://juejin.cn/post/7143051955810598926
+- 资料: transition小技巧 https://juejin.cn/post/7149531766045278244

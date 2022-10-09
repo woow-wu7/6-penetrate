@@ -5,6 +5,7 @@
     "preorder",
     "Referer",
     "srcset",
+    "transitionend",
     "Traversa"
   ],
   "liveServer.settings.port": 5501
