@@ -17,6 +17,8 @@ type 类型别名 VS interface 接口
 4. 鼠标hover时
    - type会显示具体的类型
    - interface则会显示是接口，具体的类型还需要通过在接口中查看
+
+尽量使用 interface
 ```
 
 # (二) 范型工具类型

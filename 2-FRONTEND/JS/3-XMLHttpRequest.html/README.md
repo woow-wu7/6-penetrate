@@ -97,4 +97,15 @@ api.responseText ---> 对应 xhr.responseType = "text";
 api.responseType类型有：text, json, document, blob, arrayBuffer
 // api.response -------> 对应 xhr.responseType = "json";
 // api.responseText ---> 对应 xhr.responseType = "text";
+
+3. cors跨域设置
+(一)
+cors XMLHttpRequest
+当设置 cors 跨域时，默认不携带cookie，携带cookie，必须满足两个条件
+- 1. 响应头中有: Access-Control-Allow-Credentials: true
+- 2. XMLHttpRequest设置: xhr.withCredentials = true、
+(二)
+cors fetch
+- 如果是通过 fetch 请求的话，需要设置 credentials: include || same-origin || omit 范围逐渐缩小
+- mdn https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
 ```
