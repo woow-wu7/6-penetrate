@@ -82,3 +82,7 @@ http {
   }
 }
 ```
+
+# 资料
+
+- https://www.ruanyifeng.com/blog/2016/04/cors.html
