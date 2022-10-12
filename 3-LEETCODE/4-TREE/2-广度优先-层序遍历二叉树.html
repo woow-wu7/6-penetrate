@@ -44,6 +44,7 @@
         },
       };
 
+      // 1 队列 + 递归
       var levelOrder = function (root) {
         const result = []; // 最终结果
         const queue = [root]; // 队列，先进先出，对应 push 和 shift 方法
@@ -70,6 +71,38 @@
       };
       const res = levelOrder(root);
       console.log("res: ", res);
+
+      // ---------------------------------------------------------------------------------------------------
+      // 2
+      // 变通方法
+      // - 方法1: 我们是不断的弹出队列中的第一个元素
+      // - 方法2: 我们可以不弹出来，而是不断添加进来，用指针来表示弹出的元素，这种方法空间利用率不高
+      var levelOrder2 = function (root) {
+        const result = [];
+        const queue = [root]; // 不断push，动态 currentIndex 确定target，空间利用率不高
+        let currentIndex = 0;
+
+        const recursive = () => {
+          // 递归结束条件
+          if (currentIndex < queue.length) {
+            // const target = queue.shift(); // 左边出队
+            const target = queue[currentIndex]; // 指针不断后移
+            if (target) {
+              result.push(target.val);
+              if (target.left) queue.push(target.left); // 左边先入队
+              if (target.right) queue.push(target.right);
+              currentIndex++;
+              recursive();
+            }
+          }
+        };
+
+        recursive();
+
+        return result;
+      };
+      const res2 = levelOrder2(root);
+      console.log("res2: ", res2);
     </script>
   </body>
 </html>
