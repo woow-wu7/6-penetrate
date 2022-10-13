@@ -17,6 +17,9 @@
       // 自定义指令
       // v-permission 权限指令
 
+      // 思考：为什么是通过 指令 来实现，而不是直接使用全局函数来实现？
+      // 因为: 这里的逻辑最终都是为了操作DOM的显示隐藏，而指令就是为了方便操作DOM的一段逻辑
+
       Vue.directive("permission", {
         // inserted - 在 被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
         inserted: function (el, binding, vnode, oldVnode) {
