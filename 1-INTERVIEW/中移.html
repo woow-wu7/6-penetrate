@@ -45,5 +45,52 @@
       // 连接
       // 本项目/2-FRONTEND/JS/8-promise
     </script>
+
+    <script>
+      // 题目，强盗抢劫一排房间，要求不能抢劫相邻的房间，要求抢的钱最多；数组如：[1, 2, 3, 4]
+      const arr1 = [1, 11, 3, 8, 5];
+      const getMax = (nums) => {
+        let result = 0;
+        for (let i = 0; i < nums.length; i++) {
+          for (let j = i + 2; j < nums.length; j++) {
+            if (nums[i] + nums[j] > result) {
+              result = nums[i] + nums[j];
+            }
+          }
+        }
+
+        return result;
+      };
+      const res1 = getMax(arr1);
+      console.log("res1: ", res1);
+    </script>
+
+    <script>
+      // 题目：题目，一个整型数组，除了一个元素外，其他元素出现了出现了两次；找到这个元素
+      // O(n)
+      const arr2 = [1, 3, 3, 2, 2];
+
+      const getSingle = (nums) => {
+        const map = {};
+        for (let i = 0; i < nums.length; i++) {
+          if (!map[nums[i]]) {
+            map[nums[i]] = 1;
+          } else {
+            map[nums[i]] += 1;
+          }
+        }
+
+        const keys = Object.keys(map);
+
+        for (let i = 0; i < keys.length; i++) {
+          if (map[nums[i]] === 1) {
+            return keys[i];
+          }
+        }
+      };
+
+      const res2 = getSingle(arr2);
+      console.log("res2: ", res2);
+    </script>
   </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1
+      // 问题：如何实现一个数组 [1,2,3,4,5]，通过 arr[-1] 访问到 5 ？
+      // 思路: proxy
+      const arr = new Proxy([1, 2, 3, 4, 5], {
+        get: (target, propKey, receiver) => {
+          const _key = Number(propKey) + target.length;
+          return propKey > 0
+            ? Reflect.get(target, propKey, receiver)
+            : Reflect.get(target, _key, receiver); // : target[_key]; 代理陷阱
+        },
+        set: (target, propKey, value, receiver) =>
+          Reflect.set(target, propKey, value, receiver),
+      });
+      console.log(arr[-1]); // get
+      arr[0] = 1000; // set
+
+      // ----------------------------------------------------------------------------------------
+      // 2
+      // proxy 返回的对象 是 原对象吗？
+      // - 是一个新的对象，毕竟new了，生成的是新的实例对象
+      const obj = {};
+      const ins = new Proxy(obj, {});
+      console.log("obj === ins", obj === ins); // false
+
+      // ----------------------------------------------------------------------------------------
+      // 3
+      // React.PureComponent 实现原理
+      // - 特点:
+      //  - React.PureComponent 是通过 ( shouldComponentUpdate ) 对 props 和 state 做了一层钱比较
+    </script>
+  </body>
+</html>
