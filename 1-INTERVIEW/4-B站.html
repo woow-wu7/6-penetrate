@@ -36,7 +36,16 @@
       // 3
       // React.PureComponent 实现原理
       // - 特点:
-      //  - React.PureComponent 是通过 ( shouldComponentUpdate ) 对 props 和 state 做了一层钱比较
+      //    - 浅比较: React.PureComponent 是通过 ( shouldComponentUpdate ) 对 props 和 state 做了一层 ( ===浅比较 )
+      // - 扩展
+      //    - 问题: 什么是浅比较？
+      //    - 回答: ( 浅比较 ) 又称 ( 引用相等 )，即 ( 等号两边是不是同一个对象的引用 )，即 ( === )
+      // - 扩展
+      //    - 问题: === 和 Object.is() 的区别？
+      //    - 回答：
+      //      - 基本一样，但有两个区别
+      //      - +0-0: 【 Object.is(+0, -0)是false 】 【 +0===-0是true 】
+      //      - NaN: 【 Object.is(NaN, NaN)是true 】【 NaN===NaN是false 】
     </script>
   </body>
 </html>

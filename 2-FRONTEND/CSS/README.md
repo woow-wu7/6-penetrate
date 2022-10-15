@@ -706,3 +706,86 @@ body {
   - 地址: https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/CSS/27-transitionend.html
 - 资料: https://juejin.cn/post/7143051955810598926
 - 资料: transition 小技巧 https://juejin.cn/post/7149531766045278244
+
+### (38) css 中的变量
+
+```
+1
+定义一个变量 (或者叫属性)
+定义变量 -----> :root { --main-bg-color: red; }
+使用变量 -----> var(--main-bg-color, 'blue')
+
+2
+问题: css变量为什么要使用 -- 开头 ？
+回答:
+  - 因为为了避免和scss和less等库的冲突
+  - scss $main-bg-color: red;
+  - less @main-bg-color: red;
+
+3
+问题: 为什么要使用 :root 伪类？
+回答: :root 伪类表示 ( 文档根元素 )，在 :root 中声明的属性(变量)相当于全局属性
+
+4
+var
+var(变量名, 默认值)
+- 第二个参数: 表示如何变量名不存在，就使用默认值
+```
+
+### (38) ios Safari 浏览器 100vh 遇到的问题
+
+- 问题描述: 当整个页面的根元素设置了 height: 100vh 后，底部的内容被底部工具栏所遮挡
+- 原因: 因为 ios safari 浏览器的 100vh 是包含 ( 可视区域 + 地址栏 + 底部工具栏 ) 的，所以 100vh 容器的底部才会被底部的工具栏所遮挡
+- 如何解决:
+  - 1. js+css 的方式: window.innerHeight + css 变量 + size 事件
+- 链接:
+  - https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties
+  - https://www.jianshu.com/p/662039030e7e
+  - https://juejin.cn/post/7096050514105729061
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+      html, body, .wrap { padding: 0; margin: 0; }
+
+      /* 文档根元素 */
+      :root {
+        --global-bg-color: red;
+      }
+
+      .wrap {
+        height: 100vh; /* 給 Safari 以外的浏览器读取，保证兼容性 */
+        height: calc(var(--vh), 100vh); /* 使用css变量 --vh，不存在就使用100vh默认值 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="wrap" ref="wrap">
+        <div>这是内容</div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        mounted() {
+          this.vhHack()
+        },
+        methods: {
+          vhHack() {
+            const height = window.innerHeight;
+            this.$refs.wrap.style.setProperty('--vh', height + 'px'); // 在 wrap 类中声明css变量 --vh
+
+            // 窗口变化
+            window.addEventListener('resize', function() {
+              window.document.querySelector('.wrap').style.setProperty('--vh', height + 'px');
+            });
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
+```
