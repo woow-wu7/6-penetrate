@@ -76,10 +76,10 @@
             // 添加
             result[target.level].push(target.val);
             if (target.left) {
-              queue.push({ ...target.left, level: target.level + 1 }); // 入队
+              queue.push({ ...target.left, level: target.level + 1 }); // 左子树入队，记得深度 +1
             }
             if (target.right) {
-              queue.push({ ...target.right, level: target.level + 1 }); // 入队
+              queue.push({ ...target.right, level: target.level + 1 }); // 右子树入队，记得深度 +1
             }
             recursive(); // 递归，直到 queue为空
           }
