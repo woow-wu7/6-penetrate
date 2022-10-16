@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 198. 打家劫舍
+
+      // 问题
+      // 你是一个专业的小偷，计划偷窃沿街的房屋。
+      // 每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+      // 给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
+
+      // leetcode链接
+      // https://leetcode.cn/problems/house-robber/
+
+      /**
+       * @param {number[]} nums
+       * @return {number}
+       */
+      var rob = function (nums) {
+        const len = nums.length;
+
+        // 1
+        // 处理nums的特殊情况
+        // 0 表示没有房间可以偷，返回0
+        // 1 表示只有一间房可以偷，直接返回
+        if (len === 0) return 0;
+        if (len === 1) return nums[0];
+
+        // dp[i] 表示偷到第 i 个房间时，能偷到的最大金额
+        const dp = [];
+        dp[0] = nums[0]; // 边界只有一家的偷法 - 第一家只有一种偷法，并且选择偷，保存只有一家能偷到的金额
+        dp[1] = Math.max(nums[0], nums[1]); // 边界有两家的偷法 - 第二家可以选择偷和不偷，最终就是选一个大的，决定偷还是不偷，即偷到的金额就是前两家的较大值
+
+        for (let i = 2; i < len; i++) {
+          dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+          // xx
+          // 状态转移方程
+          // 1. 当偷到 i-2 家时，一定可以偷第 i 家
+          // 2. 当偷到 i-1 家时，就不能偷第i-2家和第i家
+          // yy
+          // 这里表示，第i家的两种偷法，偷和不偷的状态转移
+        }
+
+        return dp[len - 1]; // 数组最后一个元素的下标是 length - 1
+      };
+    </script>
+  </body>
+</html>
