@@ -46,6 +46,16 @@
       //      - 基本一样，但有两个区别
       //      - +0-0: 【 Object.is(+0, -0)是false 】 【 +0===-0是true 】
       //      - NaN: 【 Object.is(NaN, NaN)是true 】【 NaN===NaN是false 】
+
+      // ----------------------------------------------------------------------------------------
+      // 4
+      // React.memo 和 React.PureComponent 的区别 ？
+      // - 相同点: 都是浅比较
+      // - 不同点:
+      //  - 1
+      //  - React.memo ----------- 只检查 props ------------- 用于 function 函数组件中
+      //  - React.PureComponent -- 检查 props 和 state ------ 只能用于 class 组件中
+      // - React.memo(MyComponent, areEqual)
     </script>
   </body>
 </html>
