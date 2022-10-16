@@ -19,7 +19,8 @@
       //  - 1. 找出所有子串，然后判断哪些子串是回文子串
       //  - 2. 用一个 max 变量标记最长的回文子串，如果每次得到的回文串比上一次长，则更新为较长的回文子串
 
-      const str = "abcdeffed";
+      const str = "abcdeffed"; // deffed
+      // const str = "ab"; // a
 
       const maxPalindromeStr = (str) => {
         let max = "";
@@ -42,6 +43,33 @@
 
       const res = maxPalindromeStr(str);
       console.log("res: ", res);
+    </script>
+
+    <script>
+      // 优化
+      // - 缺点: 上面我们是求出所有子串，再反转，判断是不是会问串
+      // - 优化: 我们可以 约束 只有前后两个字符相等的子串，再反转
+      var longestPalindrome2 = function (s) {
+        let maxStr = "";
+        if (s.length <= 1) return s;
+
+        for (let i = 0; i < s.length; i++) {
+          for (let j = i; j < s.length; j++) {
+            if (s[i] === s[j]) {
+              const str = s.slice(i, j + 1);
+              const reverse = str.split("").reverse().join("");
+              if (str === reverse && maxStr.length < str.length) {
+                maxStr = str;
+              }
+            }
+          }
+        }
+
+        return maxStr;
+      };
+
+      const res2 = longestPalindrome2(str);
+      console.log("res2: ", res2);
     </script>
   </body>
 </html>
