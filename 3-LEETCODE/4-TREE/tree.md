@@ -22,4 +22,6 @@
     - **后序遍历：左右根**
   - 广度优先遍历 BFS - Breadth First Search
     - 一般用队列
-    - 案例: 本项目/3-LEETCODE/4-TREE/2-广度优先-层序遍历二叉树.html
+    - 案例:
+      - 本项目/3-LEETCODE/4-TREE/2-广度优先-层序遍历二叉树.html
+      - 本项目/3-LEETCODE/4-TREE/2-广度优先-层序遍历二叉树升级.html
