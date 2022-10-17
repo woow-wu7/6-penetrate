@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 爬楼梯
+      // 70. 爬楼梯
+
+      // 题目
+      // 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+      // 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+
+      // 链接
+      // https://leetcode.cn/problems/climbing-stairs/
+
+      // 思路
+      // - 动态规划
+      //  - dp数组: dp[i] 表示爬到第i节楼梯的方法数
+      //  - 状态方程:
+      //    - 爬到 ( 第i节楼梯 )，只能是 ( i-2节楼梯走2步 ) 和 ( i-1节楼梯走1步 )
+      //    - dp[i] = dp[i-2] + dp[i-1]
+      //  - 边界
+      //    - dp[0] = 0 可以不用声明
+      //    - dp[1] = 1
+      //    - dp[2] = 2
+
+      /**
+       * @param {number} n
+       * @return {number}
+       */
+      var climbStairs = function (n) {
+        const dp = []; // dp[i] 表示爬到第i节楼梯的方法数
+
+        // 边界
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 2;
+
+        for (let i = 3; i <= n; i++) {
+          // 状态方程
+          dp[i] = dp[i - 2] + dp[i - 1];
+        }
+
+        return dp[n];
+      };
+    </script>
+  </body>
+</html>
