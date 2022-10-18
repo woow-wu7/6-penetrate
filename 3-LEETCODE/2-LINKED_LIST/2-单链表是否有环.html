@@ -29,23 +29,23 @@
       //  - https://www.bilibili.com/video/BV1kf4y1u7oA/?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
 
       const hasCircle = (head) => {
-        if (!head || !head.next) return false; // 如果传入的链表是空，或者只有一个节点，则不是环
+        if (!head || !head.next) return false; // 边界，如果传入的链表是空，或者只有一个节点，则不是环
 
         let fast = head.next.next; // 快指针，2步
         let slow = head; // 慢指针，1步
 
         while (fast !== slow) {
           // 1
-          // - 快指针不存在，或者快指针下一个节点不存在，可定是没有环的单链
-          // - 这里为什么使用快指针来判断？因为快，遍历次数少；用慢指针来判断也是可以的，
+          // - 快指针不存在，或者快指针下一个节点不存在，即链表已经遍历完，还没有相遇，则一定是没有环的单链
+          // - 这里为什么使用快指针来判断？因为快，遍历次数少；用慢指针来判断也是可以的
           if (!fast || !fast.next) return false;
 
-          // 移动指针
+          // 移动指针，继续遍历
           fast = fast.next.next; // 移动指针
           slow = slow.next; // 移动指针
         }
 
-        // 不满足条件，即 fast和slow相遇，则可定有环
+        // 不满足条件，即 fast和slow 相遇，则肯定有环
         return true;
       };
     </script>
