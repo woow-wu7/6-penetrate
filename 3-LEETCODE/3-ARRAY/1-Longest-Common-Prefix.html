@@ -41,5 +41,40 @@
       const res = longestCommonPrefix(strs);
       console.log(`res`, res);
     </script>
+
+    <script>
+      const strs2 = ["flower", "flow", "floight"];
+      var longestCommonPrefix = function (strs) {
+        return strs.reduce((prev, current) => {
+          let result = "";
+
+          // 注意
+          // - 这里不需要遍历 prev 和 current，因为是公共前缀，都是 第一个元素比较第一个元素，第二个元素比较第二个元素
+          // - 不用比较 ( prev第一个元素 ) 和 ( current第二个元素 ) 比较的情况
+          // - 提升性能
+          // - 具体优化，像上面的一个 script 那样
+          for (let i = 0; i < prev.length; i++) {
+            for (let j = 0; j < current.length; j++) {
+              let res = "";
+              for (
+                let k = 0;
+                k < Math.min(prev.length - i, current.length - j);
+                k++
+              ) {
+                if (prev[i + k] === current[j + k]) {
+                  res = res.concat(prev[i + k]);
+                  if (res.length > result.length) result = res;
+                } else {
+                  break;
+                }
+              }
+            }
+          }
+          return result;
+        });
+      };
+      const res2 = longestCommonPrefix(strs2);
+      console.log("res2 ", res2);
+    </script>
   </body>
 </html>
