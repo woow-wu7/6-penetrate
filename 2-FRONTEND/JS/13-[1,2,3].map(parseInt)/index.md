@@ -1,4 +1,5 @@
-// [1,2,3].map(parseInt)
+// [1,2,3].map(parseInt) -------------- 1 NaN NaN
+// [10,10,10,10].map(parseInt) -------- 10 NaN 2 3
 
 ```
 [1, 2, 3].map(parseInt)

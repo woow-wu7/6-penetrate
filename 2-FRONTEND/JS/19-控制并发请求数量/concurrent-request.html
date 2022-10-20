@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 问题: 前端页面中需要同时发送20个请求，设计并发请求数最多为10个
+      // 要求:
+      // - 1. 最多同时执行10个任务
+      // - 2. 当前任务执行完后，释放队列空间，自动执行下一个任务
+      // - 3. 所有任务添加到任务队列后，自动开始执行任务
+
+      class TaskQueue {
+        max = 10;
+        taskQueue = []; // 队列，先进先出，push shift
+
+        constructor() {
+          // 使用 setTimeout 异步是为了保证 ( 同步任务addTask已经执行完毕 )
+          // 这里表示 当任务添加完成后自动执行，对应 ( 要求3 )
+          setTimeout(() => this.run());
+        }
+
+        // 入队
+        addTask = (task) => {
+          this.taskQueue.push(task);
+        };
+
+        run = () => {
+          const queueLength = this.taskQueue.length;
+          if (!queueLength) return;
+
+          const min = Math.min(this.max, queueLength);
+
+          for (let i = 0; i < min; i++) {
+            this.max--;
+            // this.max
+            // ------------------------------------------ 占用 任务空间 -> 为了保证每次不都是取10个任务，因为最后取的时候，可能不到10个任务了，我们动态修改max
+            // ------------------------------------------ 注意: 其实我们可以不改变max的值，直接每次都是10
+
+            const task = this.taskQueue.shift(); // 队列先进先出
+            console.log("task", task);
+
+            task()
+              .then((res) => console.log(res))
+              .catch((err) => console.log(err))
+              .finally(() => {
+                this.max++; // -------------------------- 释放 任务空间
+                this.run();
+                // 当一个任务执行完毕后，接着执行下一个任务
+                // - 1. 刚开始 min=10 即 并行执行了10个任务，接着 max=0
+                // - 2. 当 10 个任务中有一个任务执行完成(成功或失败)，接着 max=1，接着执行下一个任务run()，此时max=1，就会去任务队列中取一个执行，直到取完
+              });
+          }
+        };
+      }
+
+      // 快速创建任务 - 每个任务2秒后返回结果
+      const createTask = (i) => () =>
+        new Promise((resolve) => setTimeout(() => resolve(i), 2000));
+
+      const taskQueue = new TaskQueue();
+
+      // 1
+      // 创建任务并添加任务
+      // - 一共有20个请求，只能并发10个请求的逻辑在 TaskQueue 中实现
+      for (let i = 0; i < 20; i++) {
+        const task = createTask(i);
+        taskQueue.addTask(task);
+      }
+    </script>
+  </body>
+</html>
