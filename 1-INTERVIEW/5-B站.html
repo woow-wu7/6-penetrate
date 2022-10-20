@@ -80,10 +80,11 @@
       // - 问题: Map 和 WeakMap 的区别？
       // - 回答:
       //  - 1. key
-      //        - Map的key可以是任意的数据类型
-      //        - 而WeakMap的key只能是对象(null除外)
+      //        - Map的key可以是 - 任意的数据类型
+      //        - 而WeakMap的key - 只能是对象(null除外)
       //  - 2. 弱引用
       //        - 键名引用的对象 是 弱引用，删除对象key后，weakMap的引用关系不在了，该 ( 键值对 ) 会被垃圾回收机制回收
+      //        - WeakMap的键名所指向的对象，不计入垃圾回收机制
       //  - 3. WeakMap没有 遍历操作 和 清空操作
       //        - 不能遍历: weakMap不存在 keys() values() entries() size() 属性
       //        - 不能清空: weakMap不存在 clear()
