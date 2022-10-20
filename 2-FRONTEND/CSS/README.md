@@ -172,13 +172,14 @@ transform: rotate(45deg)
 
 ## (8) block inline inline-block 三者的区别 ?
 
+- 本项目/2-FRONTEND/CSS/7-block-inline.html
 - 常见的 block 元素 --------- 设置 width 和 height 有效
   - form
   - table
   - p
   - div
   - h1-h6
-  - ul li
+  - ul ol li
 - 常见的 inline 元素 -------- 设置 width 和 height 无效
   - span
   - a
@@ -187,6 +188,7 @@ transform: rotate(45deg)
   - textarea
   - select
   - img
+  - button
 
 ## (9) css 选择器
 
@@ -324,15 +326,21 @@ transform
   - 分析原因：因为transform的操作，默认的 ( 原点 ) 是 ( 正中心位置 )
   - 如何解决：transform-origin: left;
   - 扩展: 结合13中 ( transform-origin ) 改变原点来学习
-- 额外知识
+- 扩展知识
   - 描述：transform 是 ( 不会 ) 引起 ( reflow回流 ) 的，只会 ( repaint重绘 )
   - 原因：
     - 浏览器渲染会经过 parseHTML -> parseStylesheet -> evaluateScript -> layout -> paint -> composite
     - 分层
-      - transform ------------ 是在 composite合成层
+      - transform ------------ 是在 composite 合成层
       - width，left，margin --- 是在 layout 层，不在同一层
       - 分层的目的: 是为了减少重绘制的时间
     - GPU加速: transform还能开启 GPU 加速
+- 扩展知识
+  - 问题：还有哪些属性不会引起 reflow
+  - 回答
+    - transform
+    - opacity
+    - filter
 ```
 
 ## (15) 单行省略号 和 多行省略号
@@ -603,7 +611,7 @@ word-break: break-all; 单词内换行
   - ( 绝对定位 ) 虽然可以脱离文档流，但是没有新建图层，所以会 reflow
   - 结合 19 一起看
 - 扩展
-  - 还有哪些属性不会引起 reflow 和 repaint
+  - 还有哪些属性不会引起 reflow
     - transform
     - opacity
     - filter
@@ -743,6 +751,7 @@ var(变量名, 默认值)
   - https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties
   - https://www.jianshu.com/p/662039030e7e
   - https://juejin.cn/post/7096050514105729061
+
 ```
 <!DOCTYPE html>
 <html lang="en">
