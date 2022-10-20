@@ -42,7 +42,6 @@
             // ------------------------------------------ 注意: 其实我们可以不改变max的值，直接每次都是10
 
             const task = this.taskQueue.shift(); // 队列先进先出
-            console.log("task", task);
 
             task()
               .then((res) => console.log(res))
@@ -71,6 +70,11 @@
         const task = createTask(i);
         taskQueue.addTask(task);
       }
+    </script>
+    <script>
+      // 资料
+      // 一些条件限制 https://juejin.cn/post/7052700635154219015
+      // p-limit https://www.npmjs.com/package/p-limit
     </script>
   </body>
 </html>

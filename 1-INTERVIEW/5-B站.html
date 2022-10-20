@@ -73,7 +73,48 @@
 
       // ----------------------------------------------------------------------------------------
       // 6
-      // 
+      // WeakMap WeakSet
+
+      // 6.1
+      // 问题1
+      // - 问题: Map 和 WeakMap 的区别？
+      // - 回答:
+      //  - 1. key
+      //        - Map的key可以是任意的数据类型
+      //        - 而WeakMap的key只能是对象(null除外)
+      //  - 2. 弱引用
+      //        - 键名引用的对象 是 弱引用，删除对象key后，weakMap的引用关系不在了，该 ( 键值对 ) 会被垃圾回收机制回收
+      //  - 3. WeakMap没有 遍历操作 和 清空操作
+      //        - 不能遍历: weakMap不存在 keys() values() entries() size() 属性
+      //        - 不能清空: weakMap不存在 clear()
+      //        - 因为:
+      //          - 因为没有办法列出所有键名，某个键名是否存在完全不可预测，跟垃圾回收机制是否运行相关
+      //          - 这一刻可以取到键名，下一刻垃圾回收机制突然运行了，这个键名就没了，为了防止出现不确定性，就统一规定不能取到键名
+
+      // 问题2
+      // - 问题: 强引用 和 弱引用
+      // - 回答:
+      //  - 强引用: const a = {}; new Map(a, 111); ---- map 和 a 指针指向了同一个堆地址，因为是 ( 强引用 )，引用计数为 ( 2 )，删除a后，map中的a仍然被引用，不会被垃圾回收机制回收
+      //  - 弱引用: const a = {}. new WeakMap(a, 111) - weakMap 和 a 执行虽然都指向同一个堆地址，因为是 ( 弱引用 )，引用计数为 ( 1 )，删除a后，引用计数为0，会被垃圾回收机制回收
+      //  - 资料: https://juejin.cn/post/6993101968545677319#heading-24
+
+      // 应用
+      // 1. DOM 节点元数据
+      // 2. 部署私有属性
+      // 3. 数据缓存: 当我们需要在不修改原有对象的情况下储存某些属性等，而又不想管理这些数据时，可以使用WeakMap
+
+      let obj_key = { name: "woow_wu7" };
+      const str_key = "string";
+
+      const map = new Map();
+      map.set(obj_key, '{ name: "woow_wu7" }');
+      map.set(str_key, "string");
+      console.log("map", map);
+
+      const weakMap = new WeakMap();
+      weakMap.set(obj_key, '{ name: "woow_wu7" }');
+      // weakMap.set(str_key, "string"); // Uncaught TypeError: Invalid value used as weak map key
+      console.log("weakMap", weakMap);
     </script>
   </body>
 </html>
