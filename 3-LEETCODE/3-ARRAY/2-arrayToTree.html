@@ -35,7 +35,9 @@
           if (arr[j].parentId === -1) {
             res.push(arr[j]);
           } else {
-            map[arr[j].parentId].children.push(arr[j]); // 具有引用关系，所以map和原数据都会改变，因为是引用类型的数据
+            // 如果没有上面的 if 的话，会报错，因为 parentId = -1 在 map 中的key没有-1
+            // 具有引用关系，所以map和原数据都会改变，因为是引用类型的数据
+            map[arr[j].parentId].children.push(arr[j]);
           }
         }
 

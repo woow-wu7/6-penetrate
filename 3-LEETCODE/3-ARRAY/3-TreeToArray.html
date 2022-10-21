@@ -41,20 +41,21 @@
       function treeToArray(tree) {
         const result = [];
 
-        function process(arr) {
+        function recursive(arr) {
           for (let i = 0; i < arr.length; i++) {
-            const children = arr[i].children;
+            const item = arr[i];
+            const children = item.children;
+            result.push(arr[i]);
+
             if (children) {
-              result.push(arr[i]);
-              process(children); // 递归调用，始终操作同一个 result
-              delete arr[i].children; // 扁平后，删除children属性；注意：这里不能是删除 children 变量，而要直接删除 arr[i].children，因为delete是删除对象的属性
-            } else {
-              result.push(arr[i]);
+              recursive(children); // 递归调用，始终操作同一个 result
+              Reflect.deleteProperty(arr[i], "children");
+              // delete arr[i].children; // 扁平后，删除children属性；注意：这里不能是删除 children 变量，而要直接删除 arr[i].children，因为delete是删除对象的属性
             }
           }
         }
 
-        process(tree); // 注意：这里的tree包装成了array，便于遍历
+        recursive(tree); // 注意：这里的tree包装成了array，便于遍历
 
         return result;
       }
