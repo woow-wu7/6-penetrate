@@ -8,6 +8,7 @@
   </head>
   <body>
     <script>
+      // 1
       // 数组
       // 静态方法
       // - Array.from
@@ -30,6 +31,47 @@
       Array.of(undefined); // [undefined]
       arr.at(-1); // 4
       // arr.with(2, 33); // [1,2,33,4] 将下标为2的成员的值修改为33 with(index,value) chrome 还未支持
+
+      // ------------------------------------------------------------------------
+      // 2
+      // 类 class
+
+      // 2.1
+      // super
+      // - super可以作为 ( 函数 )，也可以作为 ( 对象 )
+      //  - 函数: super() 只能用于构造函数中，表示 ( 父类的构造函数 )
+      //  - 对象
+      //    - 普通方法中: 表示 ( 父类的原型 )，调用父类方法时，( this指向子类实例 )
+      //    - 静态方法中: 表示 ( 父类 )，调用父类方法时，( this指向子类 )
+      // - 官网: https://es6.ruanyifeng.com/#docs/class-extends#super-%E5%85%B3%E9%94%AE%E5%AD%97
+      class Parent {
+        static myMethod(msg) {
+          console.log("static", msg);
+          console.log("this.name", this.name);
+        }
+
+        myMethod(msg) {
+          console.log("instance", msg);
+          console.log("this", this);
+        }
+      }
+      class Child extends Parent {
+        constructor() {
+          super(); // ( super作为函数 )，只能在 ( 构造函数 ) 中，表示 ( 父类的构造函数 )，( this表示子类实例 )
+          this.name = "child";
+        }
+
+        static myMethod(msg) {
+          super.myMethod(msg); // ( super作为对象 )，在 ( 静态方法 ) 中，表示 ( 父类 )，( this表示子类 )
+        }
+
+        myMethod(msg) {
+          super.myMethod(msg); // ( super作为对象 )，在 ( 普通方法 ) 中，表示 ( 父类的原型 )，( this表示子类的实例 )
+        }
+      }
+      Child.myMethod(1); // static 1 ------ ( this是Child )
+      var child = new Child();
+      child.myMethod(2); // instance 2 ---- ( this是child )
     </script>
   </body>
 </html>
