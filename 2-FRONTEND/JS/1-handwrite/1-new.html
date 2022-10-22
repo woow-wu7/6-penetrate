@@ -27,7 +27,33 @@
           5.判断返回值，如果构造函数return一个对象，就返回构造函数返回的对象，否则返回空对象即this对象
       */
 
-      // 该方法太过于复杂，请使用 2
+      function Constructor2(name, age) {
+        this.name = name;
+        this.age = age;
+        // return {};
+        // 这里没有返回值，即下面通过res判断就是undefined，则new返回this对象
+      }
+
+      const _new2 = (constructor, ...params) => {
+        const obj = Object.create(constructor.prototype);
+        const res = constructor.apply(obj, params);
+        return Object.prototype.toString.call(res).includes("Object")
+          ? res
+          : obj;
+      };
+
+      const instance2 = _new2(Constructor2, "woow_wu7", 20);
+      console.log(instance2, "instance2");
+    </script>
+
+    <!-- 分隔符 ------------------------------------------------------------------------------------------>
+    <!-- 分隔符 ------------------------------------------------------------------------------------------>
+    <!-- 分隔符 ------------------------------------------------------------------------------------------>
+    <!-- 分隔符 ------------------------------------------------------------------------------------------>
+    <!-- 分隔符 ------------------------------------------------------------------------------------------>
+
+    <script>
+      // 该方法太过于复杂，请使用 1
       function Constructor(name, age) {
         this.name = name;
         this.age = age;
@@ -77,31 +103,6 @@
 
       const instance = _new(Constructor, "woow_wu7", 20);
       console.log(instance, "instance");
-    </script>
-
-    <!-- 2 -->
-    <!-- 2 -->
-    <!-- 2 -->
-    <!-- 2 -->
-    <!-- 简写形式 -->
-    <script>
-      function Constructor2(name, age) {
-        this.name = name;
-        this.age = age;
-        // return {};
-        // 这里没有返回值，即下面通过res判断就是undefined，则new返回this对象
-      }
-
-      const _new2 = (constructor, ...params) => {
-        const obj = Object.create(constructor.prototype);
-        const res = constructor.apply(obj, params);
-        return Object.prototype.toString.call(res).includes("Object")
-          ? res
-          : obj;
-      };
-
-      const instance2 = _new2(Constructor2, "woow_wu7", 20);
-      console.log(instance2, "instance2");
     </script>
   </body>
 </html>
