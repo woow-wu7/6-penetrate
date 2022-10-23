@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 二叉树的最小深度
+
+      // 思路
+      // - 后续遍历
+
+      // 注意
+      // - 最小深度的求解是有 ( 坑 ) 的
+      // - 就是其中 ( 左子树 ) 或者 ( 右子树 ) 是 ( null ) 时，最小高度不是1，而是求其中一边子树的最小高度
+
+      // 资料
+      // - https://www.bilibili.com/video/BV1QD4y1B7e2/?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
+
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val, left, right) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.left = (left===undefined ? null : left)
+       *     this.right = (right===undefined ? null : right)
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @return {number}
+       */
+      var minDepth = function (root) {
+        if (!root) return 0;
+
+        function recursive(root, level) {
+          level = level + 1;
+          if (!root.left && !root.right) return level; // 都不存在
+          if (!root.left && root.right) return recursive(root.right, level); // 右存在
+          if (root.left && !root.right) return recursive(root.left, level); // 左存在
+          return Math.min(
+            recursive(root.left, level),
+            recursive(root.right, level)
+          ); // 都存在
+        }
+
+        return recursive(root, 0);
+      };
+    </script>
+  </body>
+</html>
