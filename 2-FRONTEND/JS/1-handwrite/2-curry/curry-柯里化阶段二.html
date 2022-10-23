@@ -12,6 +12,9 @@
       // 原理：
       // 计算的逻辑耦合在了 curry 函数中，可以抽离出计算逻辑
 
+      // 最终版
+      // 直接看柯里化 阶段三
+
       function add(...params) {
         if (params.length) {
           return params.reduce((total, current) => total + current);

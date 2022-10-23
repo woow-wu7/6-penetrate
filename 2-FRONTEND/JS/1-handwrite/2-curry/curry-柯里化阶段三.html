@@ -8,34 +8,29 @@
   </head>
   <body>
     <script>
-      // 柯里化 阶段二
+      // 柯里化 阶段三
       // 原理：
-      // 多了一次没有参数的调用，所以我们直接通过属性方法调用来进行计算，curry则只负责收集参数
-
-      function add(...params) {
-        if (params.length) {
-          return params.reduce((total, current) => total + current);
-        }
-        return [];
-      }
+      // - 阶段二多了一次没有参数的调用，所以我们直接通过属性方法调用来进行计算，curry则只负责收集参数
+      // - curry 柯里化的意思
 
       const curry = (add, ...params) => {
         let allParams = [];
-        if (params.length) allParams = allParams.concat(params);
+
+        if (params.length) allParams.push(...params);
 
         function closure(...params) {
-          if (params.length) {
-            allParams = allParams.concat(params);
-          }
+          if (params.length) allParams.push(...params);
           return closure;
         }
-
         closure.calculate = () => add(...allParams);
 
         return closure;
       };
 
-      const callback = curry(add, 1)(2, 3, 4)(5)(); // curry只负责收集参数
+      const add = (...params) =>
+        params.length ? params.reduce((total, current) => total + current) : [];
+
+      const callback = curry(add, 1)(2, 3, 4)(5)()()(6); // curry只负责收集参数，即使多次无参调用也不会报错
       const res = callback.calculate(); // 计算，通过 calculate 方法来实现
       console.log("res", res);
     </script>
