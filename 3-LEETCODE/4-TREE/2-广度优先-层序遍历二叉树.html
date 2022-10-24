@@ -56,8 +56,32 @@
         },
       };
 
-      // 1 队列 + 递归
+      // -----------------------------------------------------------------------------
+      // -----------------------------------------------------------------------------
+      // 1 队列 + while
       var levelOrder = function (root) {
+        const queue = [root];
+        const res = [];
+
+        while (queue.length) {
+          for (let i = 0; i < queue.length; i++) {
+            const node = queue.shift();
+            if (node.val) res.push(node.val);
+
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+          }
+        }
+
+        return res;
+      };
+      const res = levelOrder(root);
+      console.log("res: ", res);
+
+      // -----------------------------------------------------------------------------
+      // -----------------------------------------------------------------------------
+      // 2 队列 + 递归
+      var levelOrder2 = function (root) {
         const result = []; // 最终结果
         const queue = [root]; // 队列，先进先出，对应 push 和 shift 方法
 
@@ -81,15 +105,16 @@
 
         return result;
       };
-      const res = levelOrder(root);
-      console.log("res: ", res);
+      const res2 = levelOrder2(root);
+      console.log("res2: ", res2);
 
+      // ---------------------------------------------------------------------------------------------------
       // ---------------------------------------------------------------------------------------------------
       // 2
       // 变通方法
       // - 方法1: 我们是不断的弹出队列中的第一个元素
       // - 方法2: 我们可以不弹出来，而是不断添加进来，用指针来表示弹出的元素，这种方法空间利用率不高
-      var levelOrder2 = function (root) {
+      var levelOrder3 = function (root) {
         const result = [];
         const queue = [root]; // 不断push，动态 currentIndex 确定target，空间利用率不高
         let currentIndex = 0;
@@ -113,8 +138,8 @@
 
         return result;
       };
-      const res2 = levelOrder2(root);
-      console.log("res2: ", res2);
+      const res3 = levelOrder3(root);
+      console.log("res3: ", res3);
     </script>
   </body>
 </html>
