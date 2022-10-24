@@ -23,20 +23,27 @@
       // (2)
       // Promise.all
       // 特点：
-      //  1. 返回一个新的 promise 对象
-      //  2. 参数是promise实例的数组，成员不是promise对象会用Promise.resolve()转成promise对象
+      //  1. 返回值: 返回一个新的 promise 对象
+      //  2. 参数: 参数是promise实例的组成的数组，成员不是promise对象会用Promise.resolve()转成promise对象
       //  3. 所有fulfilled -> 整个fulfilled
       //  4. 一个rejected --> 整个rejected
 
       // (3)
       // Promise.race
       // 特点：
-      //  1. 返回一个新的 promise 对象
-      //  2. 参数是promise实例的数组，成员不是promise对象会用Promise.resolve()转成promise对象
+      //  1. 返回值: 返回一个新的 promise 对象
+      //  2. 参数: 参数是promise实例的数组，成员不是promise对象会用Promise.resolve()转成promise对象
       //  3. 谁先fulfilled -> 整个fulfilled
       //  4. 谁先rejected --> 整个rejected
       // 实现:
       // - Promise.race 和 Promise.all 的实现类似
+
+      // (4)
+      // Promise.finally
+      // - 作用: 不管 promise 状态如何都会执行的操作
+      // - 参数: finally的回调参数函数，不接受任何参数，表示 ( finally 里面的操作与状态无关 )
+      // - 具体: Promise.finally(()=>{...}) 等价于 promise.then(value => value, err => throw err)
+      // - 实现: finally 其实就是 then 的特例。具体实现相见下面
 
       class _Promise {
         constructor(executor) {
@@ -238,6 +245,43 @@
       Promise.race([p1, p2, p3]).then((resArr) =>
         console.log("Promise.race()测试 :>> ", resArr)
       );
+
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // 分割线 ------------------------------------------------------------------------------------
+      // Promise.finally()
+      Promise.prototype._finally = function (callback) {
+        const P = this.constructor;
+
+        // 调用_finally时确定this，this指向实例
+        return this.then(
+          (value) => P.resolve(callback()).then(() => value),
+          (err) =>
+            P.resolve(callback()).then(() => {
+              throw err;
+            })
+        );
+      };
+
+      const promise = new Promise((resolve) => resolve(11));
+      promise
+        .then((value) => value)
+        ._finally(() => console.log("测试promise.prototype._finally"))
+        .then((value) => console.log(value));
+
+      promise
+        .then((value) => value)
+        .finally(() => console.log("测试promise.prototype.finally"))
+        .then((value) => console.log(value));
     </script>
   </body>
 </html>
