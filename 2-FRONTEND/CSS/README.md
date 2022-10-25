@@ -336,11 +336,12 @@ transform
       - 分层的目的: 是为了减少重绘制的时间
     - GPU加速: transform还能开启 GPU 加速
 - 扩展知识
-  - 问题：还有哪些属性不会引起 reflow
+  - 问题：还有哪些属性会开启 GPU 加速？
   - 回答
     - transform
     - opacity
     - filter
+    - will-change --- 本项目/2-FRONTEND/CSS/29-will-change.html
 ```
 
 ## (15) 单行省略号 和 多行省略号
@@ -414,6 +415,7 @@ display: -webkit-box;
   - transform
   - opacity
   - filter
+  - will-change
   - 所以动画最好使用 transform opacity 等属性来实现，结合 32 一起看
 
 ## (20) sticky-footer 效果

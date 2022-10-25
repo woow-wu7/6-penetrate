@@ -82,12 +82,14 @@
 
         return result;
       };
+      const res = levelOrder(root);
+      console.log("res: ", res);
 
       // ------------------------------------------------------------------------------------
       // ------------------------------------------------------------------------------------
       // 2
       // 递归
-      var levelOrder = function (root) {
+      var levelOrder1 = function (root) {
         if (!root) return [];
 
         const result = [];
@@ -119,8 +121,8 @@
 
         return result;
       };
-      const res = levelOrder(root);
-      console.log("res: ", res);
+      const res1 = levelOrder1(root);
+      console.log("res1: ", res1);
     </script>
   </body>
 </html>
