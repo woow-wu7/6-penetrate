@@ -12,10 +12,6 @@
       // obj instanceof constructor
       // 原理: 右边构造函数的 prototype 属性是否在 左边对象的 原型链上
 
-      const origin = { name: "woow_wu7" };
-      const obj = Object.create(origin);
-      console.log("obj instanceof Object :>> ", obj instanceof Object); // true
-
       const _instanceof = (obj, constructor) => {
         const rightPrototype = constructor.prototype;
         let leftPrototype = Object.getPrototypeOf(obj);
@@ -23,7 +19,6 @@
         while (true) {
           if (leftPrototype === null) return false; // 如果到了原型链的终点都不想等，则false
           if (leftPrototype === rightPrototype) return true;
-
           // false 的情况如下；不相等，继续往上寻找原型对象
           leftPrototype = Object.getPrototypeOf(leftPrototype);
         }
@@ -31,21 +26,50 @@
 
       const arr = [1];
       const res = _instanceof(arr, Array);
-      console.log("res", res);
 
-      console.log(
-        "Object.getPrototypeOf(arr) === Array.prototype :>> ",
-        Object.getPrototypeOf(arr) === Array.prototype
-      ); // true
+      console.log("res", res); // true
+      console.log(Object.getPrototypeOf(arr) === Array.prototype); // true
       console.log("arr instanceof Array", arr instanceof Array); // true
     </script>
 
-    <!-- 下面的写法也可以的 -->
+    <!-- 下面的写法也可以的 -------------------------------->
+    <!-- 下面的写法也可以的 -------------------------------->
+    <!-- 下面的写法也可以的 -------------------------------->
+    <!-- 下面的写法也可以的 -------------------------------->
+    <!-- 下面的写法也可以的 -------------------------------->
     <script>
-      const _instanceof2 = (obj, constructor) => {
+      function C() {}
+      const c = new C();
+
+      function _instanceof2(obj, constructor) {
+        const right = constructor.prototype;
+        const left = Object.getPrototypeOf(obj);
+
+        while (left !== null) {
+          if (left === right) {
+            return true;
+          } else {
+            left = Object.getPrototypeOf(left);
+          }
+        }
+        // left 是 null 返回 false
+        return false;
+      }
+
+      const res2 = _instanceof2(c, C);
+      console.log("res2: ", res2);
+      console.log("c instanceof C", c instanceof C);
+    </script>
+
+    <!-- 下面的写法也可以的 -------------------------------->
+    <!-- 下面的写法也可以的 -------------------------------->
+    <!-- 下面的写法也可以的 -------------------------------->
+    <!-- 下面的写法也可以的 -------------------------------->
+    <!-- 下面的写法也可以的 -------------------------------->
+    <script>
+      const _instanceof3 = (obj, constructor) => {
         const rightPrototype = constructor.prototype;
         let leftPrototype = Object.getPrototypeOf(obj);
-
         while (true) {
           if (leftPrototype === null) return false;
 
@@ -58,10 +82,9 @@
 
         return false;
       };
-
-      const arr2 = [1];
-      const res2 = _instanceof(arr, Array);
-      console.log("res2", res2);
+      const arr3 = [1];
+      const res3 = _instanceof3(arr3, Array);
+      console.log("res3", res3);
     </script>
   </body>
 </html>

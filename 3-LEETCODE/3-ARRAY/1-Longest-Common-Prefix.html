@@ -17,10 +17,10 @@
       // - 解题思路：
       //    - 找出第12个相同的前缀，再拿这个公共前缀后第3个成员对比，公共前缀在和第4个成员对比
       // - 比如：
-      // 第一次 ( flower flogwx flgod ) -> flo
-      // 第二次 ( flo flgod ) -> fl
+      // 第一次 ( flower flo flight ) -> flo
+      // 第二次 ( flo flight ) -> fl
 
-      const strs = ["flower", "flow", "floight"];
+      const strs = ["flower", "flow", "flight"];
 
       var longestCommonPrefix = function (strs) {
         return strs.reduce((pre, cur) => {
@@ -43,7 +43,7 @@
     </script>
 
     <script>
-      const strs2 = ["flower", "flow", "floight"];
+      const strs2 = ["flower", "flow", "flight"];
       var longestCommonPrefix = function (strs) {
         return strs.reduce((prev, current) => {
           let result = "";
