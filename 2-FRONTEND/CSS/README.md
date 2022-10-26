@@ -801,3 +801,8 @@ var(变量名, 默认值)
   </body>
 </html>
 ```
+
+### (39) 无限滚动的轮播图 和 (公告)提示信息
+
+- 轮播图: 本项目/2-FRONTEND/CSS/1-carousel/无限滚动轮播图.html
+- 提示信息: 本项目/2-FRONTEND/CSS/1-carousel/无限滚动轮播图.html

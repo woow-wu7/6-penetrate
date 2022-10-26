@@ -39,7 +39,7 @@
        * @return {boolean}
        */
       var isValid = function (s) {
-        const stack = [];
+        const stack = []; // push pop
         for (let i = 0, len = s.length; i < len; i++) {
           // push
           if (s[i] === "(" || s[i] === "[" || s[i] === "{") {
@@ -62,7 +62,7 @@
           }
         }
 
-        // 最后栈必须为空
+        // 最后栈必须为空 才为 true
         return stack.length === 0;
       };
     </script>

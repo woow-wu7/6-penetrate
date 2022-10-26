@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+      }
+      body {
+        padding: 20px;
+      }
+      #container {
+        width: 600px;
+        height: 400px;
+        border: 3px solid #333;
+        position: relative;
+        overflow: hidden;
+      }
+      #list {
+        width: 4200px;
+        height: 400px;
+        position: absolute;
+        z-index: 1;
+      }
+      #list img {
+        float: left;
+        width: 600px;
+        height: 400px;
+        object-fit: cover;
+      }
+      #buttons {
+        position: absolute;
+        height: 10px;
+        width: 100px;
+        z-index: 2;
+        bottom: 20px;
+        left: 250px;
+      }
+      #buttons span {
+        cursor: pointer;
+        float: left;
+        border: 1px solid #fff;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #333;
+        margin-right: 5px;
+      }
+      #buttons .on {
+        background: orangered;
+      }
+      .arrow {
+        cursor: pointer;
+        display: none;
+        line-height: 39px;
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        z-index: 2;
+        top: 180px;
+        background-color: RGBA(0, 0, 0, 0.3);
+        color: #fff;
+      }
+      .arrow:hover {
+        background-color: RGBA(0, 0, 0, 0.7);
+      }
+      #container:hover .arrow {
+        display: block;
+      }
+      #prev {
+        left: 20px;
+      }
+      #next {
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="container">
+      <div id="list" style="left: -600px">
+        <img src="../images/33.png" alt="3" />
+        <img src="../images/11.png" alt="1" />
+        <img src="../images/22.png" alt="2" />
+        <img src="../images/33.png" alt="3" />
+        <img src="../images/11.png" alt="1" />
+      </div>
+      <div id="buttons">
+        <span index="1" class="on"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+      </div>
+      <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+      <a href="javascript:;" id="next" class="arrow">&gt;</a>
+    </section>
+    <script>
+      // carousel 是旋转木马，轮播图的意思
+
+      const container = document.getElementById("container");
+      const list = document.getElementById("list");
+
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+      const buttons = document
+        .getElementById("buttons")
+        .getElementsByTagName("span");
+
+      let index = 1;
+      let isRun = false;
+      let autoTimer = null;
+
+      function changeIndex(type) {
+        type === "add" ? index++ : index--;
+        if (index > 3) index = 1;
+        if (index < 1) index = 3;
+      }
+
+      function showButton() {
+        Array.from(buttons).forEach((button, i) => {
+          if (i + 1 === index) button.className = "on";
+          else {
+            button.className = "";
+          }
+        });
+      }
+
+      function scroll(offset) {
+        const _left = parseInt(list.style.left) + offset;
+
+        const time = 300;
+        const interval = 10;
+        const step = offset / (time / interval);
+
+        function run() {
+          isRun = true;
+          let timer;
+          if (timer) clearInterval(timer);
+
+          if (
+            (step < 0 && parseInt(list.style.left) > _left) ||
+            (step > 0 && parseInt(list.style.left) < _left)
+          ) {
+            list.style.left = parseInt(list.style.left) + step + "px";
+            timer = setTimeout(run, interval);
+          } else {
+            isRun = false;
+            list.style.left = _left + "px";
+            if (_left > -600) list.style.left = -1800 + "px";
+            if (_left < -1800) list.style.left = -600 + "px";
+          }
+        }
+
+        run();
+      }
+
+      next.onclick = function () {
+        if (!isRun) scroll(-600);
+        changeIndex("add");
+        showButton();
+      };
+      prev.onclick = function () {
+        if (!isRun) scroll(600);
+        changeIndex("dec");
+        showButton();
+      };
+
+      function autoRun() {
+        autoTimer = setInterval(next.onclick, 3000);
+      }
+      autoRun();
+      function stop() {
+        clearInterval(autoTimer);
+      }
+      container.onmouseover = stop;
+      container.onmouseout = autoRun;
+
+      Array.from(buttons).forEach(
+        (button, i) =>
+          (button.onclick = function () {
+            let dec = i + 1 - index; // 点击的圆点 和 点击前的圆点 index 之差
+            scroll(-600 * dec); // 简化 if (dec > 0) scroll(-600 * dec) 和 if (dec < 0) scroll(-600 * dec);
+
+            index = i + 1;
+            showButton();
+          })
+      );
+    </script>
+  </body>
+</html>
