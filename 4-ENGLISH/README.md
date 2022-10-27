@@ -9,6 +9,8 @@ supplement 补充
 variable promotion 变量提升
 ordinary 普通的
 invert 反转 // invert tree 反转树
+carousel 旋转木马 轮播图
+anonymous 匿名的
 ```
 
 ### CSS 相关
