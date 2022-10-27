@@ -92,7 +92,7 @@ type Coord = Partial<Record<'x' | 'y', number>>;
 type Coord = { x?: number; y?: number; }
 ```
 
-### (3) Pick
+### (3) Pick -------- 对比 Omit
 
 ```
 Pick
@@ -163,6 +163,44 @@ const person: Readonly<Person> = {
    age: 18
 }
 person.age = 20; // 无法分配到 "age" ，因为它是只读属性。ts(2540)
+```
+
+### (6) Exclude
+
+```
+Exclude
+- Exclude<T, U> = T extends U ? never : T;
+- Exclude 就是将前面类型的与后面类型对比，( 过滤出前面独有的属性 )
+- 排除
+---
+
+const str: Exclude<'a' | '1' | '2', 'a' | 'y' | 'z'> = '1'; // str 的类型是 "1" | "2"
+```
+
+### (7) Omit -------- 对比 Pick
+
+```
+Omit
+- type Omit = Pick<T, Exclude<keyof T, K>>
+- 省略
+---
+
+type UserState = {
+  name: string
+  age: number
+}
+type Person = Omit<UserState, 'age'>
+// 等价于
+type Person {
+   name: string
+}
+
+---
+type Person2 = Pick<UserState, 'age'>
+// 等价于
+type Person {
+   age: number
+}
 ```
 
 # (三) keyof 索引类型查询操作符
