@@ -64,19 +64,19 @@
       // 1
       // while
       var levelOrder = function (root) {
-        if (!root) return [];
+        if (!root) return []; // 边界，不然会出现 [undefined]
 
-        const queue = [{ ...root, level: 0 }];
+        const queue = [{ ...root, level: 0 }]; // 队列 push shift
         const result = [];
 
         while (queue.length) {
-          const target = queue.shift();
+          const target = queue.shift(); // 弹出
           const level = target.level;
 
           if (!result[level]) result[level] = [];
           result[level].push(target.val);
 
-          if (target.left) queue.push({ ...target.left, level: level + 1 });
+          if (target.left) queue.push({ ...target.left, level: level + 1 }); // 添加
           if (target.right) queue.push({ ...target.right, level: level + 1 });
         }
 

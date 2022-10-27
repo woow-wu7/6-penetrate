@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 剑指 Offer II 099. 最小路径之和
+
+      // 题目
+      // 给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
+      // 说明：一个机器人每次只能向下或者向右移动一步。
+
+      // 链接
+      // https://leetcode.cn/problems/0i0mDW/
+
+      // 动态规划 思路
+      // 1. 为什么用动态规划: 因为是 ( 最值问题 )
+      // 2. dp数组的含义: dp[i][j] 是 ( 左上角00位置 ) 到 ( 当前ij位置 ) 的 ( 最小路径和 )
+      // 3. 状态转移方程: dp[i][j] = Math.min(dp[i-1][j], dp[i][j-1]) + grid[i][j]
+      // 4. grid[i][j] 是当前位置上的数字
+      // 5. 注意边界问题
+      //    - 1. 00位置 ---------------- dp[0][0] = grid[0][0]
+      //    - 2. i-1<0 ---------------- dp[i][j] = dp[i][j-1] + grid[i][j]
+      //    - 3. j-1<0 ---------------- dp[i][j] = dp[i-1][j] + grid[i][j]
+      //    - 4. i-1>0 && j-1>0 ------- dp[i][j] = Math.min(dp[i-1][j], dp[i][j-1]) + grid[i][j]
+
+      // 对比
+      // 62. Unique Paths 方格有多少种走法
+      // 本项目/3-LEETCODE/动态规划/2-方格有多少种走法.html
+
+      /**
+       * @param {number[][]} grid
+       * @return {number}
+       */
+
+      var minPathSum = function (grid) {
+        const row = grid.length; // 总行数
+        const col = grid[0].length; // 总列数
+        // 初始化dp m*n；
+        // dp[i][j] 表示的是 ( 左上角00位置 ) 到 ( 当前ij位置 ) 的 ( 最小路径和 )
+        const dp = new Array(row).fill(0).map((row) => new Array(col).fill(0));
+
+        // 特殊情况
+        dp[0][0] = grid[0][0];
+
+        for (let i = 1; i < row; i++) {
+          dp[i][0] = dp[i - 1][0] + grid[i][0]; // 每行第一列的最小路径和只能是 = 上一行第一列最小路径和 + 当前数字
+        }
+
+        for (let j = 1; j < col; j++) {
+          dp[0][j] = dp[0][j - 1] + grid[0][j]; // 第一行每第一列的最小路径和只能是 = 第一行上一列的最小路径和 + 当前数字
+        }
+
+        for (let i = 1; i < row; i++) {
+          for (let j = 1; j < col; j++) {
+            dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+          }
+        }
+
+        return dp[row - 1][col - 1];
+      };
+
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // 方法2
+      // var minPathSum = function (grid) {
+      //   const row = grid.length; // 总行数
+      //   const col = grid[0].length; // 总列数
+      //   const dp = new Array(row).fill(0).map((row) => new Array(col).fill(0)); // 初始化dp m*n
+
+      //   for (let i = 0; i < row; i++) {
+      //     for (let j = 0; j < col; j++) {
+      //       if (i === 0 && j === 0) dp[i][j] = grid[0][0]; // 00位置
+      //       else {
+      //         if (i - 1 > 0 && j - 1 > 0) {
+      //           dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+      //         } else {
+      //           if (i - 1 < 0) {
+      //             dp[i][j] = dp[i][j - 1] + grid[i][j];
+      //           } else {
+      //             dp[i][j] = dp[i - 1][j] + grid[i][j];
+      //           }
+      //         }
+      //       }
+      //     }
+      //     console.log(dp);
+      //   }
+
+      //   return dp[row - 1][col - 1];
+      // };
+    </script>
+  </body>
+</html>
