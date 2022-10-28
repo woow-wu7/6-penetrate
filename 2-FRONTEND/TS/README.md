@@ -2,6 +2,7 @@
 
 - [掘金-Typescript](https://juejin.cn/post/6999807282343051277#heading-1)
 - [掘金-封装 06-从 0 开始封装一个 VUE3-UI 组件库](https://juejin.cn/post/7131232733841817631#heading-7)
+- [github-6penetrate](https://github.com/woow-wu7/6-penetrate/tree/main/2-FRONTEND/TS)
 
 ```
 type 类型别名 VS interface 接口
@@ -205,7 +206,7 @@ type Person {
 
 # (三) keyof 索引类型查询操作符
 
-- keyof 是 ( 索引类型查询操作符 )，返回 ( 已知公共属性名的联合 )
+- keyof 是 ( 索引类型查询操作符 )，返回 ( 已知的公共属性名的联合 )
 - 扩展：接着可以使用 [k in keyof T] 来进行遍历
 
 ```
@@ -275,7 +276,7 @@ let strings: string[] = pluck(person, ['name']); // ok, string[]
 # (五) in
 
 - in 运算符作用主要有两个
-  - 在类型中使用: **可以用来遍历枚举类型**
+  - 在类型中使用: **可以用来遍历 联合类型 和 枚举类型**
   - 在值中使用: 判断对象中是否存在某个 key 注意包括 ( 自身属性 ) 和 ( 继承属性 )
 
 ```
@@ -286,7 +287,19 @@ type T = 'name' | 'age';
 type Obj = {
   [k in T]: any
 }
-// 1. in 用来遍历枚举类型 -> type Obj = { name: any, age: any}
+// 1. in 用来遍历联合类型 -> type Obj = { name: any, age: any}
+
+
+---
+enum City {
+  BEIJING = 2,
+  SHANGHAI,
+  GUANGZHOU,
+}
+type City3 = {
+  [key in City]: string;
+};
+// 2. in 用来遍历枚举类型 -> type City3 = { 2: string; 3: string; 4: string; }
 
 
 ---
@@ -295,8 +308,16 @@ const obj: Obj = {
   age: 20
 }
 console.log('name' in obj)
-// 2. in 用来判断 obj 对象中是否存在 name 属性，缺点是不能识别 ( 自身属性 ) 还是 ( 继承属性 )
+// 3. in 用来判断 obj 对象中是否存在 name 属性，缺点是不能识别 ( 自身属性 ) 还是 ( 继承属性 )
+
 
 var obj = {};
 'toString' in obj // true，即非自身属性时，继承的属性也会返回true
 ```
+
+# (6)public private protected 的区别？
+
+- public 公有属性
+- private 私有属性 ------- 不能在声明它的类的外部使用，比如 ( 子类 或 实例 或 子类实例 都不能访问 )
+- protected 保护属性 ----- 实例不能访问，子类实例不能访问，但是子类可以访问
+- 实战 本项目/2-FRONTEND/TS/index.ts
