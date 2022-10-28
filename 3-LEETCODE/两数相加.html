@@ -48,7 +48,8 @@
           const v1 = l1 ? l1.val : 0; // l1 没遍历完取值val，如果遍历完了取值就是 0
           const v2 = l2 ? l2.val : 0;
           const sum = v1 + v2 + carry; // 记得要加上进位，初始carry是0
-          if (sum > 10) {
+          // 注意边界
+          if (sum >= 10) {
             sum = sum - 10;
             carry = 1; // 大于10，记录进位1
           } else carry = 0; // 即时修改回来，不然会一直累加
