@@ -35,7 +35,12 @@
       // s = "pwwkew"; // 3
 
       var lengthOfLongestSubstring = function (s) {
-        let left = (right = len = maxLen = 0);
+        let left = (right = len = maxLen = 0); // 声明初始化变量 left right len maxLen
+
+        // set
+        // 注意
+        //  - 可以: 这里用 set，map，对象{} 都可以
+        //  - 不可以: 但是最好不要用数组，因为存在 ( 寻找是否存在includes，和删除已存在的值，都需要遍历 )，效率很低
         let set = new Set();
 
         // 总的条件: 右指针遍历完就结束整个遍历
@@ -48,13 +53,14 @@
             if (maxLen < len) maxLen = len;
             right++;
           }
-          // 2. 右指针的值 在 set 不存在，就移动左指针，直到 right指针的值在set中不存在为止
+          // 2. 右指针的值 在 set 存在，就在set中删除左指针的值，并向右移动左指针，直到 right指针的值在set中不存在为止
           else {
             // 右指针的值在set中存在
             while (set.has(s[right])) {
               set.delete(s[left]); // 删除左指针 在 set 中的值
               left++;
               len--;
+              // 这里没有更新 maxLen，因为减小了，maxLen肯定不是最大
             }
             //  --------------------------------------- YYY
             set.add(s[right]); // 左指针不能在移动时，将 右指针 的值添加到 set 中
@@ -64,31 +70,31 @@
           }
         }
 
-        return maxLen;
+        return maxLen; // 返回记录的最大长度
       };
     </script>
 
     <script>
       // 暴力求解
+      // - (穷举)枚举所有子串，在判断是否有重复
       /**
-       * @param {string} s
-       * @return {number}
-       */
-      // const s = "abcabcbb"; // 3
-      // const s = "bbbbb"; // 1
-      // s = "pwwkew"; // 3
-
-      /**
-        var lengthOfLongestSubstring = function (s) {
+       *
+       *
+       var lengthOfLongestSubstring = function (s) {
         let res = "";
         const len = s.length;
 
         if (!len) return 0;
 
-        const allSame = s.split("").reduce((prev, current) => {
-          return prev === current;
-        });
-        if (allSame) return 1;
+        function allSame() {
+          for (let i = 1; i < s.length; i++) {
+            if (s[i] !== s[i - 1]) {
+              return false;
+            }
+          }
+          return true;
+        }
+        if (allSame()) return 1;
 
         for (let i = 0; i < len; i++) {
           for (let j = i + 1; j <= len; j++) {
@@ -108,9 +114,11 @@
         }
         return res.length;
       };
-      const res = lengthOfLongestSubstring(s);
-      console.log("res: ", res);
-    ***/
+      const res = lengthOfLongestSubstring(s)
+      console.log(res)
+      *
+      **
+      ***/
     </script>
   </body>
 </html>
