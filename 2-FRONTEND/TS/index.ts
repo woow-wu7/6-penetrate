@@ -69,9 +69,9 @@ console.log("testInstance.pro", testInstance.pro); // 报错
 
 class TestChild extends Test {
   constructor() {
-    super()
-    console.log('super.pri', super.pri) // 报错
-    console.log('super.pro', super.pro) // 可以访问，因为 protected 不能在子类实例访问，但是 ( 可以在子类中访问 )
+    super();
+    console.log("super.pri", super.pri); // 报错
+    console.log("super.pro", super.pro); // 可以访问，因为 protected 不能在子类实例访问，但是 ( 可以在子类中访问 )
   }
 }
 const testChildInstance = new TestChild();

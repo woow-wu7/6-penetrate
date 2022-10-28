@@ -315,7 +315,7 @@ var obj = {};
 'toString' in obj // true，即非自身属性时，继承的属性也会返回true
 ```
 
-# (6)public private protected 的区别？
+# (六) public private protected 的区别？
 
 - public 公有属性
 - private 私有属性 ------- 不能在声明它的类的外部使用，比如 ( 子类 或 实例 或 子类实例 都不能访问 )
