@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 203. 移除链表元素
+
+      // 题目
+      // 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回 新的头节点 。
+
+      // 输入：head = [1,2,6,3,4,5,6], val = 6
+      // 输出：[1,2,3,4,5]
+
+      // 输入：head = [], val = 1
+      // 输出：[]
+
+      // 输入：head = [7,7,7,7], val = 7
+      // 输出：[]
+
+      // leetcode
+      // https://leetcode.cn/problems/remove-linked-list-elements/
+      // 其实可以用同样的写法
+
+      // 对比
+      // 本项目/3-LEETCODE/2-LINKED_LIST/4-删除链表节点.html
+
+      /**
+       * Definition for singly-linked list.
+       * function ListNode(val, next) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.next = (next===undefined ? null : next)
+       * }
+       */
+      /**
+       * @param {ListNode} head
+       * @param {number} val
+       * @return {ListNode}
+       */
+      var removeElements = function (head, val) {
+        const pre = new ListNode(null); // 新建空节点，空链表
+        pre.next = head; // 空节点指向head，则可以通过 pre.next 遍历整个链表
+
+        let list = pre; // 缓存，便于返回头节点，因为 list 要不断后移
+
+        while (list.next) {
+          if (list.next.val === val) {
+            list.next = list.next.next; // 相当于删除操作
+          } else {
+            list = list.next; // 后移指针
+          }
+        }
+
+        return pre.next;
+      };
+    </script>
+  </body>
+</html>
