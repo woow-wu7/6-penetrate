@@ -30,7 +30,7 @@
       // 方法1
       // 双指针 - 滑动窗口
       var getKthFromEnd = function (head, k) {
-        let dummy = new ListNode(null);
+        let dummy = new ListNode(null); // dummy虚拟节点，常用套路
         dummy.next = head;
         let slow = (fast = dummy);
 
