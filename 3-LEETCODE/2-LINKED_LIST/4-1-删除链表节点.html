@@ -45,7 +45,7 @@
       // - 和 本项目/3-LEETCODE/2-LINKED_LIST/4-移除链表元素.html 一样
       // - 方法1 比 方法2 清晰
       var deleteNode = function (head, val) {
-        const pre = new ListNode(null); // 新建空节点，空链表
+        const pre = new ListNode(null); // 新建空节点，空链表。即 dummy 虚拟节点，dummy是假，虚假的的意思
         pre.next = head; // 空节点指向head，则可以通过 pre.next 遍历整个链表
 
         let list = pre; // 缓存，便于返回头节点，因为 list 要不断后移
