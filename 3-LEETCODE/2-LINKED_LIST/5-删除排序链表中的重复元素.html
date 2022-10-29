@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 83. 删除排序链表中的重复元素
+
+      // 题目
+      // 给定一个已排序的链表的头 head ， 删除所有重复的元素，使每个元素只出现一次 。返回 已排序的链表 。
+
+      // leetcode
+      // https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
+
+      /**
+       * Definition for singly-linked list.
+       * function ListNode(val, next) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.next = (next===undefined ? null : next)
+       * }
+       */
+      /**
+       * @param {ListNode} head
+       * @return {ListNode}
+       */
+      var deleteDuplicates = function (head) {
+        if (!head || !head.next) return head; // 边界 - 空链表，只有一个节点的链表
+
+        let _head = head; // 缓存头节点
+
+        while (head && head.next) {
+          if (head.val === head.next.val) {
+            // 注意：这里 两个节点相等后，修改指针指向后，本轮循环就完成了。不能往后移动指针，因为当前节点还要和修改指针后的下一个节点比较，只有不想等时才移动指针
+            head.next = head.next.next;
+          } else {
+            head = head.next; // 后移指针
+          }
+        }
+
+        return _head; // 返回头节点
+      };
+    </script>
+  </body>
+</html>
