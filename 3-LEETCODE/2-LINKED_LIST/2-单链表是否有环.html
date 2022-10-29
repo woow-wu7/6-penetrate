@@ -28,6 +28,33 @@
       //  - https://juejin.cn/post/6885621824067993613
       //  - https://www.bilibili.com/video/BV1kf4y1u7oA/?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
 
+      // 方法1
+      // - 方法1比方法二好，因为方法1 ( 和判断环的入口 ) 更接近
+      var hasCycle = function (head) {
+        if (head === null || head.next === null) return false; // 空链表，单节点链表，一定没有环
+
+        let fast = head; // 快指针
+        let slow = head; // 慢指针
+
+        // 快指针的两次移动位置都不能是null，如果是null，表示可以遍历完，则一定是单链表
+        while (fast.next !== null && fast.next.next !== null) {
+          fast = fast.next.next; // 快指针移动 2步
+          slow = slow.next; // 慢指针移动 1步
+
+          if (fast === slow) {
+            // 相遇，则有环
+            return true;
+          }
+        }
+
+        // 指针指向null，则说明可以被遍历完，一定是单链表，没有环
+        return false;
+      };
+
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // 方法2
       const hasCircle = (head) => {
         // 边界，如果传入的链表是空，或者快慢指针不存在，则不是环
         // 注意：该边界判断一定要写字在最前面，不然 slow 和 fast 可能取不到值而报错
