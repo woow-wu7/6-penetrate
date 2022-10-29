@@ -42,6 +42,10 @@
           head = head.next;
         }
 
+        // 排序 - 升序，sort改变原数组
+        // 扩展: sort 和 toSorted 的区别
+        // 扩展: toSorted() toReverse() toSpliced()
+        // 扩展: vue 原型上重写的7种方法，都会改变原数组，push pop shift unshift splice reverse sort
         arr.sort((a, b) => a - b);
 
         let dummy = (list = new ListNode(null)); // 虚拟节点

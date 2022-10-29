@@ -13,7 +13,8 @@
 
       // - 注意点:
       //  - 是二叉树
-      //  - invert 反转的意思
+      //  - invert 反转的意思 ------- 强调数量
+      //  - reverse 反转的意思 ------ 强调方向
 
       /**
        * Definition for a binary tree node.
@@ -29,12 +30,12 @@
        */
 
       var invertTree = function (root) {
-        function reverse(element) {
-          if (!element) return; // 递归结束条件
+        function reverse(node) {
+          if (!node) return; // 递归结束条件
 
-          [element.left, element.right] = [element.right, element.left]; // 翻转
-          reverse(element.left); // 左递归
-          reverse(element.right);
+          [node.left, node.right] = [node.right, node.left]; // 翻转
+          reverse(node.left); // 左递归
+          reverse(node.right);
         }
 
         reverse(root);

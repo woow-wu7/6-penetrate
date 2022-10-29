@@ -29,7 +29,9 @@
       //  - https://www.bilibili.com/video/BV1kf4y1u7oA/?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
 
       const hasCircle = (head) => {
-        if (!head || !head.next || !head.next.next) return false; // 边界，如果传入的链表是空，或者快慢指针不存在，则不是环
+        // 边界，如果传入的链表是空，或者快慢指针不存在，则不是环
+        // 注意：该边界判断一定要写字在最前面，不然 slow 和 fast 可能取不到值而报错
+        if (!head || !head.next || !head.next.next) return false;
 
         let slow = head.next; // 慢指针，1步
         let fast = head.next.next; // 快指针，2步
