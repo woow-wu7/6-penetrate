@@ -8,8 +8,10 @@
   </head>
   <body>
     <script>
-      // 插入排序
-      // 记忆方式：打牌
+      // 插入排序 - insert sort
+
+      // 类比: 打牌
+
       // 过程
       // 1. 将数组看成两个部分，一个有序数组(升序，则从后往前便利；降序则相反)，和一个无序数组
       // 2. 有序数组 起始长度为 1
@@ -18,21 +20,18 @@
       // 5. 当有序数组循环比较完后，j+1 的位置就是 ( 无序数组中拿出来的值需要插入到有序数组中的位置 )
       // 6. 重复以上步骤
 
-      const arr = [1, 5, 4, 2, 3, 9, 8, 6, 7];
+      const arr = [1, 9, 4, 3, 8, 6, 5, 2, 7, 7, 7];
 
-      const insertSort = (arr) => {
+      function insertSort(arr) {
+        // 无序数组 i 从 1 开始
+        // 无序数组 0 - i-1
         for (let i = 1; i < arr.length; i++) {
-          // 1
-          // i 表示后面的无序数组
-          // 因为我们设有序数组的初始速度是1，所以无序数组从1开始
-
           const cache = arr[i];
-          let j = i - 1;
+          let j = i - 1; // 有序数组末尾
 
+          // 有序 - 后往前遍历
           while (j >= 0 && arr[j] > cache) {
-            // 从后往前遍历有序数组
-            // 如果 arr[j] > cache 则
-            arr[j + 1] = arr[j];
+            arr[j + 1] = arr[j]; // 后移
             j--;
           }
 
@@ -40,7 +39,7 @@
         }
 
         return arr;
-      };
+      }
 
       const res = insertSort(arr);
       console.log("res: ", res);

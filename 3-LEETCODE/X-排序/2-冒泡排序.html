@@ -8,7 +8,9 @@
   </head>
   <body>
     <script>
-      // 冒泡排序 bubble sort
+      // bubble sort 冒泡排序
+
+      // 本项目/2-FRONTEND/JS/1-handwrite/4-sort/4-bubble-sort.html
 
       // 原理
       // 两层循环
@@ -21,38 +23,35 @@
       // - 第一趟，得到最大值，并冒泡到数组末尾，下一趟比较时，不用再比较最后一个值，因为它是最大值
       // - 第二趟，得到第二大的值，并冒泡到数组倒数第二的位置，下一趟比较时，不用再比较倒数两个成员，因为他们最大了
 
-      const arr = [1, 5, 4, 2, 3, 9, 8, 6, 7];
+      let outCount = 0;
+      let inCount = 0;
+      const arr = [1, 9, 4, 3, 8, 6, 5, 2, 7, 7, 7];
 
-      let out_count = 0;
-      let in_count = 0;
+      function bubbleSort(arr) {
+        const len = arr.length;
 
-      const bubbleSort = (arr) => {
-        for (let i = 0; i < arr.length - 1; i++) {
-          // 趟数 = 数组长度 - 1
-          out_count++;
+        for (let i = 0; i < len; i++) {
+          outCount++;
           let isSortOk = true;
 
-          for (let j = 0; j < arr.length - 1 - i; j++) {
-            // 每趟比较的次数 = 总趟数 - 当前趟数
-            in_count++;
-
+          for (let j = 0; j < len - i; j++) {
+            inCount++;
             if (arr[j] > arr[j + 1]) {
-              // 冒泡
-              isSortOk = false;
               [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+              isSortOk = false;
             }
           }
 
-          if (isSortOk) break;
+          if (isSortOk) break; // 已经排好序，结束整个循环 即 结束外层循环
         }
 
         return arr;
-      };
+      }
 
       const res = bubbleSort(arr);
       console.log("res: ", res);
-      console.log("out_count", out_count);
-      console.log("in_count", in_count);
+      console.log("outCount", outCount);
+      console.log("inCount", inCount);
     </script>
   </body>
 </html>

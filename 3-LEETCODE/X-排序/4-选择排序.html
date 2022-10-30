@@ -8,7 +8,7 @@
   </head>
   <body>
     <script>
-      // selection_sort 选择排序
+      // 选择排序 select sort
 
       // 原理：
       // 1. 选取数组第一个元素（min），和余下的（数组Y）元素一一做对比（j），如果 j < min，则互换位置，直到Y循环完毕
@@ -17,27 +17,24 @@
       // 链接
       // https://juejin.cn/post/6907145602400780296#heading-16
 
-      const arr = [1, 6, 4, 2, 5, 3, 9, 8, 7, 7];
-      const selectSort = (arr) => {
-        for (let i = 0; i < arr.length; i++) {
-          // i 拿出来比较的位置
+      const arr = [1, 9, 4, 3, 8, 6, 5, 2, 7, 7, 7];
+
+      function selectSort(arr) {
+        const len = arr.length;
+
+        for (let i = 0; i < len; i++) {
           let min = i;
 
-          for (let j = i + 1; j < arr.length; j++) {
-            // 剩余数组，j 余下的位置
-            if (arr[j] < arr[min]) {
-              // 剩余数组成员 依次和 最小值位置 做对比，谁小就交换位置，该趟的最小值被交换到第一个成员位置
-              min = j; // 将较小值的位置，动态的赋值给min，即min永远是该趟的最小值的位置
-            }
+          // 记录本轮较小值 位置
+          for (let j = i + 1; j < len; j++) {
+            if (arr[j] < arr[min]) min = j;
           }
 
-          // 把当前拿出来比较的元素位置 和 最小值的位置 交换
-          // 交换位置对应的值，每趟找到最小元素位置后，都和本趟第一个元素交换位置
           [arr[i], arr[min]] = [arr[min], arr[i]];
         }
 
         return arr;
-      };
+      }
 
       const res = selectSort(arr);
       console.log("res: ", res);
