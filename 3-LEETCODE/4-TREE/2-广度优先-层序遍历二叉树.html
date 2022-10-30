@@ -64,13 +64,11 @@
         const res = [];
 
         while (queue.length) {
-          for (let i = 0; i < queue.length; i++) {
-            const node = queue.shift();
-            if (node.val) res.push(node.val);
+          const node = queue.shift();
 
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
-          }
+          if (node.val) res.push(node.val);
+          if (node.left) queue.push(node.left);
+          if (node.right) queue.push(node.right);
         }
 
         return res;
