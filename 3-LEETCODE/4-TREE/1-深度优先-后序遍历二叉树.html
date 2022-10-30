@@ -8,21 +8,15 @@
   </head>
   <body>
     <script>
-      // 144. 二叉树的前序遍历
+      // 145. 二叉树的后序遍历
 
-      // 二叉树 - 前序遍历
-      // - 前序遍历: 指的是 ( 根左右 ) 的遍历方式
-      // - traversal 是遍历的意思
+      // leetcode
+      // https://leetcode.cn/problems/binary-tree-postorder-traversal/
 
       // - preorder 前序 --------- 根左右
       // - inorder 中序 ---------- 左根右
       // - postorder 后序 -------- 左右根
       // - 都是深度优先遍历 DFS - Depth First Search
-
-      // - 链接图解 https://blog.csdn.net/My_Jobs/article/details/43451187
-
-      // leetcode
-      // https://leetcode.cn/problems/binary-tree-preorder-traversal/
 
       /**
        * Definition for a binary tree node.
@@ -36,21 +30,22 @@
        * @param {TreeNode} root
        * @return {number[]}
        */
-      var preorderTraversal = function (root) {
-        const result = [];
 
-        function preorderTraversalFn(root) {
-          // 递归结束的条件是，根节点存在
-          if (root) {
-            result.push(root.val);
-            preorderTraversalFn(root.left); // 遍历左子树，递归进行
-            preorderTraversalFn(root.right); // 遍历右子树
+      var postorderTraversal = function (root) {
+        const res = [];
+
+        // 深度优先 - 后序遍历 - 左右根
+        function traversal(node) {
+          if (node) {
+            traversal(node.left);
+            traversal(node.right);
+            res.push(node.val);
           }
         }
 
-        preorderTraversalFn(root);
+        traversal(root);
 
-        return result;
+        return res;
       };
     </script>
   </body>
