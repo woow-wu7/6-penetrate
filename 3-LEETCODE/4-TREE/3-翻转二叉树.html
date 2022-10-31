@@ -33,6 +33,8 @@
         function reverse(node) {
           if (!node) return; // 递归结束条件
 
+          // DFS - 深度优先遍历
+          // 前序遍历 - 根左右
           [node.left, node.right] = [node.right, node.left]; // 翻转
           reverse(node.left); // 左递归
           reverse(node.right);
