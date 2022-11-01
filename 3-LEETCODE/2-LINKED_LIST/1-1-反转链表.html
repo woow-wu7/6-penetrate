@@ -9,6 +9,7 @@
   <body>
     <script>
       // 反转链表
+      // 剑指 Offer II 024. 反转链表
 
       // 1
       // 扩展
@@ -33,6 +34,14 @@
       // 输出：[]
       // ---
 
+      // leetcode
+      // https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/
+
+      // 3
+      // 对比
+      // 92. 反转链表 II
+      // https://leetcode.cn/problems/reverse-linked-list-ii/
+
       /**
        * Definition for singly-linked list.
        * function ListNode(val, next) {
@@ -44,10 +53,12 @@
        * @param {ListNode} head
        * @return {ListNode}
        */
+
       var reverseList = function (head) {
         // if (!head) return null;
         // if (!head.next) return head;
-        if (!head || !head.next) return head; // 边界，等价于上面两句代码
+        // if (!head || !head.next) return head; // 边界，等价于上面两句代码
+        // 注意: 上面三个判断都不需要，因为下面有判断 cur 是否存在，( cur.next 可以不存在, 因为后面赋值给 cur，cur会判断是否存在 )
 
         let [pre, cur] = [null, head];
         // 声明两个变量

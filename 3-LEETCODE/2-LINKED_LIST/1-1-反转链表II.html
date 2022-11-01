@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 92. 反转链表 II
+
+      /**
+       * Definition for singly-linked list.
+       * function ListNode(val, next) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.next = (next===undefined ? null : next)
+       * }
+       */
+      /**
+       * @param {ListNode} head
+       * @param {number} left
+       * @param {number} right
+       * @return {ListNode}
+       */
+
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // 方法1
+      var reverseBetween = function (head, left, right) {
+        let [pre, cur] = [null, head];
+
+        // 1
+        // 移动 cur 到 left 位置，并保证 pre 在 cur 的前一个位置
+        // 注意下标 left 是从 1 开始，不是 0
+        for (let i = 0; i < left - 1; i++) {
+          pre = cur;
+          cur = cur.next;
+        }
+
+        // 2
+        // 我们还要保存(占位) pre 和 cur 的位置，因为最后反转完，需要链接 ( 反转部分 ) 的 ( 前面 )和 ( 后面 ) 的指针
+        // 这里不需要在变化，所以用 const
+        const pre2 = pre;
+        const cur2 = cur;
+
+        // 3
+        // 遍历 left 到 right 之间的次数
+        // 反转
+        for (let i = left - 1; i < right; i++) {
+          const temp = cur.next;
+          cur.next = pre;
+          pre = cur;
+          cur = temp;
+        }
+
+        // 最后修改 pre 和 cur 的指针，链接整个链表
+        // 两种情况
+        // 1. 如果 left = 1，那么 pre 就是 null
+        // 2. 如果 left > 1, 那么 pre 就不为空
+        if (left > 1) {
+          pre2.next = pre; // AA ----> pre2 指向 反转后的那部分的头节点
+        } else {
+          head = pre; // left=1 时，反转后的头节点就是整个链表的头节点
+        }
+        cur2.next = cur; // BB ---------> 反转后的那部分的尾节点 指向 后面的部分
+
+        return head;
+      };
+
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // 方法2
+      // - 借助数组 一般最好不要借助其他数据结构
+      var reverseBetween = function (head, left, right) {
+        if (!head || !head.next) return head; // 边界
+
+        // 数组搜集 val
+        const arr = [];
+        while (head) {
+          arr.push(head.val);
+          head = head.next;
+        }
+
+        // 反转 left - right
+        let reversedArr = [];
+        const leftArr = [];
+        const rightArr = [];
+        const middleArr = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (i < left - 1) {
+            leftArr.push(arr[i]);
+          } else if (i > right - 1) {
+            rightArr.push(arr[i]);
+          } else {
+            middleArr.push(arr[i]);
+          }
+        }
+        middleArr.reverse();
+        reversedArr = reversedArr.concat(leftArr, middleArr, rightArr);
+
+        // 新链表组装
+        const dummy = (list = new ListNode(null));
+        for (let i = 0; i < reversedArr.length; i++) {
+          list.next = new ListNode(reversedArr[i]);
+          list = list.next;
+        }
+
+        return dummy.next;
+      };
+    </script>
+  </body>
+</html>
