@@ -35,6 +35,30 @@
        * @param {ListNode} head
        * @return {ListNode}
        */
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // 方法1
+      // 快慢指针
+      // - 原理：fast指针一次两步，slow指针一次一步，当fast遍历到末尾时，slow就是中间位置
+      var middleNode = function (head) {
+        let fast = head;
+        let slow = head;
+
+        // 奇数: fast遍历完指向了 fast === null
+        // 偶数长度: fast遍历完 fast.next === null
+        // 所以: 循环结束条件 fast !== null && fast.next !== null
+        while (fast && fast.next) {
+          fast = fast.next.next;
+          slow = slow.next;
+        }
+
+        return slow;
+      };
+
+      // 方法 2
+      // 1. 遍历统计 len
+      // 2. 遍历找到中间节点
       var middleNode = function (head) {
         let temp = head;
         let length = 0;
