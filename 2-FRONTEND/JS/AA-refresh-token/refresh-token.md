@@ -27,7 +27,7 @@
 ```
 1.
 问题: 当  Access Token 过期，一般一个页面会请求多个接口，这样每个接口都调用一遍刷新token，即 ( 存在并发请求 )
-期望: 我们希望的是如果token过期了，我们只调用一次刷新token接口]
+期望: 我们希望的是如果token过期了，我们只调用一次刷新token的接口
 解决:
   - 锁 和 队列
     - 锁: 利用一个标志位 isRefreshing = false; 表示是否正在刷新 Access Token
@@ -83,10 +83,12 @@ export const processResponse = (response: any, axiosInstance: any) => {
       if (!authStr) {
         router.push("/login");
       } else {
-        // 是否正在刷新操作
-        // - 不是就先放进队列，再进入进行refresh在请求
+        // 是否正在刷新操作？
+        // - 不是就先放进队列，再进行refresh在请求
         // - 是就直接放进队列
         if (!isRefreshing) {
+          isRefreshing = true
+
           // 1. ---------------------------------------------------------- 登录过期，从新进行业务请求的请求函数 放进队列
           addHandler(async () => {
             const res = await axiosInstance(config); // 从新请求
@@ -108,8 +110,11 @@ export const processResponse = (response: any, axiosInstance: any) => {
             })
             .catch((err) => {
               if (err.response.status == 400) {
-                router.push("/login");
+                router.push("/login"); // refresh-token 也过期了，则重新登录
               }
+            })
+            .finally(() => {
+              isRefreshing = false
             });
         } else {
           addHandler(async () => {
