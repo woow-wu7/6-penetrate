@@ -16,6 +16,9 @@
       //  - invert 反转的意思 ------- 强调数量
       //  - reverse 反转的意思 ------ 强调方向
 
+      // leetcode
+      // https://leetcode.cn/problems/invert-binary-tree/
+
       /**
        * Definition for a binary tree node.
        * function TreeNode(val, left, right) {
@@ -31,7 +34,7 @@
 
       var invertTree = function (root) {
         function reverse(node) {
-          if (!node) return; // 递归结束条件
+          if (!node) return node; // 递归结束条件
 
           // DFS - 深度优先遍历
           // 前序遍历 - 根左右
