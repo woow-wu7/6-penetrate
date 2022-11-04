@@ -64,11 +64,11 @@
 
         for (let i = 1; i < row; i++) {
           for (let j = 1; j < col; j++) {
-            dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+            dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j]; // 转台转移方程
           }
         }
 
-        return dp[row - 1][col - 1];
+        return dp[row - 1][col - 1]; // 返回最右下角的值
       };
 
       // ------------------------------------------------------------
