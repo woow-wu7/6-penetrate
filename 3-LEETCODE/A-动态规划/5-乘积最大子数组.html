@@ -45,6 +45,7 @@
         let min = nums[0];
 
         for (let i = 1; i < nums.length; i++) {
+          // 因为这里是 dp_min[i-1]，所以 currentMin 可以放在 currentMax 后面求值
           const currentMax = Math.max(
             dp_max[i - 1] * nums[i],
             dp_min[i - 1] * nums[i],
