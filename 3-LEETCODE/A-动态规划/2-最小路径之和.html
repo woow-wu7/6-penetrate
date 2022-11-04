@@ -19,7 +19,7 @@
       // 给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
       // 说明：一个机器人每次只能向下或者向右移动一步。
 
-      // 链接
+      // leetcode
       // https://leetcode.cn/problems/0i0mDW/
 
       // 动态规划 思路
@@ -47,9 +47,9 @@
         const col = grid[0].length; // 总列数
         // 初始化dp m*n；
         // dp[i][j] 表示的是 ( 左上角00位置 ) 到 ( 当前ij位置 ) 的 ( 最小路径和 )
-        const dp = new Array(row).fill(0).map((row) => new Array(col).fill(0));
+        const dp = new Array(row).fill(0).map(() => []);
 
-        // 特殊情况
+        // 特殊情况 - 最左上角的最小路径和就是 grid[0][0]本身
         dp[0][0] = grid[0][0];
 
         // 每一行的第一列，这里 ( 除去了第0行第0列的情况，因为上面已经处理了 dp[0][0] = grid[0][0] )
