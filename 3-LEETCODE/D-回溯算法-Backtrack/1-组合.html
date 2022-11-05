@@ -48,8 +48,8 @@
         const result = []; // 最终的结果
         const path = []; // 每一层的组合结果，当 path === k 时，就是回溯树的叶子节点，此时正好path.length === k，完成收集
 
-        // backtrack
-        // - 回溯递归函数
+        // backtrack - 回溯递归函数
+        // - 回溯算法都可以抽象为 ( 回溯二叉树 )
         // - 参数: startIndex 每层遍历的开始位置，也表示每层递归都要+1
         // - backtrack: 是回溯的意思
         function backtrack(startIndex) {
