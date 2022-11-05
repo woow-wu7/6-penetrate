@@ -42,7 +42,7 @@
       // 3. 所以我们只需要判断 s+s.include(goal) 即可
 
       var rotateString = function (s, goal) {
-        if (s.length !== goal.length) return false;
+        if (s.length !== goal.length) return false; // 两个串长度不相等，直接返回 false
 
         const all = s + s;
         return all.includes(goal);
