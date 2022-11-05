@@ -32,6 +32,10 @@
       // 输入：s1 = "abcd", s2 = "dcba"
       // 输出：false
 
+      // 对比
+      // 1790. 仅执行一次字符串交换能否使两个字符串相等 https://leetcode.cn/problems/check-if-one-string-swap-can-make-strings-equal/
+      // 859. 亲密字符串 https://leetcode.cn/problems/buddy-strings/
+
       /**
        * @param {string} s1
        * @param {string} s2
@@ -54,8 +58,13 @@
           if (s1[i] !== s2[i]) cache.push(i); // 收集同一位置字符不相等的位置
         }
 
-        if (cache.length !== 2) return false; // 只能是两个位置的字符不相等，不然一次交换后两个串不可能相等
+        // 1
+        // cache.length 不为2
+        // 只能是两个位置的字符不相等，不然一次交换后两个串不可能相等
+        if (cache.length !== 2) return false;
 
+        // 2
+        // cache.length 等于2，再做以下判断
         // 如果两个串的交叉位置字符相等的话，就返回true
         // 交叉相等
         return s1[cache[0]] === s2[cache[1]] && s1[cache[1]] === s2[cache[0]];
