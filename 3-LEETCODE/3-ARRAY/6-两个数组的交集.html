@@ -26,7 +26,19 @@
 
       // intersection 是交集的意思
 
+      // 1
       var intersection = function (nums1, nums2) {
+        const _nums1 = [...new Set(nums1)];
+        const _nums2 = [...new Set(nums2)];
+        const res = [];
+        for (let i = 0; i < _nums1.length; i++) {
+          if (_nums2.includes(_nums1[i])) res.push(_nums1[i]);
+        }
+        return res;
+      };
+
+      // 2
+      var intersection2 = function (nums1, nums2) {
         const len1 = nums1.length;
         const len2 = nums2.length;
         const res = [];
