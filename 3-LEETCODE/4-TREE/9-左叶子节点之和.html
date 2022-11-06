@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 404. 左叶子之和
+
+      // 输入: root = [3,9,20,null,null,15,7]
+      // 输出: 24
+      // 解释: 在这个二叉树中，有两个左叶子，分别是 9 和 15，所以返回 24
+
+      //  输入: root = [1]
+      // 输出: 0
+
+      // leetcode
+      // https://leetcode.cn/problems/sum-of-left-leaves/
+
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val, left, right) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.left = (left===undefined ? null : left)
+       *     this.right = (right===undefined ? null : right)
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @return {number}
+       */
+
+      // DFS - 前序遍历
+      var sumOfLeftLeaves = function (root) {
+        let sum = 0; // 收集左叶子节点和
+
+        function dfs(node) {
+          if (node === null) return; // 递归结束条件
+
+          // 在父节点位置判断是否是 ( 左叶子节点 )
+          // - 左节点存在，并且是叶子节点
+          if (
+            node.left &&
+            node.left.left === null &&
+            node.left.right === null
+          ) {
+            sum = sum + node.left.val;
+          }
+
+          // DFS - preorder traversal 前序遍历
+          dfs(node.left);
+          dfs(node.right);
+        }
+
+        dfs(root);
+
+        return sum;
+      };
+    </script>
+  </body>
+</html>
