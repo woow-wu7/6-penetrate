@@ -40,6 +40,7 @@
        */
       var isValid = function (s) {
         const stack = []; // push pop
+
         for (let i = 0, len = s.length; i < len; i++) {
           // push
           if (s[i] === "(" || s[i] === "[" || s[i] === "{") {
@@ -56,7 +57,9 @@
             stack.pop();
           }
 
-          // 不满足上面两种情况，比如一上来就是 ) ] }
+          // 不满足上面两种情况，就是false
+          // - 比如一上来就是 ) ] }
+          // - 比如 (])
           else {
             return false;
           }

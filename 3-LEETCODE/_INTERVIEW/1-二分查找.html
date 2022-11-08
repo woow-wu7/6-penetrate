@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 给定一个有序(非降序)数组A，可能含有重复元素，求最小的i使得A[i]等于target，不存在则返回-1
+      // 注意重复数字
+
+      // array =[1,2,3,5,6,7,7,10]
+      // target = 7，return 5
+      // target = 8, return -1
+
+      const arr = [1, 2, 3, 5, 6, 7, 7, 7, 7, 10];
+      function search(arr, target) {
+        let left = 0;
+        let right = arr.length - 1;
+
+        while (left <= right) {
+          const pivot = Math.floor(left + (right - left) / 2);
+
+          if (arr[pivot] === target) {
+            // 注意：可能含重复数组
+            // 所以: 这里找到了当前位置，还要重新找到相等值的第一个出现的位置
+            return arr.findIndex((v) => v === arr[pivot]);
+          }
+          if (arr[pivot] > target) right = pivot - 1;
+          if (arr[pivot] < target) left = pivot + 1;
+        }
+
+        return -1;
+      }
+
+      const res = search(arr, 7);
+      console.log("res: ", res);
+    </script>
+  </body>
+</html>
