@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 剑指 Offer 04. 二维数组中的查找
+
+      // 题目
+      // 在一个 n * m 的二维数组中，每一行都按照从左到右 非递减 的顺序排序，每一列都按照从上到下 非递减 的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
+
+      // 示例:
+      // 现有矩阵 matrix 如下：
+      // [
+      //   [1,   4,  7, 11, 15],
+      //   [2,   5,  8, 12, 19],
+      //   [3,   6,  9, 16, 22],
+      //   [10, 13, 14, 17, 24],
+      //   [18, 21, 23, 26, 30]
+      // ]
+      // 给定 target = 5，返回 true。
+      // 给定 target = 20，返回 false。
+
+      // leetcode
+      // https://leetcode.cn/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/?favorite=xb9nqhhg
+
+      // 思路
+      // - 1. 二维数组是有序的，即 ( 向右递增 ) 和 ( 向下递增 )
+      // - 2. 如果是从 ( 左上，右下 ) 作为基准点，都没法做到判断方向 -- 比如 ( 大于左上的可以向右，也可以向下 )
+      // - 3. 所以我们选择 ( 左下 和 右上 ) 作为基准点 -------------- 比如 ( 小于左下的往上，大于左下的往右 )
+
+      /**
+       * @param {number[][]} matrix
+       * @param {number} target
+       * @return {boolean}
+       */
+      var findNumberIn2DArray = function (matrix, target) {
+        // 边界: row 或者 col 不存在，返回false
+        if (!matrix.length || !matrix[0].length) return false;
+
+        let row = matrix.length;
+        let col = matrix[0].length;
+
+        // 注意
+        // matrix[i][j] 正好是各个矩阵的右上角
+        let i = 0; // i表示row，从0开始，只会增
+        let j = col - 1; // j表示col，从col-1开始，只会减
+
+        while (i <= row - 1 && j >= 0) {
+          const rt = matrix[i][j]; // 每次缩小范围后的右上角
+          if (target === rt) return true;
+          if (target > rt) i++;
+          if (target < rt) j--;
+        }
+
+        return false;
+      };
+    </script>
+  </body>
+</html>
