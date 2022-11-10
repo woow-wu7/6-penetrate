@@ -36,8 +36,6 @@
 
         const result = [];
 
-        inorderTraversaFn(root);
-
         // 问题：这里为什么要再声明一个函数，而不直接使用inorderTraversal
         // 回答：因为要使 result 不被重复声明，类似充当一个闭包变量或者全局变量
         // 实现：整体思路和前序遍历的实现一样
@@ -48,6 +46,8 @@
             inorderTraversaFn(root.right); // 右子树的递归
           }
         }
+
+        inorderTraversaFn(root);
 
         return result;
       };

@@ -76,6 +76,7 @@
           if (!result[level]) result[level] = [];
           result[level].push(target.val);
 
+          // 注意，这里 target.left 一定要做判断，不然会无限 push，然后无限 while，死循环
           if (target.left) queue.push({ ...target.left, level: level + 1 }); // 添加
           if (target.right) queue.push({ ...target.right, level: level + 1 });
         }
