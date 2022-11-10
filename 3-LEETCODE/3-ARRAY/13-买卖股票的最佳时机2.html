@@ -45,6 +45,12 @@
        * @param {number[]} prices
        * @return {number}
        */
+
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // 1
+      // 贪心算法
       var maxProfit = function (prices) {
         let profit = 0; // 总利润
 
@@ -52,6 +58,36 @@
           if (prices[i] > prices[i - 1]) {
             profit = profit + prices[i] - prices[i - 1]; // 每天的利润
           }
+        }
+
+        return profit;
+      };
+
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // 2
+      var maxProfit = function (prices) {
+        let profit = 0;
+        let valley = prices[0]; // 山谷
+        let peak = prices[0]; // 山顶
+
+        let i = 1;
+        while (i < prices.length) {
+          // 降
+          while (i < prices.length && prices[i] <= prices[i - 1]) {
+            i++;
+          }
+          valley = prices[i - 1];
+
+          // 升
+          while (i < prices.length && prices[i] > prices[i - 1]) {
+            i++;
+          }
+          peak = prices[i - 1];
+
+          // 计算利润
+          profit = profit + (peak - valley);
         }
 
         return profit;

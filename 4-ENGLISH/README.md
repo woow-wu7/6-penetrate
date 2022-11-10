@@ -13,6 +13,9 @@ carousel 旋转木马 轮播图
 anonymous 匿名的
 dummy 虚假的，虚拟的，假的
 profit 利润
+
+valley 山谷
+peak 山顶
 ```
 
 ### CSS 相关
