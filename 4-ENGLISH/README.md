@@ -18,6 +18,16 @@ valley 山谷
 peak 山顶
 ```
 
+```
+responsible 负责
+assemble 组装 收集
+bury 埋葬
+structure 结构
+laid off 下岗
+privilege 荣幸
+culture 文化
+```
+
 ### CSS 相关
 
 ```

@@ -28,7 +28,38 @@
     - forceUpdate: getDerivedStateFromProps  render getSnapshotBeforeUpdate componentDidUpdate
 ```
 
-# (二) Diff 算法
+# (二) react 中的原生事件和合成事件
+
+```
+1
+问题: 原生事件 和 合成事件 的执行顺序?
+回答: 先执行原生事件，后执行合成事件
+原因: 因为原生事件在目标节点上直接触发，而合成事件需要从目标节点冒泡到document对象上才会触发
+
+
+2
+问题: 原生事件 和 合成事件 阻止冒泡 的相互影响影响？
+回答:
+- 原生事件
+  - 在原生事件中，e.stopPropagation阻止冒泡，会影响合成事件
+  - 因为为原生事件中使用 e.stopPropagation() 后，事件不会冒泡的 document，所以也就触发不了 document 上绑定的合成事件
+- 合成事件
+  - 在合成事件中，e.stopPropagation阻止冒泡，不会影响原生事件
+
+3
+问题: 如何在合成事件中获取原生的 ( 事件对象 )
+回答: e.nativeEvent
+注意点:
+  - 描述: e.nativeEvent.stopPropagation() 阻止冒泡时，不但不能阻止原生事件的冒泡，连合成事件的冒泡也不能阻止
+  - 原因: 执行这段代码的时候，原生事件早就执行完了，因为合成需要冒泡到document上，而又没有去阻止合成事件的冒泡，合成事件的阻止是在变量对象上，即e,而不是e.nativeEvent
+
+4
+自理
+- 合成事件: react 合成事件，是代理到 document 对象
+- 资料 https://juejin.cn/post/6903805279483297805
+```
+
+# (三) Diff 算法
 
 - 传统算法的复杂度 ` O(n^3)`，其中 n 是节点数
 - `diff` 算法可以把复杂度降低到 `O(n)`
