@@ -33,7 +33,7 @@
 
         while (left < right) {
           // 先移动left，奇数则不用处理，因为奇数在前面，直到left是偶数时停住
-          if ((nums[left] & 1) === 1) {
+          if ((nums[left] & 1) === 1) { /
             left++;
             continue;
           }
