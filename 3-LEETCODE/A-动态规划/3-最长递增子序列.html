@@ -16,28 +16,41 @@
       // 子序列 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。
 
       // 2
-      // 链接 https://leetcode.cn/problems/longest-increasing-subsequence/
+      // leetcode
+      // https://leetcode.cn/problems/longest-increasing-subsequence/
 
       /**
        * @param {number[]} nums
        * @return {number}
        */
 
+      // 思路
+      // - 动态规划
+
+      // 对比
+      // 300. 最长递增子序列  https://leetcode.cn/problems/longest-increasing-subsequence/
+      // 674. 最长连续递增序列 https://leetcode.cn/problems/longest-continuous-increasing-subsequence/
+
       var lengthOfLIS = function (nums) {
         // dp
-        // dp[i]: 表示 nums数组中以 i 结尾的 最长递增子序列的长度
-        // fill(1): 是因为每个位置的初始长度是 1
+        // dp[i]: 表示 nums数组中以 i 结尾的 最长递增子序列的 ( 长度 )
+        // fill(1): 是因为每个位置的初始长度是 1，即本身占一个长度
         const dp = new Array(nums.length).fill(1);
 
         // max: 表示最终返回的 最长递增子序列的长度
+        // max 的初始值是1，因为如果只有一个元素时，最长递增子序列的长度就是1，其实就是相当于做了判断，if(nums.length === 1) return 1
         let max = 1;
+        // let max = 1 等价于下面两句
+        // - let max = 0
+        // - if (nums.length === 1) return 1
 
         for (let i = 0; i < nums.length; i++) {
+          // j < i 表示的是 i 位置之前的所有位置的 最长递增子序列
           for (let j = 0; j < i; j++) {
-            // j < i 表示的是 i 位置之前的所有位置的 最长递增子序列
             // 遍历，找到 ( 每个位置最长递增子序列长度的较大值 + 1 = 当前位置的最长递增子序列长度 )
             if (nums[j] < nums[i]) {
-              // 是递增，所以取小于的
+              // 这里只找比当前值小的，才能构成递增序列
+              // dp[i] 不断的在迭代，初始值是1，目的就是找到 ( i位置的最长递增子序列长度 )
               dp[i] = Math.max(dp[j] + 1, dp[i]);
             }
           }

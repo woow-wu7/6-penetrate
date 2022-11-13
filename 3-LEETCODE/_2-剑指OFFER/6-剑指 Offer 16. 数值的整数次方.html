@@ -39,6 +39,10 @@
       // - 快速幂
       // Math.pow(2, 10) ===  Math.pow(2*2, 5) ===  2 * Math.pow(2*2, 4)
 
+      // 扩展
+      // - 如果是遍历n次，那么时间复杂度就是 O(n)
+      // - 这里使用 ( 快速幂 )，时间复杂度则是 O(logn)
+
       var myPow = function (x, n) {
         if (n === 0) return 1; // 任何数的0次方，是1
         if (n === 1) return x; // 任何数的1次方，是自己

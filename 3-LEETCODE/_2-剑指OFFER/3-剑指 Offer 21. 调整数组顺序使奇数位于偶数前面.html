@@ -22,7 +22,8 @@
       // https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/
 
       // 考察点
-      // - 位运算与操作符 & 的应用 -- 判断奇偶 (  a & 1 )，效率 ( a & 1 === a%2 ) & 高
+      // - 位运算与操作符 & 的应用 -- 判断奇偶 (  a & 1 )
+      // - (a&1) === a%2
       // - 奇前偶后
       //    - 所以 left 遇到奇数，继续往后，直到遇到偶数停住，等待交换
       //    - 所以 right 遇到偶数，继续往后，知道遇到奇数停住，等待交换
@@ -33,7 +34,7 @@
 
         while (left < right) {
           // 先移动left，奇数则不用处理，因为奇数在前面，直到left是偶数时停住
-          if ((nums[left] & 1) === 1) { /
+          if ((nums[left] & 1) === 1) {
             left++;
             continue;
           }
