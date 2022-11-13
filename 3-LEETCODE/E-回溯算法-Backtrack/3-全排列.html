@@ -52,6 +52,11 @@
           }
         }
       ```*/
+
+      // 3
+      // 回溯算法
+      // - 排列 组合 子集 切割 棋盘
+
       var permute = function (nums) {
         const res = [];
 
@@ -62,7 +67,7 @@
           // 1 递归结束条件 收集结果
           if (path.length === nums.length) {
             // 递归结束条件: 抽象为树后，在叶子节点收集结果，也就是 ( 树的深度===nums.length ) 时
-            res.push([...path]); // 收集结果，这里作前拷贝，防止引用出错
+            res.push([...path]); // 收集结果，这里作浅拷贝，防止引用出错
             return;
           }
 
