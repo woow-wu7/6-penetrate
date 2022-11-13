@@ -42,18 +42,19 @@
 
       // postorder 后续 左右根
       var verifyPostorder = function (postorder) {
-        if (postorder.length <= 2) return true; // 递归结束条件
+        if (postorder.length <= 1) return true; // 递归结束条件
+        // if (postorder.length <= 2) return true; // 递归结束条件
 
         const root = postorder.at(-1); // 根节点 - 就是数组最后一个节点
-        const index = postorder.findIndex((v) => v > root); // 左右子树的 - 边界
+        const pivot = postorder.findIndex((v) => v > root); // 左右子树的 - 边界
 
-        const left = postorder.slice(0, index); // 左子树
-        const right = postorder.slice(index, -1); // 右子树，注意不包含根节点
+        const left = postorder.slice(0, pivot); // 左子树
+        const right = postorder.slice(pivot, -1); // 右子树，注意不包含根节点
 
-        // 右子树 和 根节点 的最小值，一定是根节点
-        // 问题: 为什么我们只判断 根和右子树 呢？
+        // 右子树所有节点 都要小于 根节点
+        // 问题: 为什么我们只判断 右子树 呢？
         // 回答: 因为左子树我们在找的过程中，index已经满足前面的都小于root了，而右边却不一定满足，不满足就false
-        if (Math.min(root, ...right) !== root) return false;
+        if (Math.min(...right) <= root) return false;
 
         return verifyPostorder(left) && verifyPostorder(right); // 递归遍历左右子树，都需要同时满足以上的判断
       };
