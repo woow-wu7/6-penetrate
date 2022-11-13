@@ -51,6 +51,11 @@
        * @param {TreeNode} q
        * @return {TreeNode}
        */
+
+      // 对比
+      // 236. 二叉树的最近公共祖先 -------------------- ( 二叉树 ) https://leetcode.cn/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/
+      // 剑指 Offer 68 - I. 二叉搜索树的最近公共祖先 --- ( 二叉搜索树 ) https://leetcode.cn/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/
+
       var lowestCommonAncestor = function (root, p, q) {
         // const path = [];
         // const stack = []; // 后进先出 push pop
@@ -77,25 +82,25 @@
         // 1
         // 边界2
         // - 特殊情况的处理，q,p其中一个就是root，直接是父子关系
-        // 子树树根是p q任意节点，则直接返回。
-        // 因为父节点不可能跑到pq的子节点里找，并且一个节点的父节点可以是该节点本身
-        // 所以p和q各自的最近父节点就是其本身。
-        // 只找到任意一个就可以返回的原因是，若剩下的节点在子树中，那最小公共父节点就是当前节点
+        // - 这里为什么直接返回 root，因为两种情况
+        //    - 1. p是root(某次递归的根节点)，q是root的子树中的任意节点，最近公共公共祖先就是 root
+        //    - 2. p是root(某次递归的根节点)，但是q不在p的同一侧，则是另一种情况，即直接返回root的情况
+        //    - 所以无论哪种情况，都是包含在了代码中
         if (root == p || root == q) return root;
 
         // 否则就分别在左右子树找目标节点pq。
         const left = lowestCommonAncestor(root.left, p, q);
         const right = lowestCommonAncestor(root.right, p, q);
 
-        // 寻找的结果会存在三种情况：pq都在左子树/pq都在右子树/pq分别在左子树和右子树
-        // 左子树不包含pq节点，说明pq都在右子树
+        // 寻找的结果会存在三种情况：pq都在左子树 / pq都在右子树 / pq分别在左子树和右子树
+        // 左子树不包含pq节点，就回返回null，说明pq都在右子树
         // 则返回右子树，继续递归
         if (left == null) return right;
 
         // 右子树不包含pq节点，说明pq都在左子树
         if (right == null) return left;
 
-        // 一边找到一个目标节点，该节点就是最近公共祖先
+        // 左右子树，一边找到一个目标节点，该节点就是最近公共祖先
         // 能到这一步说明左右子树都找到了目标节点，说明pq分别在左子树和右子树，当前根节点就是pq共同最近父节点
         return root;
       };
