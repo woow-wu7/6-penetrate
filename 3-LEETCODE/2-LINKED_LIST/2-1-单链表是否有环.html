@@ -31,13 +31,15 @@
       // 方法1
       // - 方法1比方法二好，因为方法1 ( 和判断环的入口 ) 更接近
       var hasCycle = function (head) {
-        if (head === null || head.next === null) return false; // 空链表，单节点链表，一定没有环
+        // if (head === null || head.next === null) return false; // 空链表，单节点链表，一定没有环
+        // while (fast && fast.next && fast.next.next) 这样判断也可以，这样就不用上面这个 if 判断了
 
         let fast = head; // 快指针
         let slow = head; // 慢指针
 
         // 快指针的两次移动位置都不能是null，如果是null，表示可以遍历完，则一定是单链表
-        while (fast.next !== null && fast.next.next !== null) {
+        // while (fast.next !== null && fast.next.next !== null) {
+        while (fast !== null && fast.next !== null && fast.next.next !== null) {
           fast = fast.next.next; // 快指针移动 2步
           slow = slow.next; // 慢指针移动 1步
 

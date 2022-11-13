@@ -46,19 +46,20 @@
        * @return {ListNode}
        */
       var detectCycle = function (head) {
-        if (head === null || head.next === null) return null; // 空链表，单节点链表都不是环
+        // if (head === null || head.next === null) return null; // 空链表，单节点链表都不是环
 
         let fast = head;
         let slow = head;
 
         let hasCircle = false; // 标志位 - 是否有环
-        while (fast.next !== null && fast.next.next !== null) {
+        // while (fast.next !== null && fast.next.next !== null) { // 如果要这样写，上面的if就要加上
+        while (fast !== null && fast.next !== null && fast.next.next !== null) {
           fast = fast.next.next;
           slow = slow.next;
 
           if (fast === slow) {
             hasCircle = true;
-            break;
+            break; // 注意: 这里一定要break掉，因为如果有环，就回死循环了
           }
         }
 
