@@ -59,6 +59,7 @@
         if (!right && left) return left + 1;
 
         // 都存在 和 都不存在 都包含在了下面的情况中
+        // - 后续遍历 左右根
         return Math.min(left, right) + 1;
       };
 
