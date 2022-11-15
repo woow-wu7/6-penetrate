@@ -12,15 +12,12 @@
       // - 实现方式和二叉树的最大深度一样，至少需要遍历所有分支
 
       var maxDepth = function (root) {
-        function recursive(root) {
-          if (!root) return 0; // root不存在
+        if (!root) return 0; // root不存在
 
-          if (!root.children || !root.children.length) return 1; // root存在，但是children不存在
+        const children = root.children;
+        if (!children || !children.length) return 1; // root存在，但是children不存在，或者children是空数组
 
-          return Math.max(...root.children.map((item) => maxDepth(item))) + 1;
-        }
-
-        return recursive(root);
+        return Math.max(...children.map((item) => maxDepth(item))) + 1;
       };
     </script>
   </body>
