@@ -16,6 +16,8 @@ profit 利润
 
 valley 山谷
 peak 山顶
+
+diameter 直径
 ```
 
 ```
