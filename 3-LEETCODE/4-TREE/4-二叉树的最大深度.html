@@ -50,7 +50,26 @@
       // 【3】
       // Math.max(recursive(root.left), recursive(root.right)) + 1 --> Math.max(1, 2) + 1 --> 3
 
+      // leetcode
+      // 二叉树的深度 和 二叉树的最大深度 是一样的
+      // 104. 二叉树的最大深度 https://leetcode.cn/problems/maximum-depth-of-binary-tree/
+      // 剑指 Offer 55 - I. 二叉树的深度 https://leetcode.cn/problems/er-cha-shu-de-shen-du-lcof/
+
+      // 高度: 下到上
+      // 深度: 上到下
+
+      // DFS - 后序遍历postorder
       var maxDepth = function (root) {
+        if (!root) return 0;
+
+        const left = maxDepth(root.left); // 左
+        const right = maxDepth(root.right); // 右
+
+        return Math.max(left, right) + 1; // 根
+        // 整个是左右根-后续遍历
+      };
+
+      var maxDepth2 = function (root) {
         function recursive(root) {
           if (!root) return 0; // 递归结束的条件，返回值
 
