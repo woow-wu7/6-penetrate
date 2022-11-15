@@ -57,23 +57,6 @@
       // 剑指 Offer 68 - I. 二叉搜索树的最近公共祖先 --- ( 二叉搜索树 ) https://leetcode.cn/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/
 
       var lowestCommonAncestor = function (root, p, q) {
-        // const path = [];
-        // const stack = []; // 后进先出 push pop
-        // const getPath = (node, target, stack, path) => {
-        //   if (root === null) return;
-
-        //   stack.push(stack);
-        //   // 1 找到了
-        //   if (node.val === target.val) {
-        //     path = stack;
-        //     return;
-        //   }
-        //   // 2 没找到，继续往下递归
-        //   getPath(node.left, target, stack, path);
-        //   getPath(node.right, target, stack, path);
-        //   stack.pop();
-        // };
-
         // 1
         // 边界1
         // 如果树为空，或者递归超过了叶子节点，则返回空
