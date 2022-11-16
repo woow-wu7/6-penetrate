@@ -18,6 +18,11 @@ valley 山谷
 peak 山顶
 
 diameter 直径
+
+sum 和
+difference 差
+produce 积
+quotient 商
 ```
 
 ```
