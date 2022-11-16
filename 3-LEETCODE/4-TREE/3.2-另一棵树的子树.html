@@ -58,7 +58,7 @@
         if (!root) return false; // 11. root都不存在，直接false
         if (isSame(root, subRoot)) return true; // 22. 两颗树相同返回true
 
-        // 33. root 和 suRoot 都存在，并且不相等，继续缩小范围来判断是否相等
+        // 33. root 和 suRoot 都存在，并且不相同，继续缩小范围来判断两颗树是否相同
         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot); // 是否是子树，子需要一边满足即可 ||
       };
     </script>
