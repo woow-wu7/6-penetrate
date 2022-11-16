@@ -49,6 +49,9 @@
 
       // 注意审题: 是搜索二叉树
 
+      // 对比
+      // 都用到了 ( 二叉搜索树的中序遍历 ) - ( 二叉搜索树的最小绝对值 ) ( 二叉搜索数的第K大节点 )
+
       // 思路1
       // - 1. 二叉搜索树的 ( 中序遍历 ) 可以得到一个 ( 递增 ) 集合
       // - 2. ( 递增序列 ) 的 ( 最小差值绝对值 ) 一定是 ( 两两比较的差值-的绝对值 ) 得出
@@ -58,9 +61,8 @@
       // - 改进: 我们可以在中序遍历树的同时，进行相邻节点的比较 ( 双指针 pre cur )
 
       // 方法1
-
       var getMinimumDifference = function (root) {
-        let result = Infinity; // 结果，最小差值的绝对值
+        let result = Infinity; // 结果，最小差值的绝对值 - 中序遍历，保证递增序列，则最小差值一定是在 ( 相邻的两个节点差值 ) 中产生
         let pre = null; // 指针
 
         // 中序遍历，保证是升序
@@ -72,7 +74,7 @@
               // 刚开始第一个叶子节点时，pre是null，不会进入，而是直接 pre = cur，进行下一次遍历
               result = Math.min(result, Math.abs(cur.val - pre.val));
             }
-            pre = cur;
+            pre = cur; // 中，移动指针
             inorder(cur.right); // 右
           }
         }
