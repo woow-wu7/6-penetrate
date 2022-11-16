@@ -33,17 +33,13 @@
        */
 
       var invertTree = function (root) {
-        function reverse(node) {
-          if (!node) return node; // 递归结束条件
+        if (!root) return root; // 递归结束条件
 
-          // DFS - 深度优先遍历
-          // 前序遍历 - 根左右
-          [node.left, node.right] = [node.right, node.left]; // 翻转
-          reverse(node.left); // 左递归
-          reverse(node.right);
-        }
-
-        reverse(root);
+        // DFS - 深度优先遍历
+        // 前序遍历 - 根左右
+        [root.left, root.right] = [root.right, root.left]; // 翻转
+        reverse(root.left); // 左递归
+        reverse(root.right);
 
         return root;
       };

@@ -14,14 +14,6 @@
       // 给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。
       // 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
 
-      // leetcode
-      // https://leetcode.cn/problems/same-tree/
-
-      // 对比
-      // - 101. 对称二叉树 https://leetcode.cn/problems/symmetric-tree/
-      // - 100. 相同的树 https://leetcode.cn/problems/same-tree/
-      // - 两个思路基本相同
-
       /**
        * Definition for a binary tree node.
        * function TreeNode(val, left, right) {
@@ -35,18 +27,27 @@
        * @param {TreeNode} q
        * @return {boolean}
        */
+
+      // leetcode
+      // https://leetcode.cn/problems/same-tree/
+
+      // 对比
+      // - 101. 对称二叉树 https://leetcode.cn/problems/symmetric-tree/
+      // - 100. 相同的树 https://leetcode.cn/problems/same-tree/
+      // - 两个思路基本相同
+
+      // 对比
+      // - 100. 相同的树 https://leetcode.cn/problems/same-tree/
+      // - 572. 另一棵树的子树 https://leetcode.cn/problems/subtree-of-another-tree/
+
       var isSameTree = function (p, q) {
-        function check(p, q) {
-          if (p && !q) return false;
-          if (!p && q) return false;
-          if (!p && !q) return true;
+        if (p && !q) return false;
+        if (!p && q) return false;
+        if (!p && !q) return true;
 
-          // 以下就是q和p都存在的情况
-          if (p.val !== q.val) return false; // p和q都存在，但不相等
-          return check(p.left, q.left) && check(p.right, q.right); // p和q都存在，且相等，就递归
-        }
-
-        return check(p, q);
+        // 以下就是q和p都存在的情况
+        if (p.val !== q.val) return false; // p和q都存在，但不相等
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right); // p和q都存在，且相等，就递归
       };
     </script>
   </body>
