@@ -46,9 +46,26 @@
        * @param {TreeNode} root
        * @return {number}
        */
-      var countNodes = function (root) {
-        let count = 0;
 
+      // 方法1
+      var countNodes = function (root) {
+        if (!root) return 0; // 递归结束条件
+
+        const left = countNodes(root.left); // 左边节点的数量
+        const right = countNodes(root.right);
+
+        return left + right + 1; // 左子树节点 + 右子树节点 + 根节点
+
+        // 注意：这里的返回值类型很重要
+        //  - 请对比 ( 二叉树的最大深度 ) ( 二叉树的最小深度 ) ( N叉树的最大深度 ) ( 二叉树的直径 ) ( 平衡二叉树 )
+      };
+
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // ------------------------------------------------------------------------------------------
+      // 方法2
+      var countNodes2 = function (root) {
+        let count = 0;
         // 遍历二叉树 - DFS - 前序遍历 - preorderTraversal
         function preorderTraversal(node) {
           if (!node) return;
@@ -56,9 +73,7 @@
           preorderTraversal(node.left);
           preorderTraversal(node.right);
         }
-
         preorderTraversal(root);
-
         return count;
       };
     </script>
