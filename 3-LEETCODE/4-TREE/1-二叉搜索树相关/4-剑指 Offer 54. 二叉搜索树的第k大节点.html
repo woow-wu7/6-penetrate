@@ -57,6 +57,9 @@
       // 对比
       // 都用到了 ( 二叉搜索树的中序遍历 ) - ( 二叉搜索树的最小绝对值 ) ( 二叉搜索数的第K大节点 )
 
+      // 二叉搜索树的第k大节点 - inorder 右根左 ------- https://leetcode.cn/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/
+      // 二叉搜索树中第K小的元素 - inorder 左根右 ----- https://leetcode.cn/problems/kth-smallest-element-in-a-bst/
+
       var kthLargest = function (root, k) {
         // 中序遍历的修改 ( 左根右 ) -> ( 右根左 ) -> 因为是求 ( 第k大节点 )
         let res = 0;
