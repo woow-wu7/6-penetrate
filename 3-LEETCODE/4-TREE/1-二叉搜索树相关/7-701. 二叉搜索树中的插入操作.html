@@ -48,6 +48,7 @@
       // - ( 二叉搜索树 ) 的 ( 插入 ) 操作，都是可以是插入到 ( 叶子节点 )
 
       var insertIntoBST = function (root, val) {
+        // 当遍历到叶子节点时，直接向上返回需要插入的节点
         if (!root) return new TreeNode(val);
 
         if (val < root.val) root.left = insertIntoBST(root.left, val);

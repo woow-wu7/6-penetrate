@@ -9,6 +9,7 @@
   <body>
     <script>
       // 572. 另一棵树的子树
+      // 剑指 Offer 26. 树的子结构
 
       // 题目
       // 给你两棵二叉树 root 和 subRoot 。检验 root 中是否包含和 subRoot 具有相同结构和节点值的子树。如果存在，返回 true ；否则，返回 false 。
@@ -41,7 +42,25 @@
 
       // 对比
       // - 100. 相同的树 https://leetcode.cn/problems/same-tree/
-      // - 572. 另一棵树的子树 https://leetcode.cn/problems/subtree-of-another-tree/
+      // - ( 子树 ) ---- 572. 另一棵树的子树 https://leetcode.cn/problems/subtree-of-another-tree/
+      // - ( 子结构 ) -- 剑指 Offer 26. 树的子结构 https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/
+
+      // 注意
+      // - 子结构 vs 子树
+      // - 下面的是 ( 子结构 ) 而不是 ( 子树 )
+      // 给定的树s:
+      //     3
+      //     / \
+      //   4   5
+      //   / \
+      // 1   2
+      //     /
+      //   0
+      // 给定的树t:
+      //   4
+      //   / \
+      // 1   2
+
       var isSubtree = function (root, subRoot) {
         // 1
         // isSame 检查两颗树是否相同
