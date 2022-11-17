@@ -20,7 +20,7 @@
       // 方法1
       // 动态规划
       var longestPalindrome = function (s) {
-        if (s.length === 1) return s;
+        // if (s.length === 1) return s; // 这个边界条件可以不要，也可以写提前return，避免一些计算
 
         const len = s.length;
         let res = s[0];
