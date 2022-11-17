@@ -104,7 +104,7 @@
       var isSubStructure = function (A, B) {
         function isInclude(A, B) {
           // if (!B) return true; // 只要B不存在，不管A存不存在，都是true，因为 ( A存在，则A还有剩余，必然包含 )，( A不存在，A和B两颗树相同 )
-          if (A && !B) return true;
+          if (A && !B) return true; // !!!!!!!!!!! 和判断是否是子树，只有这里不同 !!!!!!!!!!!
           if (!A && B) return false;
           if (!A && !B) return true;
           if (A.val !== B.val) return false; // AB都存在，但根不等
