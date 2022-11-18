@@ -38,6 +38,12 @@
       // ------------------------------------------------------------------------------------------
       // ------------------------------------------------------------------------------------------
       // ------------------------------------------------------------------------------------------
+
+      // 对比
+      // 108. 将有序数组转换为二叉搜索树  https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/
+      // 109. 有序链表转换二叉搜索树 https://leetcode.cn/problems/convert-sorted-list-to-binary-search-tree/
+      // 876. 链表的中间结点 https://leetcode.cn/problems/middle-of-the-linked-list/
+
       // 方法1
       // 快慢指针
       // - 原理：fast指针一次两步，slow指针一次一步，当fast遍历到末尾时，slow就是中间位置
@@ -45,7 +51,7 @@
         let fast = head;
         let slow = head;
 
-        // 奇数: fast遍历完指向了 fast === null
+        // 奇数长度: fast遍历完指向了 fast === null
         // 偶数长度: fast遍历完 fast.next === null
         // 所以: 循环结束条件 fast !== null && fast.next !== null
         while (fast && fast.next) {
