@@ -69,7 +69,7 @@
       // 方法1
       var sortedListToBST = function (head) {
         if (!head) return null;
-        if (!head.next) return new TreeNode(head.val);
+        if (!head.next) return new TreeNode(head.val); // 以上是边界
 
         let fast = head;
         let slow = head;
