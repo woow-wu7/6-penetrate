@@ -9,6 +9,8 @@
   <body>
     <script>
       // 530. 二叉搜索树的最小绝对差
+      // 783. 二叉搜索树节点最小距离
+      // - 这两题的代码都是一样的，题意也是一样的
 
       // 题目
       // 给你一个二叉搜索树的根节点 root ，返回 树中任意两不同节点值之间的最小差值 。
@@ -23,7 +25,8 @@
       // 输出：1
 
       // leetcode
-      // https://leetcode.cn/problems/minimum-absolute-difference-in-bst/
+      // 530. 二叉搜索树的最小绝对差 https://leetcode.cn/problems/minimum-absolute-difference-in-bst/
+      // 783. 二叉搜索树节点最小距离 https://leetcode.cn/problems/minimum-distance-between-bst-nodes/
 
       /**
        * Definition for a binary tree node.
@@ -70,10 +73,11 @@
           if (cur) {
             inorder(cur.left); // 左
             // 中
-            if (pre) {
-              // 刚开始第一个叶子节点时，pre是null，不会进入，而是直接 pre = cur，进行下一次遍历
-              result = Math.min(result, Math.abs(cur.val - pre.val));
-            }
+            // 刚开始第一个叶子节点时，pre是null，不会进入，而是直接 pre = cur，进行下一次遍历
+
+            if (pre) result = Math.min(result, Math.abs(cur.val - pre.val));
+            // if (pre && Math.abs(root.val - pre.val) < min) min = Math.abs(root.val - pre.val); // 上面这两种判断和写法都是可以的
+
             pre = cur; // 中，移动指针
             inorder(cur.right); // 右
           }
