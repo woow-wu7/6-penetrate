@@ -73,7 +73,7 @@
 
         let fast = head;
         let slow = head;
-        let prev = head; // 主要用来断掉中间节点的前半部份链表，对象是引用关系，修改相互影响
+        let prev = head; // 主要用来 ( 断掉链表 - 断掉中间节点 ) 的前半部份链表，对象是引用关系，修改相互影响
 
         // 快慢指针寻找链表中间节点，当快指针是 (奇数长度时fast===null，偶数长度时fast.next===null)，慢指针就是中间节点
         while (fast && fast.next) {
