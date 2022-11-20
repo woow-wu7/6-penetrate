@@ -9,7 +9,20 @@
   <body>
     <script>
       // 反转链表
+      // 206. 反转链表
       // 剑指 Offer II 024. 反转链表
+
+      /**
+       * Definition for singly-linked list.
+       * function ListNode(val, next) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.next = (next===undefined ? null : next)
+       * }
+       */
+      /**
+       * @param {ListNode} head
+       * @return {ListNode}
+       */
 
       // 1
       // 扩展
@@ -37,22 +50,9 @@
       // leetcode
       // https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/
 
-      // 3
       // 对比
-      // 92. 反转链表 II
-      // https://leetcode.cn/problems/reverse-linked-list-ii/
-
-      /**
-       * Definition for singly-linked list.
-       * function ListNode(val, next) {
-       *     this.val = (val===undefined ? 0 : val)
-       *     this.next = (next===undefined ? null : next)
-       * }
-       */
-      /**
-       * @param {ListNode} head
-       * @return {ListNode}
-       */
+      // 92. 反转链表 II  https://leetcode.cn/problems/reverse-linked-list-ii/
+      // 206. 反转链表 https://leetcode.cn/problems/reverse-linked-list/
 
       var reverseList = function (head) {
         // if (!head) return null;
@@ -62,16 +62,19 @@
 
         let [pre, cur] = [null, head];
         // 声明两个变量
-        // pre 用来标记正序链表的头节点
-        // cur 当前正序的正在处理的节点
+        // pre: 当前正在遍历的节点的前一个节点，初始时是 null
+        // cur: 当前正在遍历的节点，初始时时 head
 
-        // 如果当前节点存在
+        // 如果当前节点存在，即不存在时结束遍历
         while (cur) {
-          const temp = cur.next; // 用来缓存当前正序的下一个节点，因为之后会去修改cur，就不知道下一个节点是指向谁了，所以先缓存起来
+          const temp = cur.next; // 用来缓存当前正序的下一个节点，因为之后会去修改cur指向pre，链表就断开了，就不知道下一个节点是指向谁了，所以先缓存起来
 
           cur.next = pre; // 反转链表，指向反转链表的头节点 ( 即将当前节点的指针指向上一个节点 )
 
           // 以下是反转链表后的处理，即 ( 往后移动指针 )，进行下一次遍历
+          // 注意:
+          // - 顺序: 这里必须 ( 先后移pre，再后移cur )
+          // - 因为: 如果先后移cur，pre就找不到移动前的cur了
           pre = cur; // 反转链表的头节点就是cur，当前的pre就是上一次的cur
           cur = temp; // 正序的链表指针向后移，进行下一轮处理
         }

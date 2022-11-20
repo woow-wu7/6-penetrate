@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+var reorderList = function(head) {
+    let dummy = list = new ListNode(null)
+    let res = []
+    let res2 = []
+
+    while(head) {
+        res.push(head.val)
+        head = head.next
+    }
+
+    let left = 0
+    let right = res.length - 1
+    
+    while(left <= right) {
+        res2.push(res[left], res[right])
+        left++;
+        right--;
+    }
+
+    console.log(res2)
+    for(let i =0; i < res2.length; i++) {
+        list.next = new ListNode(res2[i])
+        list = list.next
+    }
+
+    return dummy
+};
+  </script>
+</body>
+</html>
