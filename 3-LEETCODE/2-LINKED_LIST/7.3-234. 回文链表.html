@@ -85,7 +85,10 @@
 
         // 3
         // pre 和 head 两个链表是否相等
-        while (head) {
+        // - 当链表长度是 ( 奇数 ) 的情况下，分割的两个链表长度不相等，以短的为主即可，即 head && pre
+        // - 当链表长度是 ( 偶数 ) 的情况下，分割的两个链表长度相等，while 的条件 head 或 pre 都可以
+        // - 综上 while 的条件是 head && pre
+        while (head && pre) {
           if (head.val === pre.val) {
             head = head.next;
             pre = pre.next;

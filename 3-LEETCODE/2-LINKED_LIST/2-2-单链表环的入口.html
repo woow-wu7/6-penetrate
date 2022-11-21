@@ -9,6 +9,7 @@
   <body>
     <script>
       // 142. 环形链表 II
+      // 剑指 Offer II 022. 链表中环的入口节点
 
       // 给定一个链表的头节点  head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
       // 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。
@@ -26,13 +27,6 @@
       // 输出：返回 null
       // 解释：链表中没有环。
 
-      // 思路
-      // 1. 先判断是否有环
-      // 2. 如果有环，则将 ( 快指针放到头部，然后快慢指针都同时向后一步一步走，相遇点就是环的入口 ) ---- 弗洛伊德算法
-
-      // leetcode
-      // https://leetcode.cn/problems/linked-list-cycle-ii/
-
       /**
        * Definition for singly-linked list.
        * function ListNode(val) {
@@ -45,6 +39,18 @@
        * @param {ListNode} head
        * @return {ListNode}
        */
+
+      // leetcode
+      // https://leetcode.cn/problems/linked-list-cycle-ii/
+
+      // 对比
+      // - 剑指 Offer II 022. 链表中环的入口节点  https://leetcode.cn/problems/linked-list-cycle-ii/
+      // - 160. 相交链表 https://leetcode.cn/problems/intersection-of-two-linked-lists/
+
+      // 思路
+      // 1. 先判断是否有环
+      // 2. 如果有环，则将 ( 快指针放到头部，然后快慢指针都同时向后一步一步走，相遇点就是环的入口 ) ---- 弗洛伊德算法
+
       var detectCycle = function (head) {
         // if (head === null || head.next === null) return null; // 空链表，单节点链表都不是环
 

@@ -38,7 +38,11 @@
         let slow = head; // 慢指针
 
         // 快指针的两次移动位置都不能是null，如果是null，表示可以遍历完，则一定是单链表
-        // while (fast.next !== null && fast.next.next !== null) {
+        // 比如:
+        // - [] ---------------- 返回false，此时 fast === null
+        // - [1] --------------- 返回false，此时 fast.next === null
+        // - 所以其实子需要  while (fast !== null && fast.next !== null ) 就可以了，因为在下一轮循环时相当于 fast !== nul
+        // - 我们用了  while (fast !== null && fast.next !== null && fast.next.next !== null) 这样也可以的
         while (fast !== null && fast.next !== null && fast.next.next !== null) {
           fast = fast.next.next; // 快指针移动 2步
           slow = slow.next; // 慢指针移动 1步
