@@ -27,21 +27,33 @@
        * @param {ListNode} head
        * @return {ListNode}
        */
+
+      // 对比
+      // ( 删除一个节点 ) 剑指 Offer 18. 删除链表的节点 https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/
+      // ( 删除多个节点 ) 203. 移除链表元素 https://leetcode.cn/problems/remove-linked-list-elements/
+      // ( 存在重复的节点，就删除重复的靠后的节点 ) 83. 删除排序链表中的重复元素 https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
+      // ( 删除倒数第N个节点 - 滑动窗口 )  19. 删除链表的倒数第 N 个结点 https://leetcode.cn/problems/remove-nth-node-from-end-of-list/
+
+      // 注意
+      // - 本题不需要借助 dummy 节点，可以直接从head节点开始遍历
+
       var deleteDuplicates = function (head) {
-        if (!head || !head.next) return head; // 边界 - 空链表，只有一个节点的链表
+        if (!head) return head; // 边界 - 空链表，只有一个节点的链表
 
-        let _head = head; // 缓存头节点
+        let list = head; // 缓存头节点
 
-        while (head && head.next) {
-          if (head.val === head.next.val) {
-            // 注意：这里 两个节点相等后，修改指针指向后，本轮循环就完成了。不能往后移动指针，因为当前节点还要和修改指针后的下一个节点比较，只有不想等时才移动指针
-            head.next = head.next.next;
+        while (list.next) {
+          if (list.val === head.next.val) {
+            // 注意：
+            // - 这里 两个节点相等后，修改指针指向后，本轮循环就完成了。
+            // - 不能往后移动指针，因为当前节点还要和修改指针后的下一个节点比较，只有不想等时才移动指针
+            list.next = list.next.next;
           } else {
-            head = head.next; // 后移指针
+            list = list.next; // 后移指针
           }
         }
 
-        return _head; // 返回头节点
+        return head; // 返回头节点
       };
     </script>
   </body>
