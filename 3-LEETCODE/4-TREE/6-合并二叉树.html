@@ -24,16 +24,6 @@
       // 输入：root1 = [1], root2 = [1,2]
       // 输出：[2,2]
 
-      // leetcode
-      // https://leetcode.cn/problems/merge-two-binary-trees/
-
-      // 思路
-      // 1. 选取 root1 作为要合并后的操作树
-      //    - 当然也可以新建一棵全新的树，只不过那样要额外的空间
-      //    - 我们直接修改 root1
-      // 2. 深度优先遍历 - 前序遍历
-      // 3. 左右子树同步
-
       /**
        * Definition for a binary tree node.
        * function TreeNode(val, left, right) {
@@ -47,6 +37,22 @@
        * @param {TreeNode} root2
        * @return {TreeNode}
        */
+
+      // leetcode
+      // https://leetcode.cn/problems/merge-two-binary-trees/
+
+      // 对比
+      // 88. 合并两个有序数组 https://leetcode.cn/problems/merge-sorted-array/
+      // 617. 合并二叉树 https://leetcode.cn/problems/merge-two-binary-trees/
+      // 25. 合并两个排序的链表 https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/
+
+      // 思路
+      // 1. 选取 root1 作为要合并后的操作树
+      //    - 当然也可以新建一棵全新的树，只不过那样要额外的空间
+      //    - 我们直接修改 root1
+      // 2. 深度优先遍历 - 前序遍历
+      // 3. 左右子树同步
+
       var mergeTrees = function (root1, root2) {
         // 递归结束条件
         if (!root1) return root2;
