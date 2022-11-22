@@ -92,7 +92,7 @@
             let pre = dummy;
 
             // 因为: 这里用 pre.next 是为了拿到比cur节点大的前一个节点，进行插入
-            // 如果: 使用 pre，找到了比cur的节点，需要插入该节点的前面，就拿不到前面的节点了
+            // 如果: 使用 pre，找到了比cur大的节点，需要插入该节点的前面，来保证有序升序，就拿不到前面的节点了
             while (pre.next.val <= cur.val) {
               pre = pre.next;
             }
