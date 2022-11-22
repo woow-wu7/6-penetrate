@@ -43,9 +43,14 @@
       // leetcode
       // https://leetcode.cn/problems/rotate-list/submissions/
 
+      // 对比
+      // 61. 旋转链表 https://leetcode.cn/problems/rotate-list/submissions/
+      // 189. 轮转数组 https://leetcode.cn/problems/rotate-array/?favorite=2ckc81c
+      // 剑指 Offer 11. 旋转数组的最小数字 https://leetcode.cn/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
+
       // 思路 1
-      // - 1. 将 ( 单链表 )，转成 ( 环形链表 ) -------- 因为是 旋转链表，环可以旋转
-      // - 2. 找到分段点，即断开链表的位置 ------------- n - k%n
+      // - 1. 将 ( 单链表 )，转成 ( 环形链表 ) -------- 因为是 旋转链表，环可以旋转，遍历结束后，将尾节点指向head形成环
+      // - 2. 找到分段点，即断开链表的位置 ------------- ( n - k%n )，即 ( len - k%len )
       // - 3. 断开链表，返回新的头节点 ---------------- 新的头节点就是分段点的next
 
       // 方法 1

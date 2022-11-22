@@ -24,18 +24,23 @@
       // 输入：numbers = [2,2,2,0,1]
       // 输出：0
 
-      // leetcode
-      // https://leetcode.cn/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
-
       /**
        * @param {number[]} numbers
        * @return {number}
        */
 
+      // leetcode
+      // https://leetcode.cn/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
+
+      // 对比
+      // 61. 旋转链表 https://leetcode.cn/problems/rotate-list/submissions/
+      // 189. 轮转数组 https://leetcode.cn/problems/rotate-array/?favorite=2ckc81c
+      // 剑指 Offer 11. 旋转数组的最小数字 https://leetcode.cn/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
+
       // 思路
       // - 因为: 原字符串是 ( 升序的 )
       // - 所以: 旋转后，如果 ( 后一个成员 < 小于前一个成员 )，说明是原字符的起点
-      // - 特殊情况: 数组旋转了一个循环，即仍然是升序的一个数组，则返回第一个成员
+      // - 特殊情况: 数组旋转了 N个循环，即仍然是升序的一个数组，这样的话for循环中的条件就不成立，因为是升序，则返回第一个成员
 
       var minArray = function (numbers) {
         for (let i = 1; i < numbers.length; i++) {

@@ -40,8 +40,8 @@
        * @return {ListNode}
        */
       var addTwoNumbers = function (l1, l2) {
-        let head = (list = new ListNode(0, null)); // 声明一个空的节点作为头节点，后者叫占位节点
-        let carry = 0; // 进位，比如 5+6 需要向前进1位
+        let dummy = (list = new ListNode(0, null)); // 声明一个空的虚拟节点作为头节点，后者叫占位节点
+        let carry = 0; // 进位，比如 5+6 需要向前进1位，( carry是进位的意思 )
 
         // 条件: 都遍历完则结束
         while (l1 || l2) {
@@ -58,11 +58,11 @@
 
           // 2
           // 处理
-          list.next = new ListNode(sum, null); // 头节点指向 两个链表头节点之和
+          list.next = new ListNode(sum, null); // 新建链表
 
           // 3
           // 移动，下一轮做准备
-          list = list.next; // 后移
+          list = list.next;
           l1 = l1 ? l1.next : l1; // l1后移，如果已经到末尾，则不在移动
           l2 = l2 ? l2.next : l2;
         }
@@ -75,7 +75,7 @@
 
         // 5
         // 返回 相加后的 头节点
-        return head.next;
+        return dummy.next;
       };
     </script>
   </body>
