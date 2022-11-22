@@ -21,17 +21,18 @@
       // 输入：nums = [1,1]
       // 输出：[2]
 
-      // leetcode
-      // https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/
-
       /**
        * @param {number[]} nums
        * @return {number[]}
        */
 
-      // ------------------------------------------------------------
-      // ------------------------------------------------------------
-      // ------------------------------------------------------------
+      // leetcode
+      // https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/
+
+      // 对比
+      // [1, n] ---- 448. 找到所有数组中消失的数字 https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/
+      // [0, n] ---- 268. 丢失的数字 https://leetcode.cn/problems/missing-number/
+
       // 方法 1
       // - 标记
       // - 原地标记，把出现过的数字打上标记
@@ -47,7 +48,7 @@
         // 给 nums[i] 数字对应的 index 位置上对应的数字打上标记，( 加上-负号 )
         for (let i = 0; i < len; i++) {
           const index = Math.abs(nums[i]) - 1; // 这里因为可能已经打上标记过，即可能是负数，所以我们需要用绝对值
-          if (nums[index] > 0) nums[index] = -nums[index]; // 只对没有标记过的位置的数字做处理
+          if (nums[index] > 0) nums[index] = -nums[index]; // 只对没有标记过的位置的数字做处理，( 标记过的已经是负数了，不做处理 )
         }
 
         // loop2
@@ -66,19 +67,37 @@
       // 缺点
       // - 1. 需要借助额外的空间，res 和 arr
       var findDisappearedNumbers = function (nums) {
+        const len = nums.length;
+        const arr = new Array(len + 1).fill(0);
         const res = [];
-        const arr = new Array(nums.length).fill(0); // 统计 nums.length 长度的数字出现了几次，初始值是0
 
-        for (let i = 0; i < nums.length; i++) {
-          const index = nums[i] - 1; // 注意下标 和 数值 的关系
-          arr[index] = arr[index] ? arr[index] + 1 : 1;
+        for (let i = 0; i < len; i++) {
+          arr[nums[i]] += 1;
         }
 
-        for (let i = 0; i < arr.length; i++) {
-          if (arr[i] === 0) res.push(i + 1);
+        for (let j = 1; j < arr.length; j++) {
+          if (arr[j] == 0) {
+            res.push(j);
+          }
         }
 
         return res;
+      };
+
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      // ------------------------------------------------------------
+      var findDisappearedNumbers3 = function (nums) {
+        const len = nums.length;
+        const res = new Array(len + 1).fill(0);
+        for (let i = 0; i < len; i++) {
+          res[nums[i]] = res[nums[i]] + 1;
+        }
+        const result = [];
+        for (let i = 1; i < res.length; i++) {
+          if (res[i] === 0) result.push(i);
+        }
+        return result;
       };
     </script>
   </body>
