@@ -16,6 +16,17 @@
       // 请你将两个数相加，并以相同形式返回一个表示和的链表。
       // 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 
+      // leetcode
+      // 链表求和: https://leetcode.cn/problems/sum-lists-lcci/
+      // 两数相加: https://leetcode.cn/problems/add-two-numbers/
+
+      // 分析
+      // 1. 如果整个l1和1l遍历完，相加后，还有进位，则还要添加一个节点 val=1，next=null
+      // 2. 遍历结束的条件是 l1 和 l2 都要遍历完
+      // 3. 任意一个遍历完
+      //    - 遍历完的链表当前节点val就补上0，好相加
+      //    - 当前节点就始终是最后一个节点不变
+
       /**
        * Definition for singly-linked list.
        * function ListNode(val, next) {
@@ -28,18 +39,6 @@
        * @param {ListNode} l2
        * @return {ListNode}
        */
-
-      // leetcode
-      // 链表求和: https://leetcode.cn/problems/sum-lists-lcci/
-      // 两数相加: https://leetcode.cn/problems/add-two-numbers/
-
-      // 分析
-      // 1. 如果整个l1和1l遍历完，相加后，还有进位，则还要添加一个节点 val=1，next=null
-      // 2. 遍历结束的条件是 l1 和 l2 都要遍历完
-      // 3. 任意一个遍历完
-      //    - 遍历完的链表当前节点val就补上0，好相加
-      //    - 当前节点就始终是最后一个节点不变
-
       var addTwoNumbers = function (l1, l2) {
         let head = (list = new ListNode(0, null)); // 声明一个空的节点作为头节点，后者叫占位节点
         let carry = 0; // 进位，比如 5+6 需要向前进1位
