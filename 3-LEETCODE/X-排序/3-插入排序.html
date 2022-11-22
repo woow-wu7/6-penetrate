@@ -12,6 +12,10 @@
 
       // 类比: 打牌
 
+      // 扩展: 链表的插入排序
+      // 数组插入排序 - 本项目/3-LEETCODE/X-排序/3-插入排序.html
+      // 链表插入排序 - https://leetcode.cn/problems/insertion-sort-list/submissions/
+
       // 过程
       // 1. 将数组看成两个部分，一个有序数组(升序，则从后往前便利；降序则相反)，和一个无序数组
       // 2. 有序数组 起始长度为 1
@@ -26,7 +30,7 @@
         // 无序数组 i 从 1 开始
         // 无序数组 0 - i-1
         for (let i = 1; i < arr.length; i++) {
-          const cache = arr[i];
+          const cache = arr[i]; // 这里缓存 cache，是因为  arr[j + 1] = arr[j]; 当 j 往后移动时，可能会占据 arr[i] 的位置
           let j = i - 1; // 有序数组末尾
 
           // 有序 - 后往前遍历
@@ -35,6 +39,8 @@
             j--;
           }
 
+          // 此时的 j 是不满足 while 条件循环的最后的 j
+          // 多在纸上画画
           arr[j + 1] = cache; // 无序数组中取出比较的值，需要插入的位置
         }
 
