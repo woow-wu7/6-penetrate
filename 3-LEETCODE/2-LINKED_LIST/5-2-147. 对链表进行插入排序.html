@@ -69,7 +69,7 @@
       // 在纸上画画，画明白了，很容易记忆
 
       var insertionSortList = function (head) {
-        if (!head) return head;
+        if (!head) return head; // 边界
 
         let dummy = new ListNode();
         dummy.next = head; // 虚拟节点，next指向head，因为我们在不断操作head，需要用dummy来返回最后的头节点
@@ -81,6 +81,7 @@
         while (cur) {
           // 1
           // 有序最后的节点 < cur，本来就有序，只需要移动last即可
+          // 注意这里是可以相等的，相等的情况，也不需要移动节点，只需要移动last即可
           if (last.val <= cur.val) {
             last = last.next;
           }
@@ -97,6 +98,11 @@
             }
 
             // 插入
+            // 这里要多画画，单想很难明白
+            // 整体的逻辑是:
+            // - 1.有序链表的最后一个节点last -> 指向下一个需要插入的cur
+            // - 2.需要插入的节点cur -> 指向pre.next，即有序链表的尾节点
+            // - 3.插入位置前一个节点pre -> 指向需要插入的节点cur
             last.next = cur.next;
             cur.next = pre.next;
             pre.next = cur;
