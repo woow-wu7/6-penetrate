@@ -48,6 +48,16 @@
       // leetcode
       // https://leetcode.cn/problems/power-of-two/
 
+      // 对比
+      // 231. 2 的幂 https://leetcode.cn/problems/power-of-two/
+      // 326. 3 的幂 https://leetcode.cn/problems/power-of-three/
+      // 342. 4 的幂 https://leetcode.cn/problems/power-of-four/
+
+      // 思路
+      // - 二分法
+      // - 目前求 ( 幂 ) 都可以用 ( 二分法 ) 来决解
+      // - 比如 2的幂 3的幂 4的幂
+
       // 思路
       // - &
       // - 二分法
@@ -65,6 +75,20 @@
       // 如果是 4 8 16 的幂呢？可以用同样的方法
 
       // 1
+      // 不断 n % 2，然后缩小范围 n/2，直到 n <= 1
+      var isPowerOfTwo = function (n) {
+        if (n <= 0) return false;
+
+        while (n > 1) {
+          if (n % 2 !== 0) return false;
+
+          n = n / 2;
+        }
+
+        return true;
+      };
+
+      // 2
       // &
       var isPowerOfTwo = function (n) {
         if (n <= 0) return false;

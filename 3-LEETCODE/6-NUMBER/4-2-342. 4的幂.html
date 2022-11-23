@@ -43,7 +43,31 @@
        * @return {boolean}
        */
 
+      // 对比
+      // 231. 2 的幂 https://leetcode.cn/problems/power-of-two/
+      // 326. 3 的幂 https://leetcode.cn/problems/power-of-three/
+      // 342. 4 的幂 https://leetcode.cn/problems/power-of-four/
+
+      // 思路
+      // - 二分法
+      // - 目前求 ( 幂 ) 都可以用 ( 二分法 ) 来决解
+      // - 比如 2的幂 3的幂 4的幂
+
       // 1
+      // 不断执行 n%4，然后缩小范围 n/4，直到 n <= 1
+      var isPowerOfFour = function (n) {
+        if (n <= 0) return false;
+
+        while (n > 1) {
+          if (n % 4 !== 0) return false;
+
+          n = n / 4;
+        }
+
+        return true;
+      };
+
+      // 2
       // 二分法
       var isPowerOfFour = function (n) {
         if (n <= 0) return false;
@@ -62,7 +86,7 @@
         return false;
       };
 
-      // 2
+      // 3
       // &
       // 4的幂应该同时满足 ------ ( 2的幂 ) && ( 模3为1 )
       var isPowerOfFour = function (n) {
