@@ -105,7 +105,7 @@
 
         while (left <= right) {
           const mid = Math.floor(left + (right - left) / 2); // 防止溢出，扩展: 如果是数组长度就不需要考虑溢出问题
-          if (Math.pow(2, mid) > n) right = mid - 1;
+          if (Math.pow(2, mid) > n) right = mid - 1; // power 幂的意思
           if (Math.pow(2, mid) < n) left = mid + 1;
           if (Math.pow(2, mid) === n) {
             return true;

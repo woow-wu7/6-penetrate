@@ -78,7 +78,7 @@
         while (left <= right) {
           const mid = Math.floor(left + (right - left) / 2);
 
-          if (Math.pow(4, mid) === n) return true;
+          if (Math.pow(4, mid) === n) return true; // power 幂的意思
           if (Math.pow(4, mid) > n) right = mid - 1;
           if (Math.pow(4, mid) < n) left = mid + 1;
         }
