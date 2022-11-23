@@ -1,6 +1,10 @@
 ```
 power 力量，幂 // Math.pow(2, 3) === 2**3
 multiple 倍数
+
+swap 互换，交换
+switch 替换
+
 tail 尾
 palindromic string 回文字符串
 recursive 递归的
