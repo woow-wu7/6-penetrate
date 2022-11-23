@@ -5,6 +5,15 @@ multiple 倍数
 swap 互换，交换
 switch 替换
 
+sum 和
+difference 差
+product 积
+quotient 商
+
+positive number 正数
+negative number 负数
+remainder 余数
+
 tail 尾
 palindromic string 回文字符串
 recursive 递归的
@@ -25,11 +34,6 @@ valley 山谷
 peak 山顶
 
 diameter 直径
-
-sum 和
-difference 差
-product 积
-quotient 商
 ```
 
 ```
