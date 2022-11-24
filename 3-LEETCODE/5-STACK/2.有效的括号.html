@@ -34,6 +34,9 @@
       // - 3. 如果都满足12，但是遍历完，栈不为空，也是false
       // - 4. 如果第一个就是 ) ]，直接false
 
+      // leetcode
+      // https://leetcode.cn/problems/valid-parentheses/
+
       /**
        * @param {string} s
        * @return {boolean}
@@ -66,7 +69,8 @@
         }
 
         // 最后栈必须为空 才为 true
-        return stack.length === 0;
+        // return stack.length === 0;
+        return !stack.length;
       };
     </script>
   </body>
