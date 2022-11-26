@@ -59,6 +59,7 @@
           const remainder = abs % 10; // 余数，remainder是余数的意思
           abs = Math.floor(abs / 10); // 缩小范围，作为下一次迭代时的 输入数据
 
+          // 123 ---> 3 ---> 3*10+2===32 ---> 32*10+1===321
           res = res * 10 + remainder; // 最终结果也进行迭代，刚开始res初始值是0，第一次就是 res = remainder
         }
 
