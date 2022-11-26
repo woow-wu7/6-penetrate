@@ -18,6 +18,7 @@ tail 尾
 palindromic string 回文字符串
 recursive 递归的
 
+character 字符
 Forgery 伪造
 parasitic 继承
 regular 经常的 定期的 常客 规则的
