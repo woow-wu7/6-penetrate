@@ -30,6 +30,7 @@
       // https://leetcode.cn/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/?favorite=xb9nqhhg
 
       // 思路
+      // - 我们这里选择 topRight 右上作为基准点，小于的在right的左边，大与的在top的下边
       // - 1. 二维数组是有序的，即 ( 向右递增 ) 和 ( 向下递增 )
       // - 2. 如果是从 ( 左上，右下 ) 作为基准点，都没法做到判断方向 -- 比如 ( 大于左上的可以向右，也可以向下 )
       // - 3. 所以我们选择 ( 左下 和 右上 ) 作为基准点 -------------- 比如 ( 小于左下的往上，大于左下的往右 )
@@ -48,14 +49,15 @@
 
         // 注意
         // matrix[i][j] 正好是各个矩阵的右上角
-        let i = 0; // i表示row，从0开始，只会增
-        let j = col - 1; // j表示col，从col-1开始，只会减
+        let top = 0; // i表示row，从0开始，只会增
+        let right = col - 1; // j表示col，从col-1开始，只会减
 
-        while (i <= row - 1 && j >= 0) {
-          const rt = matrix[i][j]; // 每次缩小范围后的右上角
-          if (target === rt) return true;
-          if (target > rt) i++;
-          if (target < rt) j--;
+        // 注意边界
+        while (top <= row - 1 && right >= 0) {
+          const rightTop = matrix[top][right]; // 每次缩小范围后的右上角
+          if (target === rightTop) return true;
+          else if (target > rightTop) top++;
+          else if (target < rightTop) right--;
         }
 
         return false;
