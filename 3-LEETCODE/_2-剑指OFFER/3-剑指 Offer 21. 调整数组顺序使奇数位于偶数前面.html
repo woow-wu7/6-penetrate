@@ -22,7 +22,7 @@
       // https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/
 
       // 考察点
-      // - 位运算与操作符 & 的应用 -- 判断奇偶 (  a & 1 )
+      // - 位运算符 ( 与操作符 & ) 的应用 -- 判断奇偶 (  a & 1 )
       // - (a&1) === a%2
       // - 奇前偶后
       //    - 所以 left 遇到奇数，继续往后，直到遇到偶数停住，等待交换
@@ -39,15 +39,24 @@
             continue;
           }
           // 当 left 是偶数时，在判断right，移动right直到right是奇数
-          else {
-            if ((nums[right] & 1) === 0) {
-              right--;
-              continue;
-            }
+          // else {
+          //   if ((nums[right] & 1) === 0) {
+          //     right--;
+          //     continue;
+          //   }
+          // }
+          // 注意: 其实上面的 else 没必要写，因为 continue 后本来就不会执行 else 的部分
+
+          if ((nums[right] & 1) === 0) {
+            right--;
+            continue;
           }
 
           // left是偶数，right是奇数 时，交换
           [nums[left], nums[right]] = [nums[right], nums[left]];
+          // left++;
+          // right--;
+          // 其实上面的left++和right--可以不要，因为交换后，前面的值已经是奇数了，在if时就回后移
         }
 
         return nums;
