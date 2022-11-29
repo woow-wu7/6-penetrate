@@ -28,6 +28,12 @@
       // 输入：n = 1, k = 1
       // 输出：[[1]]
 
+      /**
+       * @param {number} n
+       * @param {number} k
+       * @return {number[][]}
+       */
+
       // leetcode
       // https://leetcode.cn/problems/combinations/
 
@@ -43,11 +49,9 @@
       // https://juejin.cn/post/7158305357884817415
       // https://xie.infoq.cn/article/d4949bec6ec20b48ad3187927
 
-      /**
-       * @param {number} n
-       * @param {number} k
-       * @return {number[][]}
-       */
+      // (单个组合 start)
+      // (多个组合 index)
+
       var combine = function (n, k) {
         const result = []; // 最终的结果
         const path = []; // 每一层的组合结果，当 path === k 时，就是回溯树的叶子节点，此时正好path.length === k，完成收集
