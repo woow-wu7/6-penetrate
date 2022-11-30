@@ -39,6 +39,9 @@
       // 对比
       // ( stack中是数组成员的 - 值 ) 496. 下一个更大元素 I https://leetcode.cn/problems/next-greater-element-i/
       // ( stack中是数组成员的 - 下标 ) 503. 下一个更大元素 II https://leetcode.cn/problems/next-greater-element-ii/
+      // - 1是两个数组，2是单个循环数组
+      // - 1stack中存value，2stack中存index
+      // - 1中stack剩余的话，值就是-1，映射到map再查找；2中stack剩余不用管了
 
       // 思路
       // - 因为是 ( 循环数组 )，所以总的遍历次数是 ( 2 * length )，即[1,2,3] -> [1,2,3,1,2,3]
@@ -47,11 +50,12 @@
       // - ( i%length ) 可以得到超出数组长度时的值，比如 [1,2,3] -> [1,2,3,1,2,3]，那么 ( arr[4] === arr[4%3]=== arr[1] )
       var nextGreaterElements = function (nums) {
         const len = nums.length;
-        const stack = [];
-        const res = new Array(len).fill(-1);
+        const stack = []; // 存下标，而不是值，因为值不知道下标是多少
+        const res = new Array(len).fill(-1); // 初始值-1，是因为找不到就是-1
 
         for (let i = 0; i < len * 2; i++) {
-          const cur = nums[i % len];
+          // 遍历长度是 2*len
+          const cur = nums[i % len]; // 因为我们没有把 nums=nums.concat(nums)，所以我们找下标对应值时，需要做偏移
           while (stack.length && cur > nums[stack.at(-1)]) {
             const index = stack.pop();
             res[index] = cur; // 说明已经找到了比 index 大的第一个元素
