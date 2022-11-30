@@ -61,7 +61,8 @@
         // 1. 如果栈本来就是空，直接push到栈中
         // 2. 当前元素 > 栈顶元素，则pop栈顶元素，并做映射 (  stack.pop() -> 当前值 )，因为可能栈中有多个元素，又因为是单调递减，所以栈中元素都小于当前元素，需要取出所有栈中的top元素，直到栈为空
         nums2.forEach((item) => {
-          while (stack.length && item > stack[stack.length - 1]) {
+          // while (stack.length && item > stack[stack.length - 1]) {
+          while (stack.length && item > stack.at(-1)) {
             const top = stack.pop();
             map.set(top, item);
           }
