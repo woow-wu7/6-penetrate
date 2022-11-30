@@ -60,16 +60,23 @@
         // nums2
         // 1. 如果栈本来就是空，直接push到栈中
         // 2. 当前元素 > 栈顶元素，则pop栈顶元素，并做映射 (  stack.pop() -> 当前值 )，因为可能栈中有多个元素，又因为是单调递减，所以栈中元素都小于当前元素，需要取出所有栈中的top元素，直到栈为空
-        for (let i = 0; i < nums2.length; i++) {
-          while (stack.length && nums2[i] > stack[stack.length - 1]) {
-            const key = stack.pop();
-            map.set(key, nums2[i]);
+        nums2.forEach((item) => {
+          while (stack.length && item > stack[stack.length - 1]) {
+            const top = stack.pop();
+            map.set(top, item);
           }
-
           // 1 栈为空 ( 刚开始为空，或 当前元素大于栈顶元素，也会清空栈，清空后stack.length===0，所以当前元素也为添加进栈 )
           // 2 当前元素 小于 栈顶元素，push进栈
-          stack.push(nums2[i]);
-        }
+          stack.push(item);
+        });
+
+        // for (let i = 0; i < nums2.length; i++) {
+        //   while (stack.length && nums2[i] > stack[stack.length - 1]) {
+        //     const key = stack.pop();
+        //     map.set(key, nums2[i]);
+        //   }
+        //   stack.push(nums2[i]);
+        // }
 
         // stack
         // 遍历完nums2，栈中有剩余，说明没有比栈中元素大的元素，则map映射为 -1
