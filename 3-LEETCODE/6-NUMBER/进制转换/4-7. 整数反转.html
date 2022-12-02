@@ -42,6 +42,8 @@
       // leetcode
       // https://leetcode.cn/problems/reverse-integer/
 
+      // 在进制转换文件夹中也记录了该题目
+
       // 思路
       // 弹出
       // - 余数: 任意整数 模 10 的值，就是个位的值 --------- 123%10 -> 3
@@ -50,20 +52,25 @@
       // - 将 2 推入 1 --------------------------------- 2*10+1
 
       var reverse = function (x) {
-        const flag = x > 0 ? 1 : -1; // 正负标记，处理时用正数，最后返回结果时还原正负
+        // const flag = x > 0 ? 1 : -1; // 正负标记，处理时用正数，最后返回结果时还原正负
+        const flag = x > 0; // true正数 false负数
+
+        let res = 0; // 最终结果，不断迭代
 
         let abs = Math.abs(x); // 处理时用正数
-        let res = 0; // 最终结果，不断迭代
 
         while (abs) {
           const remainder = abs % 10; // 余数，remainder是余数的意思
-          abs = Math.floor(abs / 10); // 缩小范围，作为下一次迭代时的 输入数据
 
           // 123 ---> 3 ---> 3*10+2===32 ---> 32*10+1===321
           res = res * 10 + remainder; // 最终结果也进行迭代，刚开始res初始值是0，第一次就是 res = remainder
+
+          // abs = Math.floor(abs / 10); // 缩小范围，作为下一次迭代时的 输入数据，最好用下面的两行代替，因为这样可以被整除，就不用 Math.floor 了
+          abs = abs - remainder;
+          abs = abs / 10;
         }
 
-        res = res * flag; // 还原正负
+        res = flag ? res : -1 * res; // 还原正负
 
         if (res < -Math.pow(2, 31) || res > Math.pow(2, 31) - 1) return 0; // 边界
 

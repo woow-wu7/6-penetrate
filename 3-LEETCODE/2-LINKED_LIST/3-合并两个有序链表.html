@@ -57,10 +57,11 @@
       var mergeTwoLists = function (list1, list2) {
         // 如果其中一个为空，就直接返回另一个链表
         // 包含了两个都为空的情况，比如都为空，list1不存在，返回list2，list2本来就是空，则相当于返回null
-        if (list1 === null) return list2;
-        if (list2 === null) return list1;
+        // if (list1 === null) return list2;
+        // if (list2 === null) return list1;
+        // 注意：上面两个条件可以不要，因为如果其中一个为空，都不会满足  while (list1 && list2)，则while不会执行，后面有对空的判断
 
-        let dummy = (list3 = new ListNode(null)); // 先生成一个空节点(链表)，val=null next=null
+        let dummy = (list = new ListNode(null)); // 先生成一个空节点(链表)，val=null next=null
         // 这里缓存一下list3的头节点，该头节点是我们自己定义的头节点，和我们最终返回的头节点不一样
         // 问题：为什么要缓存头节点呢？
         // 回答：因为list3我们在不断的重新赋值next来指向尾节点继续拼接，那么执行后指针不是在头节点了，而是尾节点；而题目说的是要返回头节点，所以需要缓存
@@ -72,14 +73,13 @@
             // 比较两个链表中的最前面的节点，取小的添加给list3链表，然后移动list3的next指针到尾节点，同时移动小的链表的指针next，继续比较list1.next.val 和 list2.val
             // 问题：为什么要移动 list3
             // 回答：因为list3中还要添加新的节点进来，必须在尾节点上的 next 指向新的节点
-            list3.next = list1;
-            list3 = list3.next; // 移动指针，较小的链表的下一个节点
+            list.next = list1;
             list1 = list1.next; // 同理
           } else {
-            list3.next = list2;
-            list3 = list3.next;
+            list.next = list2;
             list2 = list2.next;
           }
+          list= list.next;
         }
 
         // while (list1) {
