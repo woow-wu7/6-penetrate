@@ -52,8 +52,8 @@
       // - 将 2 推入 1 --------------------------------- 2*10+1
 
       var reverse = function (x) {
-        // const flag = x > 0 ? 1 : -1; // 正负标记，处理时用正数，最后返回结果时还原正负
-        const flag = x > 0; // true正数 false负数
+        // const flag = x >= 0 ? 1 : -1; // 正负标记，处理时用正数，最后返回结果时还原正负
+        const flag = x >= 0; // true正数 false负数
 
         let res = 0; // 最终结果，不断迭代
 
