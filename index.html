@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <span>
+            <div>111</div>
+            <p>222</p>
+        </span>
+        <script>
+            const aa = () => new Promise((resolve) => setTimeout(() => console.log(111), 1000));
+            const bb = () => new Promise((resolve) => setTimeout(() => console.log(2222), 2000));
+
+            function cc() {
+                console.log(3333);
+            }
+
+            function dd() {
+                console.log(4444);
+            }
+
+            const v = true;
+            const go = async (params) => {
+                if (v) {
+                    cc();
+                    // await aa();
+                } else {
+                    dd();
+                    // await bb();
+                }
+            };
+
+            go();
+        </script>
+    </body>
+</html>
