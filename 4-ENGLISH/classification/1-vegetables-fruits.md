@@ -1,13 +1,17 @@
 # vegetables and fruits
 
 ## fruits
+
 ```
 apple 苹果
+
+pear 梨
+peach 桃子
+
 banana 香蕉
 jujube 枣
-pear 梨
+
 strawberry 草莓
-peach 桃子
 blackberry 黑莓
 
 tangerine 橘子
@@ -20,10 +24,11 @@ winter melon 冬瓜
 cherry 樱桃 // cherries
 grape 葡萄
 plums 李子
+lemon 柠檬
 ```
 
-
 ## vegetables
+
 ```
 cabbage 卷心菜
 chinese cabbage 大白菜
