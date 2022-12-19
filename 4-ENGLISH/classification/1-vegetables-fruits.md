@@ -78,3 +78,11 @@ seaweed 海带
 squash 南瓜类
 pumpkin 南瓜
 ```
+
+## 三餐
+
+```
+breakfast 早餐
+lunch 午餐
+dinner 晚餐
+```
