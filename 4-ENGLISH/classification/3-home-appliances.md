@@ -6,6 +6,7 @@ freezer 冷冻柜 // 冰箱下面的冷藏柜
 
 washer 洗衣机
 dishwasher 洗碗机
+
 toaster 烤面包机
 microwave 微波炉
 
@@ -31,4 +32,6 @@ vent 排气扇
 oven 烤箱
 coffee maker 咖啡机 // coffee machine 也是咖啡机的意思，只是不常用
 coffee grinder 咖啡磨豆机
+
+laptop 笔记本电脑 // ( laptop computer 笔记本电脑 ) ( desktop computer 台式电脑 )
 ```
