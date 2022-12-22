@@ -10,6 +10,9 @@ dishwasher 洗碗机
 toaster 烤面包机
 microwave 微波炉
 
+stove 炉子
+gas stove 煤气灶
+
 television 电视机 // tv
 air conditioner 空调 // ac
 rice cooker 电饭锅
@@ -27,7 +30,6 @@ instant pot 高压锅
 mixer 食品混合搅拌机
 dryer 烘干机
 blender 打碎机
-stove 炉子
 vent 排气扇
 oven 烤箱
 coffee maker 咖啡机 // coffee machine 也是咖啡机的意思，只是不常用
