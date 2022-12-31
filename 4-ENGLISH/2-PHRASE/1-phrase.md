@@ -112,4 +112,113 @@ Get across the river. 过河
 Get across the road. 过马路
 
 bring about disasters. 引起火灾
+// disaster 灾难 火灾
+```
+
+### (4)
+
+```
+calm down 平静下来
+do away with 废除
+cut in 插嘴
+check in 登记 报道
+fill up 装满
+call up 给...打电话
+drive off 赶走
+bring out 使表现出
+---
+
+He calmed down. 他平静了下来
+Calm down please. 请冷静
+
+She cut in while we were speaking. 她插嘴打断了我们的讲话
+cut in their conversation. 插嘴别人的谈话
+// conversation 交谈
+
+fill up the mug. 把杯子填满
+fill up the fuel tank. 油箱装满油
+// mug 杯子
+// fuel 燃料
+// tank 坦克 箱
+
+Drive off flies with a fan. 用扇子把苍蝇赶走
+drive off the attackers. 击退进攻者
+
+
+That blue dress really brings out the color of your skin. 这条蓝色的裙子把你的皮肤衬得很好看
+bring out the best in me. 表现出最好的自己
+
+check in at the hotel. 在酒店登记
+Can I check in now. 我现在可以登记了吗？
+
+call his friend up. 打电话给朋友
+call up my mother. 给妈妈打电话
+
+do away with the rule. 废除规则
+do away with slave trade. 废除奴隶交易
+// slave 奴隶
+// trade 交易
+// trader 交易者
+// trademark 商标 ( TM是缩写 )
+```
+
+### (5)
+
+```
+get over 恢复
+ask after 问候
+cast away 抛弃 丢弃
+draw back 后退
+bring up 抚养 培养
+break in 打断
+fix up 修理 修补
+leave alone 不理会 不打扰
+---
+
+It took him a long time to get over his code. 他花了很长时间才从感冒中恢复过来
+get over the sadness. 从悲伤中恢复过来
+
+He asked after my wife on the phone. 他在电话里问候我的妻子
+ask after a sick friend. 问候生病的朋友
+
+cast his exam papers away. 丢弃他的试卷
+do not cast me away. 不要抛弃我
+
+Everyone drew back in fear. 每个人都害怕的往后退
+draw back your troops. 让你的军队后退
+// troops 军队
+
+bring up her baby. 养育他的孩子
+brought up by his grandmother. 由他奶奶养大
+
+My friends help me to fix up my house. 我的朋友帮我修理房子
+fix up the TV set. 修理电视机
+
+Leave the baby alone. 不打扰小宝贝
+leave me alone. 不要打扰我
+
+break in with some news. 被新闻打断
+```
+
+### (6)
+
+```
+blow out 吹灭
+blow off 吹走
+put down 镇压
+put out 扑灭
+---
+
+A strong wind blew everything off the ground. 大风吹走了地上的东西
+
+blow the bug off my arm. 吹走手臂上的虫子
+
+put out the fire. 扑灭火
+put out your cigarette. 你把烟熄了
+
+blow out the candle. 吹灭蜡烛
+don't blow out the flame. 别把火吹灭
+
+put down the uprising. 镇压起义
+put down the rebellion. 镇压叛乱
 ```
