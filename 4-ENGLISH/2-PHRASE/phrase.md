@@ -112,4 +112,5 @@ Get across the river. 过河
 Get across the road. 过马路
 
 bring about disasters. 引起火灾
+// disaster 灾难 火灾
 ```
