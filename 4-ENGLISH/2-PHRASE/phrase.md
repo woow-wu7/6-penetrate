@@ -74,3 +74,42 @@ cut away the worthless leaves. 切掉多余的叶子
 // verb 动词
 // adjective 形容词
 ```
+
+### (3)
+
+```
+act for 代理
+burst into 突然闯入
+divide up 划分，分配
+carry off 成功的处理
+bring about 引起，导致
+come out 出现，出来
+drop by 拜访
+get across 通过
+---
+
+He acted for the boss at the meeting. 他代表老板参加会议
+act for his father in business. 代他父亲，处理生意
+
+burst into the front door. 闯进前门
+burst into schoolmaster's office 闯进校长办公室
+
+He divided the watermelon up. 他把西瓜分成了几份
+divide up money. 分钱
+
+He carried the speech off well. 他成功完成了演讲
+carry off the situation. 成功应付局面
+
+Walking in the rain can bring about a cold. 在雨中走路会引起感冒
+
+The sun comes out as the clouds clear away. 云一散开，太阳就出来了
+The moon came out. 月亮出来了
+
+He dropped by this morning. 今天早上他来拜访我了
+drop by my teacher's office 到我老师的办公室
+
+Get across the river. 过河
+Get across the road. 过马路
+
+bring about disasters. 引起火灾
+```
