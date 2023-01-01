@@ -114,3 +114,49 @@ Get across the road. 过马路
 bring about disasters. 引起火灾
 // disaster 灾难 火灾
 ```
+
+### (4)
+
+```
+calm down 平静下来
+do away with 废除
+cut in 插嘴
+check in 登记 报道
+fill up 装满
+call up 给...打电话
+drive off 赶走
+bring out 使表现出
+---
+
+He calmed down. 他平静了下来
+Calm down please. 请冷静
+
+She cut in while we were speaking. 她插嘴打断了我们的讲话
+cut in their conversation. 插嘴别人的谈话
+
+fill up the mug. 把杯子填满
+fill up the fuel tank. 油箱装满油
+// mug 杯子
+// fuel 燃料
+// tank 坦克 箱
+
+Drive off flies with a fan. 用扇子把苍蝇赶走
+drive off the attackers. 击退进攻者
+
+
+That blue dress really brings out the color of your skin. 这条蓝色的裙子把你的皮肤衬得很好看
+bring out the best in me. 表现出最好的自己
+
+check in at the hotel. 在酒店登记
+Can I check in now. 我现在可以登记了吗？
+
+call his friend up. 打电话给朋友
+call up my mother. 给妈妈打电话
+
+do away with the rule. 废除规则
+do away with slave trade. 废除奴隶交易
+// slave 奴隶
+// trade 交易
+// trader 交易者
+// trademark 商标 ( TM是缩写 )
+```
