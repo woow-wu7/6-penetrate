@@ -133,6 +133,7 @@ Calm down please. 请冷静
 
 She cut in while we were speaking. 她插嘴打断了我们的讲话
 cut in their conversation. 插嘴别人的谈话
+// conversation 交谈
 
 fill up the mug. 把杯子填满
 fill up the fuel tank. 油箱装满油
