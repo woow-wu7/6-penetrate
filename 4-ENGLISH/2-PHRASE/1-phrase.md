@@ -199,3 +199,26 @@ leave me alone. 不要打扰我
 
 break in with some news. 被新闻打断
 ```
+
+### (6)
+
+```
+blow out 吹灭
+blow off 吹走
+put down 镇压
+put out 扑灭
+---
+
+A strong wind blew everything off the ground. 大风吹走了地上的东西
+
+blow the bug off my arm. 吹走手臂上的虫子
+
+put out the fire. 扑灭火
+put out your cigarette. 你把烟熄了
+
+blow out the candle. 吹灭蜡烛
+don't blow out the flame. 别把火吹灭
+
+put down the uprising. 镇压起义
+put down the rebellion. 镇压叛乱
+```

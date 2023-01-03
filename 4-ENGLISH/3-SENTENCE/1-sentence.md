@@ -87,3 +87,27 @@ The alarm clock reminds me that I have a meeting this afternoon. 闹钟提醒我
 What a pity. my ice cream dropped before i ate it. 真遗憾，我还没来得及吃，我的冰淇凌就掉到地上了
 The burning coals glow in the dark. 燃烧的煤炭在黑暗中发出光亮
 ```
+
+### (3)
+
+```
+During the race the rider urged the horse to go faster so he could win. 在比赛中，骑手为了赢得胜利，不断鞭策他的马加快速度
+// urge 鞭策
+
+He had to abandon his car in the desert. 他不得不把自己的车子抛弃在沙漠中
+// abandon 抛弃 放弃
+// desert 沙漠 荒漠
+
+To save money, he always makes the most economical decisions. 为了省钱，他总是做出精打细算的决定
+// economical 节约的 经济的
+// decisions 决定 判决
+
+Reusable shopping bags are environmentally-friendly. 可重复使用的购物袋是环保的
+// reusable 可重复使用的
+// environmentally-friendly 有利于环保的
+
+The odor of the socks made the girl feel dizzy. 袜子的臭味把女孩熏得头晕
+// odor 气味
+// socks 袜子
+// dizzy 又晕目眩的
+```
