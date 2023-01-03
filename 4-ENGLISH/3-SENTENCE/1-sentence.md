@@ -160,3 +160,25 @@ He fills with joy when feeling his wife's belly. 他摸着妻子的肚子，心�
 // feel 触 摸 感觉到
 // belly 肚子
 ```
+
+### (4)
+
+```
+The apple drowned in the water because it couldn't swim. 苹果因为不会游泳，淹死在了水里
+// drown 淹死
+
+He gave the porter a 5-dollar tip. 他给了那位行李员5美元的小费
+// tip 小费
+// porter 搬运工人
+
+The doctor gave me some drugs. 医生给了我一些药
+// drug 药物 麻醉品 毒品
+
+We depend on the Earth's resources to survive. 我们依靠地球提供的资源生存
+// resource 资源
+// survive 生存
+
+A drunk man passed out on the sofa. 一个喝醉的男人在沙发上昏睡过去了
+// drunk 喝醉的
+// pass out 昏倒
+```
