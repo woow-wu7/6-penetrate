@@ -1,6 +1,6 @@
 # sentence 句子
 
-- sentence 句子，裁决
+-   sentence 句子，裁决
 
 ### (1)
 
@@ -110,4 +110,53 @@ The odor of the socks made the girl feel dizzy. 袜子的臭味把女孩熏得�
 // odor 气味
 // socks 袜子
 // dizzy 又晕目眩的
+
+He finds the smell of the sock disgusting. 这只袜子的味道实在让他恶心
+// sock 短袜
+// smell 味道 气味
+// disgusting
+
+Penguins live in the polar regions. 企鹅生活在极地地区
+// penguins 企鹅
+// polar 南极的 北极的 极地的
+
+The cleaner handles trash disposal for us. 清洁工负责处理我们的垃圾
+// trash 垃圾
+// disposal 销毁 处理
+// trash disposal 废物处理
+
+The student could not hide his dismay after failing the exam. 得知考试不及格，这位同学无法掩饰自己的沮丧
+// dismay 失望 沮丧
+
+His short arms are his biggest drawback. he's struggling to reach the toilet paper. 他的短胳膊是他最大的缺点，他很努力额去够厕所纸
+// drawback 缺点
+// toilet 马桶 厕所
+
+Their residence is equipped with a large swimming pool. 他们的住宅配有一个很大的游泳池
+// residence 住宅
+// equipped 装备
+
+The strong man can lift the rock with ease compare to the other man. 与另一个男人相比，这个强壮的男人可以轻松的举起石头
+// lift 举起
+// rock 石头 摇晃 摇滚乐
+// ease 轻松 缓解
+
+This ancient tablet is from Roman times. 这块古老的石碑源自罗马时代
+// ancient 古老的
+// tablet 碑 匾 药片
+// Roman 罗马
+
+The woman is sticking a paper-cut on the window. 这位女士将一张剪纸贴在窗上
+// stick 粘贴
+
+The child dreads the ghost so much that he couldn't fall asleep. 这个孩子很怕鬼，怎么都睡不着
+// dread 害怕
+// ghost 鬼
+
+The flowers drooped in the sun. 花朵在阳光下枯萎了
+// droop 枯萎
+
+He fills with joy when feeling his wife's belly. 他摸着妻子的肚子，心里充满了喜悦
+// feel 触 摸 感觉到
+// belly 肚子
 ```
