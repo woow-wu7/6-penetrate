@@ -181,4 +181,50 @@ We depend on the Earth's resources to survive. 我们依靠地球提供的资源
 A drunk man passed out on the sofa. 一个喝醉的男人在沙发上昏睡过去了
 // drunk 喝醉的
 // pass out 昏倒
+
+The drunken woman is sleeping on the bench. 喝醉酒的女人真在长凳上睡觉
+// drunken 喝醉的 adj
+// bench 长凳
+
+With such a low price, the hotel room is really attractive. 这个旅馆房间价格如此低廉，真的很吸引人
+// attractive 有吸引力的 诱人的
+
+Please put the documents in the correct category. 请把文档放在正确的分类里
+// category 类别 范畴
+
+The balloons flew away, high into the sky. 气球飞走了，高高的升入云霄
+// balloons 气球，注意发音
+// flew away 飞走了
+
+He is highly educated scholar. 他是一个受过高等教育的学者
+// educated 受过教育
+// scholar 学者
+
+She used to exercise alone. but now she engages in the group running. 她过去常常独自锻炼，但现在她加入了集体跑步的行列
+// exercise 锻炼 运动
+// engage 加入 参加
+// used to 曾经
+
+Biology is the study of life and living things. 生物学是研究生命和生物的学科
+// biology 生物学
+
+The fireman rescued the little boy from the fire. 消防员把小男孩从火中救了出来
+// fireman 消防员，注意发音
+// rescue 援救 营救
+
+My mother is helping me fasten my seat belt. 我的妈妈正在帮我系安全带
+// fasten 扎牢 扣住
+// seat belt 安全带
+
+Her beautiful blonde hair is long and curly. 她的美丽金发又长又卷
+// blonde 金色的
+// curly 卷的 弯曲的
+
+She has many bags of fertilizer in her storage room. 她的储藏室里有许多袋肥料
+// fertilizer 肥料 化肥
+// storage room 储藏室
+
+The little guy shows his talent at playing the drum. 小家伙展示了他打鼓的才能
+// talent 天赋
+// drum 鼓
 ```
