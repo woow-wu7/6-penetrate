@@ -276,3 +276,26 @@ It's better to use a credit card than to carry cash. 刷信用卡比携带现金
 // credit card 信用卡
 // cash 现金
 ```
+
+### (6)
+
+```
+He followed the map eastward, towards the treasure. 他沿着地图向东走，朝着宝藏而去
+// followed 跟随的
+// eastward 向东 向东的
+// treasure 宝藏
+
+The sign stands for a bicycle path. 这个标识代表了自行车道
+// stand for 代表 象征
+
+How do you assess the risk level of this investment? Low, medium or high? 你对这次投资的风险评估是怎样的？低风险，中风险，还是高风险
+// assess 评估
+// investment 投资 投入
+
+My garden becomes so colorful in the springtime when all the plants blossom. 在春天里我的花园是五彩缤纷的，因为所有的话都开了
+// blossom 开花
+
+Please summarize the main point of this paragraph. 请总结这一段的大意
+// summarize 做总结 做概括
+// paragraph 段 文章的段 节
+```
