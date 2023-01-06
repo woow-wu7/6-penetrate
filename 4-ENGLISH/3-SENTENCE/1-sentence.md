@@ -22,6 +22,12 @@ factor 因素
 appearance 外观
 An important factor for him when buying a car is its appearance. 车的外观是他买车时的一个重要因素
 
+The most obvious trait of his appearance is his big nose. 他最明显的外貌特征就是他的大鼻子
+// obvious 明显的
+// trait 特征
+// appearance 外貌
+// nose 鼻子
+
 delicate 易碎的 精致的
 vase 花瓶
 The vase is delicate and should be packed with care. 花瓶易碎，应小心打包
@@ -51,6 +57,11 @@ The most obvious trait of his appearance is his big nose. 他最明显的外貌�
 // trait 特征
 // appearance 外貌
 // nose 鼻子
+
+factor 因素
+appearance 外观
+An important factor for him when buying a car is its appearance. 车的外观是他买车时的一个重要因素
+
 
 The girl puts the notice on the bulletin board. 女孩把告示贴在公告栏上
 // notice 通知 告示 注意
@@ -227,4 +238,41 @@ She has many bags of fertilizer in her storage room. 她的储藏室里有许多
 The little guy shows his talent at playing the drum. 小家伙展示了他打鼓的才能
 // talent 天赋
 // drum 鼓
+```
+
+### (5)
+
+```
+Nosy relatives at the Spring Festival gathering always enquire about your personal issues. 每逢春节聚会，唠叨的亲戚总会打听你的私事
+// nosy 爱管闲事的
+// relatives 亲戚
+// enquire 询问 打听
+
+I have an appointment with my doctor tomorrow. 我和医生约了明天见面
+// appointment 预约 任命
+
+She broke off a piece of chocolate. 她掰开了一块巧克力
+// break off 打断 掰断 暂停
+
+Different color dustbins have different functions. 不同颜色的垃圾箱有不同的功能
+// dustbin 垃圾箱
+
+The fish in this pond are abundant. 这个池塘里的鱼太丰富了
+// pond 池塘
+// abundant 丰富的
+
+I finally achieved my goal of winning the race. 我赢了跑步比赛，终于达成了我的目标
+// achieve 完成 达到
+
+The man is in desperate need of a coffee. 这个男人特别需要一杯咖啡
+// desperate 绝望的 渴望的
+// in need of 需要
+
+A huge eagle is flying high in the sky. 一只雄鹰在天上飞翔
+// eagle 鹰
+
+It's better to use a credit card than to carry cash. 刷信用卡比携带现金要好
+// credit 信用
+// credit card 信用卡
+// cash 现金
 ```
