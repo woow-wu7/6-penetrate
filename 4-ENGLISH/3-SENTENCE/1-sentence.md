@@ -299,3 +299,80 @@ Please summarize the main point of this paragraph. 请总结这一段的大意
 // summarize 做总结 做概括
 // paragraph 段 文章的段 节
 ```
+
+### (7) 2023-01-07
+
+```
+The couple have agreed to get a divorce. 这对夫妻已经同意离婚了
+// divorce 离婚
+// get a divorce 离婚
+// agree to 同意
+
+She got an honor for her excellent grades. 她因出色的学习成绩，而获得了这项荣誉
+// honor 荣誉 华为荣耀手机
+// excellent 优秀的 卓越的
+// grades 评分等级
+// excellent grades 优秀的成绩
+
+There are 8 major planet in our solar system. 太阳系中有8大行星
+// planet 行星
+// solar system 太阳系
+
+The odor of the socks made the girl feel dizzy. 袜子的臭味把女孩熏得头晕
+// odor 气味
+// socks 袜子
+// dizzy 又晕目眩的
+
+The young couple are wandering in the park. 这对年轻的夫妇正在公园里漫步
+// wander 闲逛 漫步
+
+The businessman has an assistant to help him with his work every day. 这个商人有一名每天协助他工作的助理
+// assistant 助理
+
+The eggplant was cut into slices. 茄子被切成了片状
+// eggplant 茄子
+// slices 薄片
+
+Family members have a strong bond. you can never tear them apart. 家庭成员之间有着强大的凝聚力，你永远不能拆散他们
+// bond 凝聚力
+// tear them apart 拆散他们
+
+You must write down the address before sending a letter.
+// letter 信
+
+I finally plugged my phone and let it charge. 我终于插上手机，让它冲上电了
+// charge 充电 充值 收费
+// plugged 堵住 紧塞
+
+We elect our next leader by voting. 我们通过投票来选举下一任领导
+// elect 选举
+// voting 投票
+
+The beautiful Egyptian is wearing an ancient Egyptian costume. 这位美丽的埃及人穿着一件古老的埃及服装
+// Egyptian 埃及人
+// ancient 古老的
+// costume 服装
+
+Children like to learn chemistry through experiments. 孩子们喜欢通过做实验学习化学
+// chemistry 化学
+// experiments 实验
+
+The kettle is heated by electrical power. 这个水壶是用点力加热的
+// kettle 水壶 壶
+// heated 加热的
+// electrical 电的
+
+The three people are waiting for the elevator. 这三个人正在等电梯
+// elevator 电梯
+
+Even with an artificial leg, he can still beat you in a race. 尽管有一条假肢，他依然可以跑赢你
+// artificial 人造的
+
+Every citizen age eighteen or over has the right to vote in china. 在中国任何年满18岁的公民都有选举权
+// citizen 公民 居民 市民
+// has the right 有权利
+// vote 投票 选举
+
+Look! this dragon can breathe fire. 看，这条龙会喷火
+// dragon 龙 凶恶的女人
+```
