@@ -157,6 +157,11 @@ This ancient tablet is from Roman times. 这块古老的石碑源自罗马时代
 // tablet 碑 匾 药片
 // Roman 罗马
 
+In ancient China, the emperor had supreme power. 在古代中国，皇上有着至高无上的权利
+// ancient 古代的
+// emperor 皇帝
+// supreme 至高的
+
 The woman is sticking a paper-cut on the window. 这位女士将一张剪纸贴在窗上
 // stick 粘贴
 
@@ -348,6 +353,11 @@ We elect our next leader by voting. 我们通过投票来选举下一任领导
 // elect 选举
 // voting 投票
 
+Every citizen age eighteen or over has the right to vote in china. 在中国任何年满18岁的公民都有选举权
+// citizen 公民 居民 市民
+// has the right 有权利
+// vote 投票 选举
+
 The beautiful Egyptian is wearing an ancient Egyptian costume. 这位美丽的埃及人穿着一件古老的埃及服装
 // Egyptian 埃及人
 // ancient 古老的
@@ -368,11 +378,64 @@ The three people are waiting for the elevator. 这三个人正在等电梯
 Even with an artificial leg, he can still beat you in a race. 尽管有一条假肢，他依然可以跑赢你
 // artificial 人造的
 
-Every citizen age eighteen or over has the right to vote in china. 在中国任何年满18岁的公民都有选举权
-// citizen 公民 居民 市民
-// has the right 有权利
-// vote 投票 选举
-
 Look! this dragon can breathe fire. 看，这条龙会喷火
 // dragon 龙 凶恶的女人
+
+The dentist cleaned my teeth. 牙医清洗了我的牙齿
+// dentist 牙医
+
+You can apply for visa at the embassy. 你可以在大使馆申请签证
+// visa 签证
+// embassy 大使馆
+
+Today she will leave for collage by train. 今天她要做火车去上大学
+// leave for 动身去
+
+Finally, the puzzle is complete. 最终，拼图完整了
+// puzzle 拼图
+// complete 完成
+
+People can change a lot after a decade. 十年会给人带来很大的变化
+// decade 十年 一个年代
+
+This man is showing different emotions. 这个人表现出了不同的情绪
+// emotion 情绪 感情
+
+The cat is very confident; in his mind, he is a powerful beast. 这只猫很自信，在他的心目中，自己是一只强大的野兽
+// confident 自信的
+// beast 野兽
+
+I'd like to have some dessert with a cup of tea after dinner. 吃饭晚饭后，我还想吃些甜点，喝杯茶
+// dessert 甜点
+// dinner 正餐 晚餐
+
+In ancient China, the emperor had supreme power. 在古代中国，皇上有着至高无上的权利
+// ancient 古代的
+// emperor 皇帝
+// supreme 至高的
+
+This ancient tablet is from Roman times. 这块古老的石碑源自罗马时代
+// ancient 古老的
+// tablet 碑 匾 药片
+// Roman 罗马
+
+Sea water contains salt. 海水含有盐分
+// sea 海洋
+// contain 包含
+// salt 盐
+
+The destination of their journey was the Western Heaven. 他们此行的目的地是西天
+// destination 目的地
+
+Climbing this mountain is a risky endeavor. 爬这座山是一次冒险的尝试
+// endeavor 尝试
+
+If a light bulb explodes. it is very dangerous to be nearby. 如果灯泡爆炸了，在那附近是非常危险的
+// bulb 电灯泡
+// explode 爆炸
+// nearby 附近的
+
+The man told the woman a humorous joke and made her laugh. 这个男人对女人讲了一个幽默的笑话，让她笑了起来
+// humorous 幽默的
+// joke 讲笑话
 ```
