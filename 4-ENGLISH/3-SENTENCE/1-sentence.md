@@ -439,3 +439,64 @@ The man told the woman a humorous joke and made her laugh. 这个男人对女人
 // humorous 幽默的
 // joke 讲笑话
 ```
+
+### (7) 2023-01-08
+
+```
+Curiosity drives the cat to see what it is in the box. 好奇心驱使这只猫去看盒子里面是什么
+// curiosity 好奇心
+
+I enjoy watching the sunset at dusk. 我很享受在黄昏时看日落
+// dusk 黄昏 傍晚
+
+He is playing chess with his friend. 他在和他的朋友下国际象棋
+// chess 国际象棋
+
+My dormitory is clean and tidy. 我的宿舍干净整洁
+// dormitory 宿舍
+// tidy 整洁的
+
+100 million years ago, dinosaur ruled the Earth. 1亿年前，恐龙统治着这个地球
+// dinosaur 恐龙
+
+He defeated his opponent and won the tennis match. 他打败了对手，赢得了这场网球比赛
+// defeat 打败
+// opponent 对手 敌手 竞争者
+// tennis 网球
+
+The forest stream became frozen during winter. 森林里的小溪在冬天结冰了
+// frozen 冷冻的 结冰的
+
+I have to enlarge the words by looking through a magnifying glass. 我必须用放大镜把这些单词放大
+// enlarge 放大
+// magnifying glass 放大镜
+
+He's too mean to share his snacks with me. 他太吝啬了，不肯把零食分给我
+// mean 吝啬的
+// snacks 快餐 小吃 零食
+
+The cat caught so many mice, so he deserved the reward. 这只猫捉了很多老鼠，值得奖励
+// caught 抓住
+// mice 老鼠
+// deserve 值得
+// reward 奖品 奖励
+
+The consequence of eating to much junk food is getting fat. 吃太多垃圾食品的后果就是长胖
+// consequence 结果 后果 重要性
+// junk food 垃圾食品
+
+The little girl was shocked by the enormous dog. 小女孩被这只巨大的狗震惊了
+// shocked 震惊的 震撼的
+// enormous 巨大的
+
+The well-known star is waving hands to her fans. 这位著名明星正在向他的粉丝挥手
+// well-known 著名的 有名的
+// waving 挥手 破浪状的
+
+When the leaf is seen up close. you can see a lot of fine details. 近距离观看树叶时，你可以看到很多细节
+// leaf 树叶
+// see up close 近距离看
+
+It was an even match so neither side could defeat the other. 这是一场势均力敌的比赛，因此谁也没有办法打败对方
+// even 实力相当的
+```
