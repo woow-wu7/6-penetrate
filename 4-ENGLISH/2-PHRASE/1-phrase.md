@@ -222,3 +222,49 @@ don't blow out the flame. 别把火吹灭
 put down the uprising. 镇压起义
 put down the rebellion. 镇压叛乱
 ```
+
+### (7) 2023-01-08
+
+```
+drop off 睡着
+carry off 获得
+figure out 计算出
+bring out 阐明
+attend to 处理
+allow for 考虑到
+cut in 插入
+burst into 突然...起来
+---
+
+carry off the world cup trophy. 获得世界杯奖杯
+carry off three gold medals. 获得了三枚金牌
+// medal 奖章 勋章
+// gold medal 金牌
+// trophy 奖杯
+// world cup trophy 世界杯奖杯
+
+drop off to sleep. 睡着了
+drop off in front of the TV. 在电视前睡着了
+
+I figured out the math problem. 我计算出了这道数学题
+figure out my budget. 计算我的预算
+// budget 预算
+
+The teacher brings out the meaning of the theory. 老师给我们阐明了这个理论的意思
+bring out the differences. 阐明不同点
+// theory 理论
+
+She suddenly burst into laughter. 她突然笑起来
+The girl burst into tears. 小女孩突然哭起来
+
+He has lots of things to attend to. 他有很多事要处理
+attend to emergency. 处理急事
+// emergency 突发事件
+
+Could you please not cut in line? 你能不插队吗？
+The car suddenly cut in front of me. 车突然插到我前面去了
+
+Allowing for my health, i quit smoking. 考虑到我的健康问题，我放弃了抽烟
+allow for the difference in age. 考虑到年龄的差异
+// quit 戒掉
+```
