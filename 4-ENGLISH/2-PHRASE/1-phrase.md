@@ -268,3 +268,45 @@ Allowing for my health, i quit smoking. 考虑到我的健康问题，我放弃�
 allow for the difference in age. 考虑到年龄的差异
 // quit 戒掉
 ```
+
+### (8) 2023-01-09
+
+```
+get at 得知 了解
+come at 袭击
+come out 出版
+draw up 起草 写
+call up 使人想起
+answer for 对...负责
+get across 使理解
+go beyond 超越
+---
+
+The letter was trying to get at the death of his brother. 从信中得知了他哥哥的死讯
+get at the message of the idiom. 了解习语的意思
+// idiom 习语
+
+She came at me with a knife. 她用一把刀袭击了我
+Let's fight! come at me, bro! 来打架啊，冲我来，老兄
+
+My new book has come out. 我的新书出版了
+The magazine comes out every Friday. 这本杂志每周五出版
+// magazine 杂志
+
+He couldn't get his message across. 他不能使别人理解他的讯息
+get across to my student. 让学生理解
+
+draw up a business plan. 起草一份商业计划书
+draw up a budget. 草拟一份预算
+// budget 预算
+
+This photo calls up memories of high school. 这张照片让我想起了我的高中生活
+It calls up my past. 它让我想起了我的过去
+
+He finally went beyond his opponent in the race. 他最终在赛跑中超越了对手
+The price went beyond their means. 增额价格超出了他们的财力
+// means 财力 方法
+
+You must answer for the result of your actions. 你必须要为你的行为负责
+Someone needs to answer for this. 有人需要为此负责
+```
