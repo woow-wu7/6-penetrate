@@ -310,3 +310,41 @@ The price went beyond their means. 增额价格超出了他们的财力
 You must answer for the result of your actions. 你必须要为你的行为负责
 Someone needs to answer for this. 有人需要为此负责
 ```
+
+### (8) 2023-01-10
+
+```
+There is a disease spreading around the family. 有一种疾病在这家人之间传播
+// disease 疾病
+// spread 传播
+// spread around 分散
+
+Low grain output led to people in this area suffering from famine. 粮食产量低导致该地区人民遭受饥荒
+// grain 谷物 颗粒
+// led to 导致 --- 注意读音
+// area 区域 --- 注意读音
+// suffering 疼痛 苦难
+// famine 饥荒 严重的缺乏
+
+LU XUN is the author of this book. 鲁迅是这本书的作者
+// author 作者 --- 注意读音
+
+Gradually, he becomes stronger and stronger. 渐渐的，他变得越来约强壮
+// gradually 渐渐的
+
+The elementary students are beginning school for the first time. 小学生们正准备上第一次上学
+// elementary 初级的
+
+The old man finance a poor student to go to collage. 老人资助那个贫困学生上大学
+// finance 资助
+
+Could we have the bill, please? 请把账单给我们看一下
+// bill 账单
+
+Penguins live in the polar regions. 企鹅生活在极地地区
+// penguins 企鹅
+// polar 北极的 南极的 极地的
+
+We should eat healthy food if we want a strong stomach. 想拥有强健的胃，我们就应该健康饮食
+// stomach 胃
+```
